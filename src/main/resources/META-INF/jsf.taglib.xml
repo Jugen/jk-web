@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<facelet-taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
+<facelet-taglib id="jk"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd"
+	version="2.2">
 	<namespace>http://jalalkiswani.com/jsf</namespace>
 	<!-- Simple tag that shows hello from JK -->
 	<tag>
@@ -28,7 +30,6 @@
 		<tag-name>jsfInfo</tag-name>
 		<component>
 			<component-type>com.jk.jsf.info</component-type>
-			<handler-class>com.jk.faces.components.UIJSFInfo</handler-class>
 		</component>
 	</tag>
 	<!-- Form layout that will insure add the lables automatically , and will distribute the columns based on the cols attribute -->

@@ -18,6 +18,7 @@ package com.jk.faces.components;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
@@ -42,6 +43,7 @@ import com.jk.util.IOUtil;
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 @FacesComponent("com.jk.jsf.info")
 public class UIJSFInfo extends UIOutput {
+	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
 	 * this method is responsible for rendering {@link UIJSFInfo} component It
@@ -54,6 +56,7 @@ public class UIJSFInfo extends UIOutput {
 	 */
 	@Override
 	public void encodeEnd(final FacesContext context) throws IOException {
+		logger.info("@encodeEnd");
 		final Map<String, Object> info = JSFUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);
