@@ -18,6 +18,7 @@ package com.jk.faces.components;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
@@ -43,6 +44,9 @@ import com.jk.util.IOUtil;
 @FacesComponent("com.jk.jsf.info")
 public class UIJSFInfo extends UIOutput {
 
+	/** The logger. */
+	Logger logger = Logger.getLogger(getClass().getName());
+
 	/**
 	 * this method is responsible for rendering {@link UIJSFInfo} component It
 	 * renders JSF debugging information like Jar name, JSF version, ..etc
@@ -54,10 +58,11 @@ public class UIJSFInfo extends UIOutput {
 	 */
 	@Override
 	public void encodeEnd(final FacesContext context) throws IOException {
+		this.logger.info("@encodeEnd");
 		final Map<String, Object> info = JSFUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);
-		w.writeAttribute("border", "1", null);
+		w.writeAttribute("class", "ui-datatable", null);
 		;
 		final Set<String> keySet = info.keySet();
 		for (final String key : keySet) {

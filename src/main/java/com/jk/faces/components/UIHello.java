@@ -16,6 +16,7 @@
 package com.jk.faces.components;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIPanel;
@@ -42,6 +43,9 @@ public class UIHello extends UIPanel {
 	/** The Constant COMPONENT_TYPE. */
 	public static final String COMPONENT_TYPE = "jk.hello";
 
+	/** The logger. */
+	Logger logger = Logger.getLogger(getClass().getName());
+
 	/**
 	 * the default constructure.
 	 */
@@ -58,6 +62,7 @@ public class UIHello extends UIPanel {
 	 */
 	@Override
 	public void encodeAll(final FacesContext context) throws IOException {
+		this.logger.fine("encodingAll");
 		final ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", null);
 		writer.writeText("Hello From JK", null);

@@ -13,23 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jk.faces.convertor;
+package com.jk.faces.util;
 
-/**
- * The Class JKTimeConvertor.
- *
- * @author Jalal Kiswani
- */
-public class JKTimeConvertor extends JKAbstractTempralConvertor {
+public class JKJsfUtil {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see javax.faces.convert.DateTimeConverter#getPattern()
-	 */
-	@Override
-	public String getPattern() {
-		return System.getProperty("jkfaces.DEFAULT_TIME_PATTERN", "HH:mm:ss");
+	public static String getLocalNameFromQName(final String qName) {
+		final String[] split = qName.split(":");
+		return split.length == 2 ? split[1] : split[0];
+	}
+
+	public static String getNamespaceLetterFromQName(final String qName) {
+		final String[] split = qName.split(":");
+		if (split.length == 1) {
+			return null;
+		}
+		return split[0];
+
 	}
 
 }

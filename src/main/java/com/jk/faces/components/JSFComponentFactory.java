@@ -69,8 +69,7 @@ public class JSFComponentFactory {
 	 * @return the ajax behavior
 	 */
 	public static org.primefaces.behavior.ajax.AjaxBehavior createAjax() {
-		final Behavior behavior = FacesContext.getCurrentInstance().getApplication()
-				.createBehavior(AjaxBehavior.BEHAVIOR_ID);
+		final Behavior behavior = FacesContext.getCurrentInstance().getApplication().createBehavior(AjaxBehavior.BEHAVIOR_ID);
 		return (AjaxBehavior) behavior;
 	}
 
@@ -120,8 +119,7 @@ public class JSFComponentFactory {
 	 * @return the UI data
 	 */
 	public static UIData createDataTable() {
-		return (UIData) JSFComponentFactory
-				.createComponent(org.primefaces.component.datatable.DataTable.COMPONENT_TYPE);
+		return (UIData) JSFComponentFactory.createComponent(org.primefaces.component.datatable.DataTable.COMPONENT_TYPE);
 	}
 
 	/**
@@ -169,8 +167,7 @@ public class JSFComponentFactory {
 		} else if (ObjectUtil.isDate(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(Calendar.COMPONENT_TYPE);
 		} else if (ObjectUtil.isBoolean(type)) {
-			input = (javax.faces.component.UIInput) JSFComponentFactory
-					.createComponent(SelectBooleanCheckbox.COMPONENT_TYPE);
+			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(SelectBooleanCheckbox.COMPONENT_TYPE);
 		} else {
 			input = JSFComponentFactory.createInputText(null);
 		}
@@ -186,8 +183,7 @@ public class JSFComponentFactory {
 	 * @return the UI input
 	 */
 	public static UIInput createInputText(final String label) {
-		final UIInput comp = (javax.faces.component.UIInput) JSFComponentFactory
-				.createComponent(InputText.COMPONENT_TYPE);
+		final UIInput comp = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(InputText.COMPONENT_TYPE);
 		if (label != null) {
 			comp.getAttributes().put("label", label);
 		}

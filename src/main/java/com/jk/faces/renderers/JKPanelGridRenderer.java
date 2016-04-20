@@ -43,15 +43,14 @@ public class JKPanelGridRenderer extends PanelGridRenderer {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.primefaces.component.panelgrid.PanelGridRenderer#encodeDynamicBody(
 	 * javax.faces.context.FacesContext,
 	 * org.primefaces.component.panelgrid.PanelGrid, int)
 	 */
 	@Override
-	public void encodeDynamicBody(final FacesContext context, final PanelGrid grid, final int columns)
-			throws IOException {
+	public void encodeDynamicBody(final FacesContext context, final PanelGrid grid, final int columns) throws IOException {
 		final ResponseWriter writer = context.getResponseWriter();
 		final String columnClassesValue = grid.getColumnClasses();
 		final String[] columnClasses = columnClassesValue == null ? new String[0] : columnClassesValue.split(",");
@@ -71,8 +70,8 @@ public class JKPanelGridRenderer extends PanelGridRenderer {
 				writer.writeAttribute("role", "row", null);
 			}
 
-			final String columnClass = colMod < columnClasses.length
-					? PanelGrid.CELL_CLASS + " " + columnClasses[colMod].trim() : PanelGrid.CELL_CLASS;
+			final String columnClass = colMod < columnClasses.length ? PanelGrid.CELL_CLASS + " " + columnClasses[colMod].trim()
+					: PanelGrid.CELL_CLASS;
 			writer.startElement("td", null);
 			writer.writeAttribute("role", "gridcell", null);
 			writer.writeAttribute("class", columnClass, null);

@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<facelet-taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
-	<namespace>http://www.jk.com/jsf</namespace>
+<facelet-taglib id="jk"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd"
+	version="2.2">
+	<namespace>http://jalalkiswani.com/jsf</namespace>
 	<!-- Simple tag that shows hello from JK -->
 	<tag>
 		<tag-name>hello</tag-name>
 		<component>
 			<component-type>jk.hello</component-type>
-			<handler-class />
 		</component>
 	</tag>
 	<!-- Show the componentRenderers and Component types for every tag in the current view -->
@@ -15,7 +16,6 @@
 		<tag-name>componentsInfo</tag-name>
 		<component>
 			<component-type>jk.components.info</component-type>
-			<handler-class />
 		</component>
 	</tag>
 	<!-- gridLayout that will insure all cells and all components have the same size width and height -->
@@ -23,7 +23,6 @@
 		<tag-name>gridLayout</tag-name>
 		<component>
 			<component-type>jk.layout.grid</component-type>
-			<handler-class />
 		</component>
 	</tag>
 	<!-- Useful tag that will show the current version of main JSF implementation classes -->
@@ -31,18 +30,17 @@
 		<tag-name>jsfInfo</tag-name>
 		<component>
 			<component-type>com.jk.jsf.info</component-type>
-			<handler-class />
 		</component>
 	</tag>
 	<!-- Form layout that will insure add the lables automatically , and will distribute the columns based on the cols attribute -->
+	<!-- 
 	<tag>
 		<tag-name>formLayout</tag-name>
 		<component>
 			<component-type>jk.layout.formLayout</component-type>
-			<handler-class>com.jk.jsf.components.Tag_UIFormLayout</handler-class>
+			<handler-class>com.jk.jsf.components.UIFormLayout</handler-class>
 		</component>
 	</tag>
-	<!-- Nested tag that will be used inside FormLayout which will includes the form fields -->
 	<tag>
 		<tag-name>fields</tag-name>
 		<component>
@@ -50,7 +48,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- Nested tag that will be used inside FormLayout which will include the form actions -->
 	<tag>
 		<tag-name>actions</tag-name>
 		<component>
@@ -58,7 +55,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- BorderLayout implementation -->
 	<tag>
 		<tag-name>borderLayout</tag-name>
 		<component>
@@ -66,7 +62,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- North region of the Border layout -->
 	<tag>
 		<tag-name>north</tag-name>
 		<component>
@@ -74,7 +69,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- Horizantal start region of the Border layout -->
 	<tag>
 		<tag-name>start</tag-name>
 		<component>
@@ -82,7 +76,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- Center region of the BorderLayout -->
 	<tag>
 		<tag-name>center</tag-name>
 		<component>
@@ -90,7 +83,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- Horizental end region of BorederLayout -->
 	<tag>
 		<tag-name>end</tag-name>
 		<component>
@@ -98,7 +90,6 @@
 			<handler-class />
 		</component>
 	</tag>
-	<!-- South region of the BorderLayout tag -->
 	<tag>
 		<tag-name>south</tag-name>
 		<component>
@@ -106,4 +97,5 @@
 			<handler-class />
 		</component>
 	</tag>
+	 -->
 </facelet-taglib>
