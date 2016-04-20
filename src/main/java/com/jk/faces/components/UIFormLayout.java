@@ -24,11 +24,10 @@ import javax.faces.view.facelets.ComponentConfig;
 import javax.faces.view.facelets.ComponentHandler;
 import javax.faces.view.facelets.FaceletContext;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.jk.annotations.Author;
 import com.jk.faces.components.layouts.UIFields;
 import com.jk.faces.util.JSFUtil;
+import com.jk.util.StringUtil;
 
 /**
  * The Class UIFormLayout.
@@ -50,7 +49,7 @@ public class UIFormLayout extends ComponentHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.faces.view.facelets.ComponentHandler#onComponentCreated(javax.faces
 	 * .view.facelets.FaceletContext, javax.faces.component.UIComponent,
@@ -63,7 +62,7 @@ public class UIFormLayout extends ComponentHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.faces.view.facelets.ComponentHandler#onComponentPopulated(javax.
 	 * faces.view.facelets.FaceletContext, javax.faces.component.UIComponent,
@@ -96,7 +95,7 @@ public class UIFormLayout extends ComponentHandler {
 						}
 						final String id = "lbl_".concat(labelKey);
 						final HtmlOutputLabel out = JSFComponentFactory.createLabel(labelKey);
-						out.setId(StringUtils.trim(id));
+						out.setId(StringUtil.trim(id));
 						out.setFor(child.getId());
 						out.getAttributes().put(TagAttributeConstants.STYLE_CLASS, TagAttributeConstants.LABEL_STYLE);
 						children.add(i++, out);

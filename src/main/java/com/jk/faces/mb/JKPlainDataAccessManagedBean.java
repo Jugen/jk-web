@@ -13,23 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jk.faces.convertor;
+package com.jk.faces.mb;
+
+import com.jk.db.dataaccess.plain.JKPlainDataAccess;
+import com.jk.db.datasource.JKDataSourceFactory;
 
 /**
- * The Class JKTimeConvertor.
+ * The Class JKDbManagedBean.
  *
  * @author Jalal Kiswani
  */
-public class JKTimeConvertor extends JKAbstractTempralConvertor {
+public class JKPlainDataAccessManagedBean extends JKManagedBean {
 
-	/*
-	 * (non-Javadoc)
+	protected JKPlainDataAccess dataAccess = JKDataSourceFactory.getPlainDataAccess();
+
+	/**
+	 * Execute.
 	 *
-	 * @see javax.faces.convert.DateTimeConverter#getPattern()
+	 * @param query
+	 *            the query
+	 * @param params
+	 *            the params
 	 */
-	@Override
-	public String getPattern() {
-		return System.getProperty("jkfaces.DEFAULT_TIME_PATTERN", "HH:mm:ss");
+	protected void execute(final String query, final Object... params) {
+		this.dataAccess.execute(query, params);
 	}
 
 }

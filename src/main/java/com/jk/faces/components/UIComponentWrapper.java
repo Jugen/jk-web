@@ -139,8 +139,7 @@ public class UIComponentWrapper {
 	public void writeAttribute(final String key, final Object defaultValue) throws IOException {
 		if (key.equals("id")) {
 			// TODO : document the following
-			FacesContext.getCurrentInstance().getResponseWriter().writeAttribute("id", this.component.getClientId(),
-					null);
+			FacesContext.getCurrentInstance().getResponseWriter().writeAttribute("id", this.component.getClientId(), null);
 		} else {
 			JSFUtil.writeAttribue(getComponent(), key, defaultValue);
 		}
@@ -161,8 +160,7 @@ public class UIComponentWrapper {
 	 * @throws IOException
 	 *             if an input/output error occurs during response writing.
 	 */
-	public void writeAttribute(final String sourceKey, final String targetKey, final Object defaultValue)
-			throws IOException {
+	public void writeAttribute(final String sourceKey, final String targetKey, final Object defaultValue) throws IOException {
 		JSFUtil.writeAttribue(this.component, sourceKey, targetKey, defaultValue);
 	}
 
