@@ -81,6 +81,21 @@ public final class JKTagDecorator implements TagDecorator {
 	 *            the tag
 	 * @return the tag
 	 */
+	/**
+	 * <code>JK_NAMESPACE</code>.
+	 *
+	 * @param tag
+	 *            the tag
+	 * @return the tag
+	 * @see com.sun.facelets.tag.TagDecorator#decorate(com.sun.facelets.tag.Tag)
+	 */
+	@Override
+	public Tag decorate(final Tag tag) {
+		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
+		// tag = addNamesSpaces(tag);
+		return tag;
+	}
+
 	private Tag addNamesSpaces(Tag tag) {
 		if (tag.getLocalName().equals("html")) {
 			final HashMap<String, String> copy = new HashMap<>(JKTagDecorator.nameSpacesMap);
@@ -109,21 +124,6 @@ public final class JKTagDecorator implements TagDecorator {
 						newTagAttributes);
 			}
 		}
-		return tag;
-	}
-
-	/**
-	 * <code>JK_NAMESPACE</code>.
-	 *
-	 * @param tag
-	 *            the tag
-	 * @return the tag
-	 * @see com.sun.facelets.tag.TagDecorator#decorate(com.sun.facelets.tag.Tag)
-	 */
-	@Override
-	public Tag decorate(final Tag tag) {
-		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
-		// tag = addNamesSpaces(tag);
 		return tag;
 	}
 
