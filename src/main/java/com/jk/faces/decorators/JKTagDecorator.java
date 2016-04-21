@@ -96,6 +96,13 @@ public final class JKTagDecorator implements TagDecorator {
 		return tag;
 	}
 
+	/**
+	 * Adds the names spaces.
+	 *
+	 * @param tag
+	 *            the tag
+	 * @return the tag
+	 */
 	private Tag addNamesSpaces(Tag tag) {
 		if (tag.getLocalName().equals("html")) {
 			final HashMap<String, String> copy = new HashMap<>(JKTagDecorator.nameSpacesMap);
