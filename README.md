@@ -11,7 +11,7 @@ No suffering from JSF new projects any more , create new production-ready JSF pr
 			<version>0.0.1</version>
 		</dependency>
     
-3- Be sure to set the minimum JDK level in your pom file to 1.7 and ignore `web.xml` by adding the following sections inside `build-->plugins` section :
+3- Be sure to set the minimum JDK level in your pom file to 1.7 and tell maven to ignore `web.xml` by adding the following sections inside `build-->plugins` section :
 
 	<plugin>
         <groupId>org.apache.maven.plugins</groupId>
