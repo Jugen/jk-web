@@ -1,5 +1,5 @@
 # JK-Faces
-No suffering from JSF new projects any more , create new JSF project with zero-configurations.
+No suffering from JSF new projects any more , create new production-ready JSF projects with zero-configurations.
 
 #Usage
 1- Create new maven  project with `war` as packaging type.  
