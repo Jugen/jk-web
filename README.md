@@ -37,9 +37,10 @@ No suffering from JSF new projects any more , create new production-ready JSF pr
   1. JSF API and Implementation
   2. PrimeFaces  	
   3. PrimeFaces Extension
-  4. Javax-EL API
-  5. Owasp CSRF 
-  6. along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
+  4. JK-DB database API
+  5. Javax-EL API
+  6. Owasp CSRF 
+  7. along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
  	
 2. Configure all the required filters and servlets: 
   1. Faces-Servlets
@@ -70,8 +71,6 @@ add the following lines to your page:
 	<h:body>
 		<!-- JSF Html Core -->
 		<h:outputText value="Welcome to first JK-Faces example" />
-		<!-- JK Hello Message -->
-		<jk:hello />
 		<!--  JSF Implementation details -->
 		<jk:jsfInfo />
 		<!-- Primefaces editor component -->
@@ -84,8 +83,8 @@ Try the above using your favorite web/application server (tested on `tomcat7`, `
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml without the faces
 
-# Full pom.xml example
-
+# Full Database driven example using JK-Faces and JK-DB
+### Maven `pom.xml`
 	<project xmlns="http://maven.apache.org/POM/4.0.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
@@ -99,7 +98,7 @@ can access your page using the following url http://localhost:8080/your-app-name
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.3</version>
 		</dependency>
 	</dependencies>
 	
@@ -127,6 +126,70 @@ can access your page using the following url http://localhost:8080/your-app-name
 	</build>
 </project>
 
+### JSF test page `src/main/webapp/test.xhtml`
+
+	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf" xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>JSF Head</title>
+	</h:head>
+	<h:body>
+		<h:form>	
+			Id <p:inputText value="#{mb.id}"/>
+			Name <p:inputText value="#{mb.name}"/>
+			Salary<p:inputText value="#{mb.salary}"/>
+			<p:commandButton value="Add" action="#{mb.add}"/>
+		</h:form>
+	</h:body>
+	</html>
+
+### JSF Managed bean `src/main/java/test/MBEmployee`
+	package test;	
+	import javax.faces.bean.ManagedBean;
+	import com.jk.db.JKDefaultDao;
+	
+	@ManagedBean(name = "mb")
+	public class MBEmployee {
+		int id;
+		String name;
+		double salary;
+	
+		public String add() {
+			JKDefaultDao dao = new JKDefaultDao();
+			dao.executeUpdate("INSERT INTO employees (id,name,salary) VALUES (?,?)", id,name, salary);
+			return null;
+		}
+	
+		public String getName() {
+			return name;
+		}
+	
+		public void setName(String name) {
+			this.name = name;
+		}
+	
+		public double getSalary() {
+			return salary;
+		}
+	
+		public void setSalary(double salary) {
+			this.salary = salary;
+		}
+	
+		public int getId() {
+			return id;
+		}
+	
+		public void setId(int id) {
+			this.id = id;
+		}
+	}
+
+### JK-DB Config  `src/main/webapp/WEB-INF/jk-db.properties`
+	db-driver-name=com.mysql.jdbc.Driver
+	db-url=jdbc:mysql://localhost:3306/app
+	db-user=root
+	db-password=123456
+ 
 **Enjoy!**  
 Jalal  
 http://www.jalalkiswani.com
