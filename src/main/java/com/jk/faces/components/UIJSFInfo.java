@@ -43,6 +43,8 @@ import com.jk.util.IOUtil;
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 @FacesComponent("com.jk.jsf.info")
 public class UIJSFInfo extends UIOutput {
+
+	/** The logger. */
 	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
@@ -56,7 +58,7 @@ public class UIJSFInfo extends UIOutput {
 	 */
 	@Override
 	public void encodeEnd(final FacesContext context) throws IOException {
-		logger.info("@encodeEnd");
+		this.logger.info("@encodeEnd");
 		final Map<String, Object> info = JSFUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);

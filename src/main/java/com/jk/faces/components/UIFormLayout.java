@@ -50,7 +50,7 @@ public class UIFormLayout extends ComponentHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.faces.view.facelets.ComponentHandler#onComponentCreated(javax.faces
 	 * .view.facelets.FaceletContext, javax.faces.component.UIComponent,
@@ -63,7 +63,7 @@ public class UIFormLayout extends ComponentHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.faces.view.facelets.ComponentHandler#onComponentPopulated(javax.
 	 * faces.view.facelets.FaceletContext, javax.faces.component.UIComponent,

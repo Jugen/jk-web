@@ -34,7 +34,7 @@ public abstract class JKAbstractTempralConvertor extends DateTimeConverter {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.faces.convert.DateTimeConverter#getAsString(javax.faces.context.
 	 * FacesContext, javax.faces.component.UIComponent, java.lang.Object)

@@ -24,7 +24,7 @@ public class JKDateConvertor extends JKAbstractTempralConvertor {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see javax.faces.convert.DateTimeConverter#getPattern()
 	 */
 	@Override

@@ -43,7 +43,7 @@ public class JKPanelGridRenderer extends PanelGridRenderer {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.primefaces.component.panelgrid.PanelGridRenderer#encodeDynamicBody(
 	 * javax.faces.context.FacesContext,

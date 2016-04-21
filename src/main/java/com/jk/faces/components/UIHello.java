@@ -39,10 +39,12 @@ import com.jk.annotations.Author;
 @Author(name = "Jalal Kiswani", date = "26/8/2014", version = "1.0")
 @FacesComponent(value = UIHello.COMPONENT_TYPE)
 public class UIHello extends UIPanel {
-	Logger logger=Logger.getLogger(getClass().getName());
 
 	/** The Constant COMPONENT_TYPE. */
 	public static final String COMPONENT_TYPE = "jk.hello";
+
+	/** The logger. */
+	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
 	 * the default constructure.
@@ -60,7 +62,7 @@ public class UIHello extends UIPanel {
 	 */
 	@Override
 	public void encodeAll(final FacesContext context) throws IOException {
-		logger.fine("encodingAll");
+		this.logger.fine("encodingAll");
 		final ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", null);
 		writer.writeText("Hello From JK", null);

@@ -38,7 +38,7 @@ public class JKFormRenderer extends FormRenderer {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.sun.faces.renderkit.html_basic.FormRenderer#encodeEnd(javax.faces.
 	 * context.FacesContext, javax.faces.component.UIComponent)
