@@ -1,4 +1,4 @@
-# jk-faces
+# JK-Faces
 No suffering from JSF new projects any more , create new JSF project with zero-configurations.
 
 #Usage
@@ -59,7 +59,7 @@ No suffering from JSF new projects any more , create new JSF project with zero-c
 5. Configure Primefaces to use awsome-fonts by default
 
 #Test the installation:
-Create new page (test.xhtml for example inside src/main/webapp)
+Create new page named `test.xhtml` inside `src/main/webapp`
 
 add the following lines to your page:
 
@@ -79,19 +79,22 @@ add the following lines to your page:
 	</h:body>
 	</html>
 
-Try the above using your favorite web/application server (tested on tomcat7 and wildfly 9)   
-`Important : you should be able to access your pages directly without faces/ path , for example , in the above test example, you
-can access your page using the following url (http://localhost:8080/your-app-name/test.xhtml)
+Try the above using your favorite web/application server (tested on `tomcat7` and `wildfly 9`)   
+##Important : 
+you should be able to access your pages directly without faces/ path , for example , in the above test example, you
+can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml without the faces
 
 # Full pom.xml example
 
-	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<project xmlns="http://maven.apache.org/POM/4.0.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jk.test</groupId>
 	<artifactId>jk-faces-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
@@ -99,7 +102,7 @@ can access your page using the following url (http://localhost:8080/your-app-nam
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -112,7 +115,7 @@ can access your page using the following url (http://localhost:8080/your-app-nam
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -122,9 +125,8 @@ can access your page using the following url (http://localhost:8080/your-app-nam
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
 
-Enjoy!  
-Jalal
+**Enjoy!**  
+Jalal  
 http://www.jalalkiswani.com
