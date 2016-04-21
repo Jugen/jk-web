@@ -79,7 +79,9 @@ add the following lines to your page:
 	</h:body>
 	</html>
 
-Try the above using your favortie web/applicatio server (tested on tomcat7 and wildfly 9)
+Try the above using your favorite web/application server (tested on tomcat7 and wildfly 9)   
+`Important : you should be able to access your pages directly without faces/ path , for example , in the above test example, you
+can access your page using the following url (http://localhost:8080/your-app-name/test.xhtml)
 
 # Full pom.xml example
 

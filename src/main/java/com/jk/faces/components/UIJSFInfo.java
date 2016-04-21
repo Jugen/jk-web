@@ -62,7 +62,7 @@ public class UIJSFInfo extends UIOutput {
 		final Map<String, Object> info = JSFUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);
-		w.writeAttribute("border", "1", null);
+		w.writeAttribute("class", "ui-datatable", null);
 		;
 		final Set<String> keySet = info.keySet();
 		for (final String key : keySet) {
