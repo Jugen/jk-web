@@ -43,11 +43,21 @@ import com.sun.faces.facelets.tag.TagAttributesImpl;
  */
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
+	public final static JKTagDecorator Instance = new JKTagDecorator();
 
 	/** The logger. */
 	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
+	 * Instantiates a new JK tag decorator.
+	 */
+	public JKTagDecorator() {
+		super();
+	}
+
+	/**
+	 * Unfortunaly , this didnt work since failuer occures on the persing level
+	 * if perfix not bound.
 	 *
 	 * @param tag
 	 *            the tag
@@ -66,5 +76,6 @@ public final class JKTagDecorator implements TagDecorator {
 		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
 		return tag;
 	}
+
 
 }

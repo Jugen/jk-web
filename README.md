@@ -143,46 +143,49 @@ can access your page using the following url http://localhost:8080/your-app-name
 	</html>
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
-	package test;	
-	import javax.faces.bean.ManagedBean;
-	import com.jk.db.JKDefaultDao;
-	
-	@ManagedBean(name = "mb")
-	public class MBEmployee {
-		int id;
-		String name;
-		double salary;
-	
-		public String add() {
-			JKDefaultDao dao = new JKDefaultDao();
-			dao.executeUpdate("INSERT INTO employees (id,name,salary) VALUES (?,?)", id,name, salary);
-			return null;
-		}
-	
-		public String getName() {
-			return name;
-		}
-	
-		public void setName(String name) {
-			this.name = name;
-		}
-	
-		public double getSalary() {
-			return salary;
-		}
-	
-		public void setSalary(double salary) {
-			this.salary = salary;
-		}
-	
-		public int getId() {
-			return id;
-		}
-	
-		public void setId(int id) {
-			this.id = id;
-		}
+package test;
+
+import javax.faces.bean.ManagedBean;
+
+import com.jk.faces.mb.JKDbManagedBean;
+
+@ManagedBean(name = "mb")
+public class MBEmployee extends JKDbManagedBean {
+	int id;
+	String name;
+	double salary;
+
+	public String add() {
+		execute("INSERT INTO employees (id,name,salary) VALUES (?,?,?)", id, name, salary);
+		success("Added successfully");
+		return null;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+}
 
 ##### JK-DB Config  `src/main/webapp/WEB-INF/jk-db.properties`
 	db-driver-name=com.mysql.jdbc.Driver
