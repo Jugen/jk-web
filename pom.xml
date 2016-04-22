@@ -57,13 +57,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.owasp</groupId>
-			<artifactId>csrfguard</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-
-
-		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-web</artifactId>
 			<version>${project.version}</version>

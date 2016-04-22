@@ -44,38 +44,10 @@ import com.sun.faces.facelets.tag.TagAttributesImpl;
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
 
-	/** The name spaces map. */
-	static Map<String, String> nameSpacesMap = new HashMap<>();
-	static {
-		JKTagDecorator.nameSpacesMap.put("xmlns", "http://www.w3.org/1999/xhtml");
-		JKTagDecorator.nameSpacesMap.put("xmlns:h", "http://java.sun.com/jsf/html");
-		JKTagDecorator.nameSpacesMap.put("xmlns:f", "http://java.sun.com/jsf/html");
-		JKTagDecorator.nameSpacesMap.put("xmlns:jk", "http://jalalkiswani.com/jsf");
-		JKTagDecorator.nameSpacesMap.put("xmlns:p", "http://primefaces.org/ui");
-
-		JKTagDecorator.nameSpacesMap.put("xmlns:ui", "http://java.sun.com/jsf/facelets");
-		JKTagDecorator.nameSpacesMap.put("xmlns:c", "http://java.sun.com/jsp/jstl/core");
-		JKTagDecorator.nameSpacesMap.put("xmlns:f", "http://java.sun.com/jsp/jstl/functions");
-	}
-
-	/** The Constant JK_NAMESPACE. */
-	private static final String JK_NAMESPACE = "http://jalalkiswani.com/jsf";
-	/** The Constant Instance. */
-	public final static JKTagDecorator Instance = new JKTagDecorator();
-
 	/** The logger. */
 	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
-	 * Instantiates a new JK tag decorator.
-	 */
-	public JKTagDecorator() {
-		super();
-	}
-
-	/**
-	 * Unfortunaly , this didnt work since failuer occures on the persing level
-	 * if perfix not bound.
 	 *
 	 * @param tag
 	 *            the tag
@@ -92,45 +64,6 @@ public final class JKTagDecorator implements TagDecorator {
 	@Override
 	public Tag decorate(final Tag tag) {
 		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
-		// tag = addNamesSpaces(tag);
-		return tag;
-	}
-
-	/**
-	 * Adds the names spaces.
-	 *
-	 * @param tag
-	 *            the tag
-	 * @return the tag
-	 */
-	private Tag addNamesSpaces(Tag tag) {
-		if (tag.getLocalName().equals("html")) {
-			final HashMap<String, String> copy = new HashMap<>(JKTagDecorator.nameSpacesMap);
-			final TagAttributes attributes = tag.getAttributes();
-			final TagAttribute[] all = attributes.getAll();
-			for (final TagAttribute tagAttribute : all) {
-				this.logger.fine(
-						"found namespace : ." + tagAttribute.getLocalName() + " for tag :" + tagAttribute.toString());
-				copy.remove(tagAttribute.getLocalName());
-			}
-			if (copy.size() > 0) {
-				// name spaces not defined
-				final List<TagAttribute> newAttributes = new Vector<>(Arrays.asList(all));
-				final Set<String> keySet = copy.keySet();
-				for (final Object element : keySet) {
-					final String nameSpaceKey = (String) element;
-					this.logger.fine("adding missing namespace : " + nameSpaceKey);
-					newAttributes
-							.add(new TagAttributeImpl(null, null, nameSpaceKey, nameSpaceKey, copy.get(nameSpaceKey)));
-
-				}
-				final TagAttributes newTagAttributes = new TagAttributesImpl(
-						newAttributes.toArray(new TagAttribute[0]));
-				this.logger.info("create new tag instance");
-				tag = new Tag(tag.getLocation(), tag.getNamespace(), tag.getLocalName(), tag.getQName(),
-						newTagAttributes);
-			}
-		}
 		return tag;
 	}
 
