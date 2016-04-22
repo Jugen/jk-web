@@ -85,7 +85,7 @@ add the following lines to your page:
 	</h:body>
 	</html>
 	
-** Output**:![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example.PNG)
+** Output**:![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example1.PNG)
 
 Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
 ##Important : 
