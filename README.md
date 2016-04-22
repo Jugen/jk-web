@@ -1,9 +1,9 @@
 # JK-Faces
-No suffering from JSF new projects any more , create new production-ready JSF projects with zero-configurations.
+No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC zero-configurations.
 
 #Usage
 1- Create new maven  project with `war` as packaging type.  
-2- Add JK-DB dependency to your `pom.xml` inside the dependencies sections 
+2- Add JK-Faces dependency to your `pom.xml` inside the dependencies sections 
 
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
@@ -66,15 +66,15 @@ add the following lines to your page:
 
 	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf" xmlns:p="http://primefaces.org/ui">
 	<h:head>
-		<title>JK-Faces Test</title>
+		<title>JK-Faces First Test</title>
 	</h:head>
 	<h:body>
-		<!-- JSF Html Core -->
-		<h:outputText value="Welcome to first JK-Faces example" />
-		<!--  JSF Implementation details -->
-		<jk:jsfInfo />
-		<!-- Primefaces editor component -->
-		<p:editor />
+		<!-- Check JSF Installation -->
+		<h:outputText value="Hello from JSF Html" />
+		<!--  Check JK Components -->
+		<jk:jsfInfo/>
+		<!-- Check Primefaces components -->
+		<p:editor/>
 	</h:body>
 	</html>
 
@@ -130,62 +130,69 @@ can access your page using the following url http://localhost:8080/your-app-name
 
 	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf" xmlns:p="http://primefaces.org/ui">
 	<h:head>
-		<title>JSF Head</title>
+		<title>JK-Faces test with JK-DB</title>
 	</h:head>
 	<h:body>
-		<h:form>	
-			Id <p:inputText value="#{mb.id}"/>
-			Name <p:inputText value="#{mb.name}"/>
-			Salary<p:inputText value="#{mb.salary}"/>
-			<p:commandButton value="Add" action="#{mb.add}"/>
+		<h:form>
+			<p:panelGrid columns="1">
+				<p:growl autoUpdate="true" />
+				<p:inputText value="#{mb.id}" placeholder="Enter id here" />
+				<p:inputText value="#{mb.name}" placeholder="Enter name" />
+				<p:inputText value="#{mb.salary}" placeholder="Enter salary" />
+				<p:commandButton value="Add" action="#{mb.add}" ajax="false" />
+			</p:panelGrid>
 		</h:form>
 	</h:body>
 	</html>
+This will produce the following output :
+![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
+
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
-package test;
-
-import javax.faces.bean.ManagedBean;
-
-import com.jk.faces.mb.JKDbManagedBean;
-
-@ManagedBean(name = "mb")
-public class MBEmployee extends JKDbManagedBean {
-	int id;
-	String name;
-	double salary;
-
-	public String add() {
-		execute("INSERT INTO employees (id,name,salary) VALUES (?,?,?)", id, name, salary);
-		success("Added successfully");
-		return null;
+	package com.jk.example.faces;
+	
+	import javax.faces.bean.ManagedBean;
+	
+	import com.jk.faces.mb.JKDbManagedBean;
+	
+	@ManagedBean(name = "mb")
+	public class MBEmployee extends JKDbManagedBean {
+		Integer id;
+		String name;
+		Double salary;
+	
+		public String add() {
+			execute("INSERT INTO employees (id,name,salary) VALUES (?,?,?)", id, name, salary);
+			success("Added successfully");
+			return null;
+		}
+	
+		public Integer getId() {
+			return id;
+		}
+	
+		public void setId(Integer id) {
+			this.id = id;
+		}
+	
+		public String getName() {
+			return name;
+		}
+	
+		public void setName(String name) {
+			this.name = name;
+		}
+	
+		public Double getSalary() {
+			return salary;
+		}
+	
+		public void setSalary(Double salary) {
+			this.salary = salary;
+		}
+	
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getSalary() {
-		return salary;
-	}
-
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-}
 
 ##### JK-DB Config  `src/main/webapp/WEB-INF/jk-db.properties`
 	db-driver-name=com.mysql.jdbc.Driver
