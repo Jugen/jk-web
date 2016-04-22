@@ -15,7 +15,8 @@
  */
 package com.jk.faces.mb;
 
-import com.jk.db.dataaccess.JKDefaultDao;
+import com.jk.db.dataaccess.plain.JKPlainDataAccess;
+import com.jk.db.datasource.JKDataSourceFactory;
 
 /**
  * The Class JKDbManagedBean.
@@ -24,8 +25,7 @@ import com.jk.db.dataaccess.JKDefaultDao;
  */
 public class JKDbManagedBean extends JKManagedBean {
 	
-	/** The dao. */
-	JKDefaultDao dao = new JKDefaultDao();
+	JKPlainDataAccess dao = JKDataSourceFactory.getPlainDataAccess();
 
 	/**
 	 * Execute.
@@ -36,7 +36,7 @@ public class JKDbManagedBean extends JKManagedBean {
 	 *            the params
 	 */
 	protected void execute(String query, Object... params) {
-		dao.executeUpdate(query, params);
+		dao.execute(query, params);
 	}
 
 }
