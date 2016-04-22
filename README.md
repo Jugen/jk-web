@@ -13,24 +13,29 @@ No suffering from JSF projects any more, create new production-ready web and dat
     
 3- Be sure to set the minimum JDK level in your pom file to 1.7 and tell maven to ignore `web.xml` by adding the following sections inside `build-->plugins` section :
 
-	<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin> 
-      
-      <plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
-		</plugin>  
+			</plugin>
+		</plugins>
+	</build>
        
 ## And thats is it, now you have the following configured :
 1. Configured all the required dependencies
@@ -40,7 +45,9 @@ No suffering from JSF projects any more, create new production-ready web and dat
   4. JK-DB database API
   5. Javax-EL API
   6. Owasp CSRF 
-  7. along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
+  7. Along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
+  8. (Soon) Omnifaces
+  9. (Soon) Weld 
  	
 2. Configure all the required filters and servlets: 
   1. Faces-Servlets
