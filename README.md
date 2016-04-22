@@ -1,5 +1,5 @@
 # JK-Faces
-No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC zero-configurations.
+No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC with zero-configurations.
 
 #Usage
 1- Create new maven  project with `war` as packaging type.  
