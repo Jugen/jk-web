@@ -43,6 +43,8 @@ import com.sun.faces.facelets.tag.TagAttributesImpl;
  */
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
+	
+	/** The Constant Instance. */
 	public final static JKTagDecorator Instance = new JKTagDecorator();
 
 	/** The logger. */
