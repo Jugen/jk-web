@@ -23,9 +23,9 @@ import com.jk.db.datasource.JKDataSourceFactory;
  *
  * @author Jalal Kiswani
  */
-public class JKDbManagedBean extends JKManagedBean {
-	
-	JKPlainDataAccess dao = JKDataSourceFactory.getPlainDataAccess();
+public class JKPlainDataAccessManagedBean extends JKManagedBean {
+
+	protected JKPlainDataAccess dataAccess = JKDataSourceFactory.getPlainDataAccess();
 
 	/**
 	 * Execute.
@@ -36,7 +36,7 @@ public class JKDbManagedBean extends JKManagedBean {
 	 *            the params
 	 */
 	protected void execute(String query, Object... params) {
-		dao.execute(query, params);
+		dataAccess.execute(query, params);
 	}
 
 }
