@@ -256,9 +256,8 @@ This will produce the following output :
  
  
 #UML class diagram
-This section for  (Ed ,Jacob ,cagatay and BalusC) 
+This section for  (Ed ,Jacob ,cagatay and BalusC)  
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
-
 
 **Enjoy!**  
 Jalal  
