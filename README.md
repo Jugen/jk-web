@@ -13,7 +13,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 		<editor/>
 	</body>
 	</html>
-This will render primefaces editor components, (can't believe? give it try :) ).and of-course no prefix for tag any more.
+This will render primefaces editor components.  can't believe? give it try :) .and of-course no prefix for tag any more.
   
 3- **Change your components and components provider at any time without changing single-line of code.**  
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
