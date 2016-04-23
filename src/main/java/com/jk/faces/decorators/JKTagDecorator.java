@@ -15,34 +15,19 @@
  */
 package com.jk.faces.decorators;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-import java.util.Vector;
 import java.util.logging.Logger;
 
 import javax.faces.view.facelets.Tag;
-import javax.faces.view.facelets.TagAttribute;
-import javax.faces.view.facelets.TagAttributes;
 import javax.faces.view.facelets.TagDecorator;
 
 import com.jk.annotations.Author;
-import com.jk.exceptions.JKException;
 import com.jk.faces.config.JKFacesConfigurations;
 import com.jk.faces.config.JKNamespace;
 import com.jk.faces.config.JKTagMapping;
 import com.jk.faces.tags.JKTagAttributeWrapper;
 import com.jk.faces.tags.JKTagWrapper;
-import com.jk.faces.util.JSFUtil;
-import com.jk.resources.JKResourceLoaderFactory;
-import com.jk.util.IOUtil;
-import com.sun.faces.facelets.tag.TagAttributeImpl;
-import com.sun.faces.facelets.tag.TagAttributesImpl;
+import com.jk.util.ObjectUtil;
 
 /**
  * <B>JKTagDecorator</B> this class represents the JK implementation for
@@ -58,7 +43,6 @@ public final class JKTagDecorator implements TagDecorator {
 
 	public final static JKTagDecorator Instance = new JKTagDecorator();
 
-	JKFacesConfigurations config = JKFacesConfigurations.getInstance();
 	/** The logger. */
 	Logger logger = Logger.getLogger(getClass().getName());
 
@@ -69,9 +53,6 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
-	 * Unfortunaly , this didnt work since failuer occures on the persing level
-	 * if perfix not bound.
-	 *
 	 * @param tag
 	 *            the tag
 	 * @return the tag
@@ -87,16 +68,18 @@ public final class JKTagDecorator implements TagDecorator {
 	@Override
 	public Tag decorate(final Tag tag) {
 		JKTagWrapper wrapper = new JKTagWrapper(tag);
-		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
+		this.logger.fine("decorate tag :".concat(tag.getQName()));
 		if (wrapper.isHtmlTag()) {
+			logger.fine("add missing namespaces");
 			addMissingNamespaces(wrapper);
 		} else {
+			logger.fine("handle mapping for tag: " + tag.getQName());
 			handleMapping(wrapper);
 			if (wrapper.isUrlable()) {
+				logger.fine("fixing links:" + tag.getQName());
 				fixLiks(wrapper);
 			}
 		}
-
 		return wrapper.buildTag();
 	}
 
@@ -124,10 +107,17 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @return
 	 */
 	protected void handleMapping(JKTagWrapper wrapper) {
+		JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+
 		JKTagMapping mapping = config.findTagMapping(wrapper);
 		if (mapping != null) {
-			wrapper.setNamespace(mapping.getNameSpace().getUrl());
-			wrapper.setqName(mapping.getTargetTag());
+			logger.info("mapping found : " + ObjectUtil.toString(mapping));
+			String nameSpaceLetter = mapping.getNameSpaceLetter();
+			if (nameSpaceLetter != null) {
+				JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
+				wrapper.setNamespace(namespace.getUrl());
+			}
+			wrapper.setqName(mapping.getTargetQName());
 			wrapper.setLocalName(mapping.getTargetLocalName());
 		}
 	}
@@ -140,7 +130,8 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @return the tag
 	 */
 	protected void addMissingNamespaces(JKTagWrapper wrapper) {
-		logger.info("addNamesSpaces to tag : ".concat(wrapper.toString()));
+		JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+
 		List<JKNamespace> namespaces = config.getNamespaces();
 		for (JKNamespace namespace : namespaces) {
 			wrapper.addAttribue(namespace.getPrefix(), namespace.getUrl());
