@@ -3,7 +3,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 
 #The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.
-2- No need for any server-side name-space definition anymore in your pages(NO , it is not Facelets),check this:
+2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets),check this:
 
 	<html xmlns="http://www.w3.org/1999/xhtml" >
 	<head >
@@ -22,10 +22,10 @@ No suffering from JSF projects any more, create new production-ready web and dat
 	</body>
 	</html>
 
-3- No prefix for any library 
-4- **Change your components and components provider at any time without changing single-line of code.**
-5- Web-designer friendly tags, just add some styles and go (again ,No , it is not Facelets)
-6- We will handle the relative url for you, use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.
+3- No prefix for any library usage.  
+4- **Change your components and components provider at any time without changing single-line of code.**  
+5- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
+6- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.  
 
 And many other , check the usage below .
 
