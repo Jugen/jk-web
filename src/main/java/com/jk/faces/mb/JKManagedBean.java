@@ -26,39 +26,59 @@ import javax.faces.context.FacesContext;
 public class JKManagedBean {
 
 	/**
-	 * Success.
-	 *
-	 * @param message
-	 *            the message
-	 */
-	public void success(String message) {
-		FacesMessage msg = new FacesMessage(message);
-		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
-
-	/**
-	 * Warning.
-	 *
-	 * @param message
-	 *            the message
-	 */
-	public void warning(String message) {
-		FacesMessage msg = new FacesMessage(message);
-		msg.setSeverity(FacesMessage.SEVERITY_WARN);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
-
-	/**
 	 * Error.
 	 *
 	 * @param message
 	 *            the message
 	 */
-	public void error(String message) {
-		FacesMessage msg = new FacesMessage(message);
+	public void error(final String message) {
+		final FacesMessage msg = new FacesMessage(message);
 		msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
+	/**
+	 * Gets the from appliaction.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the from appliaction
+	 */
+	public Object getFromAppliaction(final String name) {
+		return FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().get(name);
+	}
+
+	/**
+	 * Gets the from request.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the from request
+	 */
+	public Object getFromRequest(final String name) {
+		return FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(name);
+	}
+
+	/**
+	 * Gets the from session.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the from session
+	 */
+	public Object getFromSession(final String name) {
+		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(name);
+	}
+
+	/**
+	 * Gets the paramter from request.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the paramter from request
+	 */
+	public String getParamterFromRequest(final String name) {
+		return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
 	}
 
 	/**
@@ -76,47 +96,27 @@ public class JKManagedBean {
 	}
 
 	/**
-	 * Gets the from session.
+	 * Success.
 	 *
-	 * @param name
-	 *            the name
-	 * @return the from session
+	 * @param message
+	 *            the message
 	 */
-	public Object getFromSession(String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(name);
+	public void success(final String message) {
+		final FacesMessage msg = new FacesMessage(message);
+		msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	/**
-	 * Gets the from request.
+	 * Warning.
 	 *
-	 * @param name
-	 *            the name
-	 * @return the from request
+	 * @param message
+	 *            the message
 	 */
-	public Object getFromRequest(String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(name);
-	}
-
-	/**
-	 * Gets the from appliaction.
-	 *
-	 * @param name
-	 *            the name
-	 * @return the from appliaction
-	 */
-	public Object getFromAppliaction(String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().get(name);
-	}
-
-	/**
-	 * Gets the paramter from request.
-	 *
-	 * @param name
-	 *            the name
-	 * @return the paramter from request
-	 */
-	public String getParamterFromRequest(String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
+	public void warning(final String message) {
+		final FacesMessage msg = new FacesMessage(message);
+		msg.setSeverity(FacesMessage.SEVERITY_WARN);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 }

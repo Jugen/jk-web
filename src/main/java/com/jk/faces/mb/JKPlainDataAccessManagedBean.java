@@ -35,8 +35,8 @@ public class JKPlainDataAccessManagedBean extends JKManagedBean {
 	 * @param params
 	 *            the params
 	 */
-	protected void execute(String query, Object... params) {
-		dataAccess.execute(query, params);
+	protected void execute(final String query, final Object... params) {
+		this.dataAccess.execute(query, params);
 	}
 
 }

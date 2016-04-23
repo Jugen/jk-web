@@ -20,14 +20,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.faces.view.facelets.TagAttribute;
-import javax.faces.view.facelets.TagAttributes;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.jboss.logging.Logger;
@@ -53,17 +50,6 @@ public class JKFacesConfigurations {
 	static Logger logger = Logger.getLogger(JKFacesConfigurations.class.getName());
 	private static JKFacesConfigurations instance;
 
-	@XmlElementWrapper(name = "name-spaces")
-	@XmlElement(name = "namespace")
-	List<JKNamespace> namespaces;
-
-	// @XmlTransient
-	// Map<String, List<String>> publicNameSpaces;
-
-	@XmlElementWrapper(name = "tags-mapping")
-	@XmlElement(name = "tag")
-	List<JKTagMapping> tagMapping;
-
 	/**
 	 * Gets the single instance of JKFacesConfigurations.
 	 *
@@ -79,55 +65,8 @@ public class JKFacesConfigurations {
 		return instance;
 	}
 
-	// JAXb callback
-	void afterUnmarshal(Unmarshaller u, Object parent) {
-		loadAllNamesSpacesFromJsfContainer();
-		Collections.sort(this.tagMapping);
-		System.err.println("---------------------------------------------");
-		logger.info("All tags mappings:");
-		System.err.println("---------------------------------------------");
-		for (JKTagMapping mapping : this.tagMapping) {
-			logger.info(ObjectUtil.toString(mapping));
-		}
-	}
-
-	/**
-	 * Gets the namespaces.
-	 *
-	 * @return the namespaces
-	 */
-	public List<JKNamespace> getNamespaces() {
-		return namespaces;
-	}
-
-	/**
-	 * Sets the namespaces.
-	 *
-	 * @param namespaces
-	 *            the new namespaces
-	 */
-	public void setNamespaces(List<JKNamespace> namespaces) {
-		this.namespaces = namespaces;
-	}
-
-	/**
-	 * Gets the tag mapping.
-	 *
-	 * @return the tag mapping
-	 */
-	public List<JKTagMapping> getTagMapping() {
-		return tagMapping;
-	}
-
-	/**
-	 * Sets the tag mapping.
-	 *
-	 * @param tagMapping
-	 *            the new tag mapping
-	 */
-	public void setTagMapping(List<JKTagMapping> tagMapping) {
-		this.tagMapping = tagMapping;
-	}
+	// @XmlTransient
+	// Map<String, List<String>> publicNameSpaces;
 
 	/**
 	 * The main method.
@@ -135,18 +74,38 @@ public class JKFacesConfigurations {
 	 * @param args
 	 *            the arguments
 	 */
-	public static void main(String[] args) {
-		JKFacesConfigurations test = getInstance();
-		List<JKNamespace> namespaces = test.getNamespaces();
-		for (JKNamespace ns : namespaces) {
+	public static void main(final String[] args) {
+		final JKFacesConfigurations test = getInstance();
+		final List<JKNamespace> namespaces = test.getNamespaces();
+		for (final JKNamespace ns : namespaces) {
 			System.out.println(ns.getPrefix() + ", " + ns.getUrl());
 		}
 		System.out.println("----------------");
-		List<JKTagMapping> tagMapping2 = test.getTagMapping();
-		for (JKTagMapping tagMapping : tagMapping2) {
+		final List<JKTagMapping> tagMapping2 = test.getTagMapping();
+		for (final JKTagMapping tagMapping : tagMapping2) {
 			System.out.println(ObjectUtil.toString(tagMapping));
 		}
 		System.out.println("Done");
+	}
+
+	@XmlElementWrapper(name = "name-spaces")
+	@XmlElement(name = "namespace")
+	List<JKNamespace> namespaces;
+
+	@XmlElementWrapper(name = "tags-mapping")
+	@XmlElement(name = "tag")
+	List<JKTagMapping> tagMapping;
+
+	// JAXb callback
+	void afterUnmarshal(final Unmarshaller u, final Object parent) {
+		loadAllNamesSpacesFromJsfContainer();
+		Collections.sort(this.tagMapping);
+		System.err.println("---------------------------------------------");
+		logger.info("All tags mappings:");
+		System.err.println("---------------------------------------------");
+		for (final JKTagMapping mapping : this.tagMapping) {
+			logger.info(ObjectUtil.toString(mapping));
+		}
 	}
 
 	/**
@@ -158,19 +117,28 @@ public class JKFacesConfigurations {
 	 *            the tag attributes
 	 * @return the tag mapping
 	 */
-	public JKTagMapping findTagMapping(JKTagWrapper wrapper) {
+	public JKTagMapping findTagMapping(final JKTagWrapper wrapper) {
 		// Add caching
 		logger.info("Find mapping to tag ".concat(wrapper.getqName()));
-		for (JKTagMapping mapping : tagMapping) {
+		for (final JKTagMapping mapping : this.tagMapping) {
 			if (mapping.getSourceQName().equals(wrapper.getqName())) {
 				if (mapping.getAttributeName() == null) {
 					return mapping;
 				} else {
-					String value = wrapper.getAttributeValue(mapping.getAttributeName());
+					final String value = wrapper.getAttributeValue(mapping.getAttributeName());
 					if (value != null && value.equals(mapping.getAttributeValue())) {
 						return mapping;
 					}
 				}
+			}
+		}
+		return null;
+	}
+
+	public JKTagMapping findTagMapping(final String tagName) {
+		for (final JKTagMapping mapping : this.tagMapping) {
+			if (mapping.getSourceQName().equals(tagName)) {
+				return mapping;
 			}
 		}
 		return null;
@@ -183,8 +151,8 @@ public class JKFacesConfigurations {
 	 *            the namespace letter
 	 * @return the namespace by letter
 	 */
-	public JKNamespace getNamespaceByLetter(String namespaceLetter) {
-		for (JKNamespace namespace : namespaces) {
+	public JKNamespace getNamespaceByLetter(final String namespaceLetter) {
+		for (final JKNamespace namespace : this.namespaces) {
 			if (namespace.getLetter().equals(namespaceLetter)) {
 				return namespace;
 			}
@@ -199,9 +167,9 @@ public class JKFacesConfigurations {
 	 *            the url
 	 * @return the name space by url
 	 */
-	public JKNamespace getNameSpaceByUrl(String url, boolean create) {
+	public JKNamespace getNameSpaceByUrl(final String url, final boolean create) {
 		logger.info("getNameSpaceByUrl :".concat(url));
-		for (JKNamespace namespace : namespaces) {
+		for (final JKNamespace namespace : this.namespaces) {
 			if (namespace.getUrl().equals(url)) {
 				return namespace;
 			}
@@ -209,37 +177,55 @@ public class JKFacesConfigurations {
 		// if not found , add?
 		if (create) {
 			logger.info("not found , create namespace ");
-			JKNamespace namespace = new JKNamespace(url);
-			namespaces.add(namespace);
+			final JKNamespace namespace = new JKNamespace(url);
+			this.namespaces.add(namespace);
 			return namespace;
 		}
 		return null;
 	}
 
+	/**
+	 * Gets the namespaces.
+	 *
+	 * @return the namespaces
+	 */
+	public List<JKNamespace> getNamespaces() {
+		return this.namespaces;
+	}
+
+	/**
+	 * Gets the tag mapping.
+	 *
+	 * @return the tag mapping
+	 */
+	public List<JKTagMapping> getTagMapping() {
+		return this.tagMapping;
+	}
+
 	protected void loadAllNamesSpacesFromJsfContainer() {
 		logger.info("loadAllNamesSpacesFromJsfContainer....");
 		// HashMap<String, Object> publicNameSpaces = new HashMap<>();
-		ApplicationAssociate currentInstance = ApplicationAssociate.getCurrentInstance();
+		final ApplicationAssociate currentInstance = ApplicationAssociate.getCurrentInstance();
 		if (currentInstance != null) {
-			Compiler instance = currentInstance.getCompiler();
+			final Compiler instance = currentInstance.getCompiler();
 			logger.info("loading libraries from JSF compiler");
-			List libraries = ObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
-			for (Object libObject : libraries) {
+			final List libraries = ObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
+			for (final Object libObject : libraries) {
 				if (libObject instanceof AbstractTagLibrary) {
-					AbstractTagLibrary library = (AbstractTagLibrary) libObject;
+					final AbstractTagLibrary library = (AbstractTagLibrary) libObject;
 					logger.info(String.format("fetching %s library", library.getNamespace()));
 					// load components using reflection
-					Map map = ObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
-					JKNamespace namespace = getNameSpaceByUrl(library.getNamespace(), true);
+					final Map map = ObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
+					final JKNamespace namespace = getNameSpaceByUrl(library.getNamespace(), true);
 
-					Set keySet = map.keySet();
-					for (Object object : keySet) {
+					final Set keySet = map.keySet();
+					for (final Object object : keySet) {
 						// add tag names
-						String localName = object.toString();
-						String qName = namespace.getLetter().concat(":").concat(localName);
+						final String localName = object.toString();
+						final String qName = namespace.getLetter().concat(":").concat(localName);
 						// check if mapping already exists
 						if (findTagMapping(qName) == null) {
-							JKTagMapping mapping = new JKTagMapping(localName, qName, namespace);
+							final JKTagMapping mapping = new JKTagMapping(localName, qName, namespace);
 							this.tagMapping.add(mapping);
 						}
 					}
@@ -248,13 +234,24 @@ public class JKFacesConfigurations {
 		}
 	}
 
-	public JKTagMapping findTagMapping(String tagName) {
-		for (JKTagMapping mapping : tagMapping) {
-			if (mapping.getSourceQName().equals(tagName)) {
-				return mapping;
-			}
-		}
-		return null;
+	/**
+	 * Sets the namespaces.
+	 *
+	 * @param namespaces
+	 *            the new namespaces
+	 */
+	public void setNamespaces(final List<JKNamespace> namespaces) {
+		this.namespaces = namespaces;
+	}
+
+	/**
+	 * Sets the tag mapping.
+	 *
+	 * @param tagMapping
+	 *            the new tag mapping
+	 */
+	public void setTagMapping(final List<JKTagMapping> tagMapping) {
+		this.tagMapping = tagMapping;
 	}
 
 }

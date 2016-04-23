@@ -17,7 +17,6 @@ package com.jk.faces.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -44,8 +43,6 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.view.ViewDeclarationLanguage;
 import javax.faces.view.facelets.FaceletContext;
-import javax.faces.view.facelets.TagAttribute;
-import javax.faces.view.facelets.TagAttributes;
 
 import org.junit.Assert;
 

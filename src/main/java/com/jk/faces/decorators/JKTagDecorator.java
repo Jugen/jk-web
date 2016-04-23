@@ -53,82 +53,17 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
-	 * @param tag
-	 *            the tag
-	 * @return the tag
-	 */
-	/**
-	 * <code>JK_NAMESPACE</code>.
-	 *
-	 * @param tag
-	 *            the tag
-	 * @return the tag
-	 * @see com.sun.facelets.tag.TagDecorator#decorate(com.sun.facelets.tag.Tag)
-	 */
-	@Override
-	public Tag decorate(final Tag tag) {
-		JKTagWrapper wrapper = new JKTagWrapper(tag);
-		this.logger.fine("decorate tag :".concat(tag.getQName()));
-		if (wrapper.isHtmlTag()) {
-			logger.fine("add missing namespaces");
-			addMissingNamespaces(wrapper);
-		} else {
-			logger.fine("handle mapping for tag: " + tag.getQName());
-			handleMapping(wrapper);
-			if (wrapper.isUrlable()) {
-				logger.fine("fixing links:" + tag.getQName());
-				fixLiks(wrapper);
-			}
-		}
-		return wrapper.buildTag();
-	}
-
-	/**
-	 * 
-	 * @param wrapper
-	 */
-	protected void fixLiks(JKTagWrapper wrapper) {
-		List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
-		for (JKTagAttributeWrapper link : links) {
-			if (link.getValue().startsWith("/")||link.getValue().startsWith("#")) {
-				link.setValue("#{request.contextPath}/".concat(link.getValue()));
-			}
-		}
-	}
-
-	/**
-	 * 
-	 * @param wrapper
-	 * @return
-	 */
-	protected void handleMapping(JKTagWrapper wrapper) {
-		JKFacesConfigurations config = JKFacesConfigurations.getInstance();
-
-		JKTagMapping mapping = config.findTagMapping(wrapper);
-		if (mapping != null) {
-			logger.info("mapping found : " + ObjectUtil.toString(mapping));
-			String nameSpaceLetter = mapping.getNameSpaceLetter();
-			if (nameSpaceLetter != null) {
-				JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
-				wrapper.setNamespace(namespace.getUrl());
-			}
-			wrapper.setqName(mapping.getTargetQName());
-			wrapper.setLocalName(mapping.getTargetLocalName());
-		}
-	}
-
-	/**
 	 * Adds the names spaces.
 	 *
 	 * @param wrapper
 	 *            the tag
 	 * @return the tag
 	 */
-	protected void addMissingNamespaces(JKTagWrapper wrapper) {
-		JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+	protected void addMissingNamespaces(final JKTagWrapper wrapper) {
+		final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
 
-		List<JKNamespace> namespaces = config.getNamespaces();
-		for (JKNamespace namespace : namespaces) {
+		final List<JKNamespace> namespaces = config.getNamespaces();
+		for (final JKNamespace namespace : namespaces) {
 			wrapper.addAttribue(namespace.getPrefix(), namespace.getUrl());
 		}
 		// final List<JKNamespace> copy = new Vector(config.getNamespaces());
@@ -158,6 +93,71 @@ public final class JKTagDecorator implements TagDecorator {
 		// wrapper = createTag(wrapper, newAttributes);
 		// }
 		// return wrapper;
+	}
+
+	/**
+	 * @param tag
+	 *            the tag
+	 * @return the tag
+	 */
+	/**
+	 * <code>JK_NAMESPACE</code>.
+	 *
+	 * @param tag
+	 *            the tag
+	 * @return the tag
+	 * @see com.sun.facelets.tag.TagDecorator#decorate(com.sun.facelets.tag.Tag)
+	 */
+	@Override
+	public Tag decorate(final Tag tag) {
+		final JKTagWrapper wrapper = new JKTagWrapper(tag);
+		this.logger.fine("decorate tag :".concat(tag.getQName()));
+		if (wrapper.isHtmlTag()) {
+			this.logger.fine("add missing namespaces");
+			addMissingNamespaces(wrapper);
+		} else {
+			this.logger.fine("handle mapping for tag: " + tag.getQName());
+			handleMapping(wrapper);
+			if (wrapper.isUrlable()) {
+				this.logger.fine("fixing links:" + tag.getQName());
+				fixLiks(wrapper);
+			}
+		}
+		return wrapper.buildTag();
+	}
+
+	/**
+	 *
+	 * @param wrapper
+	 */
+	protected void fixLiks(final JKTagWrapper wrapper) {
+		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
+		for (final JKTagAttributeWrapper link : links) {
+			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
+				link.setValue("#{request.contextPath}/".concat(link.getValue()));
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param wrapper
+	 * @return
+	 */
+	protected void handleMapping(final JKTagWrapper wrapper) {
+		final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+
+		final JKTagMapping mapping = config.findTagMapping(wrapper);
+		if (mapping != null) {
+			this.logger.info("mapping found : " + ObjectUtil.toString(mapping));
+			final String nameSpaceLetter = mapping.getNameSpaceLetter();
+			if (nameSpaceLetter != null) {
+				final JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
+				wrapper.setNamespace(namespace.getUrl());
+			}
+			wrapper.setqName(mapping.getTargetQName());
+			wrapper.setLocalName(mapping.getTargetLocalName());
+		}
 	}
 
 	// protected Tag createTag(Tag oldTag, final List<TagAttribute>

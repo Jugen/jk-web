@@ -1,3 +1,18 @@
+/*
+ * Copyright 2002-2016 Jalal Kiswani.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.jk.faces.config;
 
 import java.util.logging.Logger;
@@ -5,7 +20,6 @@ import java.util.logging.Logger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.jk.faces.util.JKJsfUtil;
@@ -30,7 +44,7 @@ public class JKTagMapping implements Comparable<JKTagMapping> {
 	private JKNamespace namespace;
 	// loaded from JSF container at runtime
 	@XmlTransient
-	Boolean auto=false;
+	Boolean auto = false;
 
 	// JKNamespace nameSpace;
 
@@ -39,65 +53,17 @@ public class JKTagMapping implements Comparable<JKTagMapping> {
 	public JKTagMapping() {
 	}
 
-	public JKTagMapping(String sourceQName, String targetQName, JKNamespace namespace) {
+	public JKTagMapping(final String sourceQName, final String targetQName, final JKNamespace namespace) {
 		logger.info(String.format("creating TagMapping with sourceTag(%s) and (%s)", sourceQName, targetQName));
 		this.sourceQName = sourceQName;
 		this.targetQName = targetQName;
 		this.namespace = namespace;
-		auto = true;
-	}
-
-	public String getSourceQName() {
-		return sourceQName;
-	}
-
-	public void setSourceQName(String sourceTag) {
-		this.sourceQName = sourceTag;
-	}
-
-	public String getTargetQName() {
-		return targetQName;
-	}
-
-	public void setTargetQName(String targetTag) {
-		this.targetQName = targetTag;
-	}
-
-	public String getAttributeName() {
-		return attributeName;
-	}
-
-	public void setAttributeName(String attributeName) {
-		this.attributeName = attributeName;
-	}
-
-	public String getAttributeValue() {
-		return attributeValue;
-	}
-
-	public void setAttributeValue(String attributeValue) {
-		this.attributeValue = attributeValue;
-	}
-
-	public String getNameSpaceLetter() {
-		if(isAuto()){
-			return namespace.getLetter(); 	
-		}
-		return  JKJsfUtil.getNamespaceLetterFromQName(getTargetQName());
-		
-	}
-
-	public String getTargetLocalName() {
-		return JKJsfUtil.getLocalNameFromQName(getTargetQName());
-	}
-
-	public JKNamespace getNamespace() {
-		return namespace;
+		this.auto = true;
 	}
 
 	@Override
-	public int compareTo(JKTagMapping o) {
-		if(this.auto!=o.auto){
+	public int compareTo(final JKTagMapping o) {
+		if (this.auto != o.auto) {
 			return this.auto.compareTo(o.auto);
 		}
 		if (getNamespace() != null) {
@@ -111,7 +77,55 @@ public class JKTagMapping implements Comparable<JKTagMapping> {
 		}
 	}
 
+	public String getAttributeName() {
+		return this.attributeName;
+	}
+
+	public String getAttributeValue() {
+		return this.attributeValue;
+	}
+
+	public JKNamespace getNamespace() {
+		return this.namespace;
+	}
+
+	public String getNameSpaceLetter() {
+		if (isAuto()) {
+			return this.namespace.getLetter();
+		}
+		return JKJsfUtil.getNamespaceLetterFromQName(getTargetQName());
+
+	}
+
+	public String getSourceQName() {
+		return this.sourceQName;
+	}
+
+	public String getTargetLocalName() {
+		return JKJsfUtil.getLocalNameFromQName(getTargetQName());
+	}
+
+	public String getTargetQName() {
+		return this.targetQName;
+	}
+
 	public boolean isAuto() {
-		return auto;
+		return this.auto;
+	}
+
+	public void setAttributeName(final String attributeName) {
+		this.attributeName = attributeName;
+	}
+
+	public void setAttributeValue(final String attributeValue) {
+		this.attributeValue = attributeValue;
+	}
+
+	public void setSourceQName(final String sourceTag) {
+		this.sourceQName = sourceTag;
+	}
+
+	public void setTargetQName(final String targetTag) {
+		this.targetQName = targetTag;
 	}
 }

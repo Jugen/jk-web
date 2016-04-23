@@ -45,8 +45,7 @@ public class JKFormRenderer extends FormRenderer {
 	 */
 	@Override
 	public void encodeEnd(final FacesContext context, final UIComponent component) throws IOException {
-		final HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-				.getSession(false);
+		final HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		final CsrfGuard csrfGuard = CsrfGuard.getInstance();
 		final ResponseWriter writer = context.getResponseWriter();
 		String token = (String) session.getAttribute(csrfGuard.getSessionKey());
@@ -81,8 +80,7 @@ public class JKFormRenderer extends FormRenderer {
 		try {
 			tokenFromSession = RandomGenerator.generateRandomId(csrfGuard.getPrng(), csrfGuard.getTokenLength());
 		} catch (final Exception e) {
-			throw new RuntimeException(
-					String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
+			throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
 		}
 
 		session.setAttribute(csrfGuard.getSessionKey(), tokenFromSession);
