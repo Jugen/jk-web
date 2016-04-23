@@ -36,6 +36,7 @@ import com.jk.exceptions.JKException;
 import com.jk.faces.config.JKFacesConfigurations;
 import com.jk.faces.config.Namespace;
 import com.jk.faces.config.TagMapping;
+import com.jk.faces.util.JSFUtil;
 import com.jk.resources.JKResourceLoaderFactory;
 import com.jk.util.IOUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
@@ -87,7 +88,17 @@ public final class JKTagDecorator implements TagDecorator {
 		if (tag.getLocalName().equals("html")) {
 			tag = addNamesSpaces(tag);
 		}
-		TagMapping mapping = config.findTagMapping(tag.getLocalName());
+		tag = handleMapping(tag);
+		return tag;
+	}
+
+	/**
+	 * 
+	 * @param tag
+	 * @return
+	 */
+	private Tag handleMapping(Tag tag) {
+		TagMapping mapping = config.findTagMapping(tag.getLocalName(), tag.getAttributes().getAll());
 		if (mapping != null) {
 			tag = new Tag(tag.getLocation(), mapping.getNameSpace().getUrl(), mapping.getTargetLocalName(), mapping.getTargetTag(),
 					tag.getAttributes());

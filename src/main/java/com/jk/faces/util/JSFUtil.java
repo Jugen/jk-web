@@ -17,6 +17,7 @@ package com.jk.faces.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -43,6 +44,8 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.view.ViewDeclarationLanguage;
 import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributes;
 
 import org.junit.Assert;
 
@@ -134,8 +137,8 @@ public class JSFUtil {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static void appendAttribute(final UIComponent component, final String sourceKey, final String targetKey,
-			final String valueToAppend) throws IOException {
+	public static void appendAttribute(final UIComponent component, final String sourceKey, final String targetKey, final String valueToAppend)
+			throws IOException {
 		String value = (String) component.getAttributes().get(sourceKey);
 		if (value == null) {
 			value = valueToAppend;
@@ -257,8 +260,7 @@ public class JSFUtil {
 		// TODO : check the below line????
 		JSFUtil.logger.fine("createMethodEpression:".concat(expression));
 		final FacesContext context = FacesContext.getCurrentInstance();
-		return context.getApplication().getExpressionFactory().createMethodExpression(context.getELContext(),
-				expression, returnType, new Class[0]);
+		return context.getApplication().getExpressionFactory().createMethodExpression(context.getELContext(), expression, returnType, new Class[0]);
 	}
 
 	/**
@@ -289,8 +291,8 @@ public class JSFUtil {
 			return ve1;
 		} else {
 			final ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-			final ValueExpression ve1 = FacesContext.getCurrentInstance().getApplication().getExpressionFactory()
-					.createValueExpression(elContext, value, clas);
+			final ValueExpression ve1 = FacesContext.getCurrentInstance().getApplication().getExpressionFactory().createValueExpression(elContext,
+					value, clas);
 			return ve1;
 		}
 	}
@@ -303,8 +305,8 @@ public class JSFUtil {
 	 * @return the value expression
 	 */
 	public static ValueExpression createValueExceptionWithValue(final Object originalValue) {
-		return FacesContext.getCurrentInstance().getApplication().getExpressionFactory()
-				.createValueExpression(originalValue, originalValue.getClass());
+		return FacesContext.getCurrentInstance().getApplication().getExpressionFactory().createValueExpression(originalValue,
+				originalValue.getClass());
 	}
 
 	/**
@@ -420,8 +422,7 @@ public class JSFUtil {
 	 *            the default value
 	 * @return attribute value
 	 */
-	public static boolean getBooleanAttribute(final UIComponent uiComponent, final String key,
-			final boolean defaultValue) {
+	public static boolean getBooleanAttribute(final UIComponent uiComponent, final String key, final boolean defaultValue) {
 		return new Boolean(JSFUtil.getAttribute(uiComponent, key, defaultValue).toString());
 	}
 
@@ -473,8 +474,7 @@ public class JSFUtil {
 	 * @return the current view
 	 */
 	public static String getCurrentView() {
-		Object viewName = FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-				.get(TagAttributeConstants.CURRENT_VIEW);
+		Object viewName = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(TagAttributeConstants.CURRENT_VIEW);
 		if (viewName != null) {
 			return viewName.toString();
 		}
@@ -498,8 +498,7 @@ public class JSFUtil {
 		final String key = JSFUtil.getChecksumKey(currentView);
 		final Object object = JSFUtil.getSessionMap().get(key);
 		if (object == null) {
-			throw new IllegalStateException(
-					"key : ".concat(key).concat(" not found on sessino ,call saveCurrentViewChecksum before this"));
+			throw new IllegalStateException("key : ".concat(key).concat(" not found on sessino ,call saveCurrentViewChecksum before this"));
 		}
 		return (Long) object;
 	}
@@ -524,8 +523,7 @@ public class JSFUtil {
 	 * @return the facelets context
 	 */
 	public static FaceletContext getFaceletsContext() {
-		return (FaceletContext) FacesContext.getCurrentInstance().getAttributes()
-				.get(FaceletContext.FACELET_CONTEXT_KEY);
+		return (FaceletContext) FacesContext.getCurrentInstance().getAttributes().get(FaceletContext.FACELET_CONTEXT_KEY);
 	}
 
 	/**
@@ -556,10 +554,8 @@ public class JSFUtil {
 		final FacesContext context = FacesContext.getCurrentInstance();
 		final Application application = context.getApplication();
 		final ViewHandler viewHandler = application.getViewHandler();
-		final ViewDeclarationLanguage vdl = viewHandler.getViewDeclarationLanguage(context,
-				context.getViewRoot().getViewId());
-		final LifecycleFactory LifecycleFactory = (LifecycleFactory) FactoryFinder
-				.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
+		final ViewDeclarationLanguage vdl = viewHandler.getViewDeclarationLanguage(context, context.getViewRoot().getViewId());
+		final LifecycleFactory LifecycleFactory = (LifecycleFactory) FactoryFinder.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
 
 		details.put("JSF-Version", FacesContext.class.getPackage().getImplementationVersion());
 		details.put("JSF-Version-Package", FacesContext.class.getPackage().getName());
@@ -662,8 +658,7 @@ public class JSFUtil {
 	 * @param atributeValue
 	 *            the atribute value
 	 */
-	public static void setComponentAttribute(final UIComponent comp, final String attributeName,
-			final Object atributeValue) {
+	public static void setComponentAttribute(final UIComponent comp, final String attributeName, final Object atributeValue) {
 		final Map componentMap = JSFUtil.getComponentMap(comp);
 		componentMap.put(attributeName, atributeValue);
 		System.err.println("Set Compnent Attribute : " + attributeName + " : " + atributeValue);
@@ -766,8 +761,7 @@ public class JSFUtil {
 	 * @throws IOException
 	 *             if an input/output error occurs during response writing
 	 */
-	public static void writeAttribue(final UIComponent component, final String key, final Object defaultValue)
-			throws IOException {
+	public static void writeAttribue(final UIComponent component, final String key, final Object defaultValue) throws IOException {
 		JSFUtil.writeAttribue(component, key, null, defaultValue);
 	}
 
@@ -791,9 +785,10 @@ public class JSFUtil {
 	 * @throws IOException
 	 *             if an input/output error occurs during response writing
 	 */
-	public static void writeAttribue(final UIComponent component, final String sourceKey, final String targetKey,
-			final Object defaultValue) throws IOException {
+	public static void writeAttribue(final UIComponent component, final String sourceKey, final String targetKey, final Object defaultValue)
+			throws IOException {
 		final Object value = JSFUtil.getAttribute(component, sourceKey, defaultValue);
 		JSFUtil.context().getResponseWriter().writeAttribute(targetKey == null ? sourceKey : targetKey, value, null);
 	}
+
 }
