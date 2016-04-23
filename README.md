@@ -1,4 +1,4 @@
-# JK-Faces
+# JK-Faces (The new face of Java web applications)
 No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC with zero-configurations.
 
 #The unique features of JK-Faces:
@@ -22,7 +22,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 	</body>
 	</html>
 
-and ofcourse No prefix for any library usage.
+and of-course No prefix for any library usage.
   
 3- **Change your components and components provider at any time without changing single-line of code.**  
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
@@ -31,7 +31,7 @@ and ofcourse No prefix for any library usage.
 And many other , check the usage below .
 
 **Important** : 
-JK-Faces is still under heavy development, including performance tuning , database-driven components , security and many other interesting features. So we highly recommend to use current versions as POC until we announce the production ready version. 
+JK-Faces is still under heavy development and testing, including performance tuning , database-driven components , security and many other interesting features. So we highly recommend to use current versions as POC until we announce the production ready version. 
  
 #Usage
 1- Create new maven  project with `war` as packaging type.  
