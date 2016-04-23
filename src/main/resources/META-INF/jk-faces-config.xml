@@ -59,5 +59,9 @@
 			<source-tag>header</source-tag>
 			<target-tag>header</target-tag>
 		</tag>
+		<tag>
+			<source-tag>title</source-tag>
+			<target-tag>title</target-tag>
+		</tag>
 	</tags-mapping>
 </jk-faces>

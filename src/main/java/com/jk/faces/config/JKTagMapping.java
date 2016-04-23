@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.jk.faces.util.JKJsfUtil;
 
@@ -25,8 +26,10 @@ public class JKTagMapping implements Comparable<JKTagMapping> {
 	@XmlElement(name = "attribute-value")
 	String attributeValue;
 
+	@XmlTransient
 	private JKNamespace namespace;
 	// loaded from JSF container at runtime
+	@XmlTransient
 	Boolean auto=false;
 
 	// JKNamespace nameSpace;
