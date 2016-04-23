@@ -1,5 +1,5 @@
 # JK-Faces (The new face of Java web applications)
-No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC with zero-configurations.
+No suffering from JSF projects any more, create new production-ready web and database driven application using JSF  zero-configurations , and have the freedom to replace your JSF 3rd-party components at anytime without changing any single line of code.
 
 #The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.  
