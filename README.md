@@ -257,9 +257,9 @@ This will produce the following output :
  
 #UML class diagram
 This section for  (Ed ,Jacob ,cagatay and BalusC)  
-Note: sorry Jacob, I have been enforced to use reflection to access some of your private stuff!
-
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
+
+Note: sorry Jacob!, I have been enforced to use reflection to access some of your private stuff.
 
 **Enjoy!**  
 Jalal  
