@@ -3,26 +3,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 
 #The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.  
-2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets),check this:
-
-	<html xmlns="http://www.w3.org/1999/xhtml" >
-	<head >
-		<title>JK-Faces</title>
-	</head>
-	<body >
-		<form>
-			<panelGrid columns="1">
-				<growl autoUpdate="true" />
-				<input value="#{mb.id}" placeholder="Enter id here" required="true"/>
-				<input value="#{mb.name}" placeholder="Enter name" required="true"/>
-				<input value="#{mb.salary}" placeholder="Enter salary" required="true"/>
-				<input type="submit" value="Add" action="#{mb.add}" ajax="false" />
-			</panelGrid>
-		</form>
-	</body>
-	</html>
-
-and of-course No prefix for any library usage.
+2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets), check the below examples,and of-course No prefix for any library usage.
   
 3- **Change your components and components provider at any time without changing single-line of code.**  
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
@@ -182,7 +163,7 @@ can access your page using the following url http://localhost:8080/your-app-name
 </project>
 
 ##### JSF test page `src/main/webapp/test.xhtml`
-
+###### (Traditional way)
 	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf" xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<title>JK-Faces test with JK-DB</title>
@@ -202,6 +183,23 @@ can access your page using the following url http://localhost:8080/your-app-name
 This will produce the following output :
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
 
+#####(JK-Faces way)
+	<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head >
+		<title>JK-Faces</title>
+	</head>
+	<body >
+		<form>
+			<panelGrid columns="1">
+				<growl autoUpdate="true" />
+				<input value="#{mb.id}" placeholder="Enter id here" required="true"/>
+				<input value="#{mb.name}" placeholder="Enter name" required="true"/>
+				<input value="#{mb.salary}" placeholder="Enter salary" required="true"/>
+				<input type="submit" value="Add" action="#{mb.add}" ajax="false" />
+			</panelGrid>
+		</form>
+	</body>
+	</html>
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
 	package com.jk.example.faces;
