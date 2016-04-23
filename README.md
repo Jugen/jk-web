@@ -2,7 +2,7 @@
 No suffering from JSF projects any more, create new production-ready web and database driven application using JSF and JDBC with zero-configurations.
 
 #The unique features of JK-Faces:
-1- **Zero configurations** for production ready JSF environment.
+1- **Zero configurations** for production ready JSF environment.  
 2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets),check this:
 
 	<html xmlns="http://www.w3.org/1999/xhtml" >
