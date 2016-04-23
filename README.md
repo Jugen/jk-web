@@ -266,7 +266,7 @@ This will produce the following output :
  
  
 #UML class diagram
-This section for  (Ed ,Jacob ,cagatay and BalusC)  
+This section for  (Ed ,Jacob ,Cagatay and BalusC)  
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
 
 Note: sorry Jacob!, I have been enforced to use reflection to access some of your private stuff.
