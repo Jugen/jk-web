@@ -18,6 +18,7 @@ This will render primefaces editor components,and of-course no prefix for tag an
 3- **Change your components and components provider at any time without changing single-line of code.**  
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
 5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.  
+6- Support traditional JSF and modern JK-Faces front-end technology  
 
 And many other , check the usage below .
 
@@ -190,8 +191,6 @@ can access your page using the following url http://localhost:8080/your-app-name
 		</h:form>
 	</h:body>
 	</html>
-This will produce the following output :
-![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
 
 #####(JK-Faces way)
 	<html xmlns="http://www.w3.org/1999/xhtml" >
@@ -210,6 +209,9 @@ This will produce the following output :
 		</form>
 	</body>
 	</html>
+
+This will produce the following output :
+![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
 	package com.jk.example.faces;
