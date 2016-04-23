@@ -34,8 +34,10 @@ import javax.faces.view.facelets.TagDecorator;
 import com.jk.annotations.Author;
 import com.jk.exceptions.JKException;
 import com.jk.faces.config.JKFacesConfigurations;
-import com.jk.faces.config.Namespace;
-import com.jk.faces.config.TagMapping;
+import com.jk.faces.config.JKNamespace;
+import com.jk.faces.config.JKTagMapping;
+import com.jk.faces.tags.JKTagAttributeWrapper;
+import com.jk.faces.tags.JKTagWrapper;
 import com.jk.faces.util.JSFUtil;
 import com.jk.resources.JKResourceLoaderFactory;
 import com.jk.util.IOUtil;
@@ -83,78 +85,108 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @see com.sun.facelets.tag.TagDecorator#decorate(com.sun.facelets.tag.Tag)
 	 */
 	@Override
-	public Tag decorate(Tag tag) {
+	public Tag decorate(final Tag tag) {
+		JKTagWrapper wrapper = new JKTagWrapper(tag);
 		this.logger.fine("decorate tag :".concat(tag.getLocalName()));
-		if (tag.getLocalName().equals("html")) {
-			tag = addNamesSpaces(tag);
+		if (wrapper.isHtmlTag()) {
+			addMissingNamespaces(wrapper);
+		} else {
+			handleMapping(wrapper);
+			if (wrapper.isUrlable()) {
+				fixLiks(wrapper);
+			}
 		}
-		if (!tag.getQName().contains(":")) {
-			// if not full qualified call, look into mapping
-			tag = handleMapping(tag);
-		}
-		return tag;
+
+		return wrapper.buildTag();
 	}
 
 	/**
 	 * 
-	 * @param tag
+	 * @param wrapper
+	 */
+	protected void fixLiks(JKTagWrapper wrapper) {
+		List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
+		for (JKTagAttributeWrapper link : links) {
+			if (!link.getValue().startsWith("http")) {
+				String prefix = "#{request.contextPath}";
+				if (!link.getValue().startsWith("/")) {
+					prefix = prefix.concat("/");
+				}
+				link.setValue(prefix.concat(link.getValue()));
+
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param wrapper
 	 * @return
 	 */
-	private Tag handleMapping(Tag tag) {
-		TagMapping mapping = config.findTagMapping(tag.getLocalName(), tag.getAttributes().getAll());
+	protected void handleMapping(JKTagWrapper wrapper) {
+		JKTagMapping mapping = config.findTagMapping(wrapper);
 		if (mapping != null) {
-			String url = mapping.getNameSpace().getUrl();
-			String targetLocalName = mapping.getTargetLocalName();
-			String targetTag = mapping.getTargetTag();
-			logger.info(String.format("Tag (%s) mapped to (%s) in namespace(%s) ", tag.getQName(), targetTag, url));
-			tag = new Tag(tag.getLocation(), url, targetLocalName, targetTag, tag.getAttributes());
+			wrapper.setNamespace(mapping.getNameSpace().getUrl());
+			wrapper.setqName(mapping.getTargetTag());
+			wrapper.setLocalName(mapping.getTargetLocalName());
 		}
-		return tag;
 	}
 
 	/**
 	 * Adds the names spaces.
 	 *
-	 * @param tag
+	 * @param wrapper
 	 *            the tag
 	 * @return the tag
 	 */
-	private Tag addNamesSpaces(Tag tag) {
-		logger.info("addNamesSpaces to tag : ".concat(tag.toString()));
-		final List<Namespace> copy = new Vector(config.getNamespaces());
-		final TagAttributes attributes = tag.getAttributes();
-		final TagAttribute[] all = attributes.getAll();
-		for (final TagAttribute tagAttribute : all) {
-			for (int i = 0; i < copy.size(); i++) {
-				Namespace namespace = copy.get(i);
-				if (namespace.getPrefix().equals(tagAttribute.getLocalName())) {
-					copy.remove(i--);
-					continue;
-				}
-			}
+	protected void addMissingNamespaces(JKTagWrapper wrapper) {
+		logger.info("addNamesSpaces to tag : ".concat(wrapper.toString()));
+		List<JKNamespace> namespaces = config.getNamespaces();
+		for (JKNamespace namespace : namespaces) {
+			wrapper.addAttribue(namespace.getPrefix(), namespace.getUrl());
 		}
-		if (copy.size() > 0) {
-			// name spaces not defined
-			final List<TagAttribute> newAttributes = new Vector<>(Arrays.asList(all));
-			for (Namespace namespace : copy) {
-				this.logger.fine("adding missing namespace : " + namespace.getPrefix());
-				newAttributes.add(createAttribute(tag, namespace.getPrefix(), namespace.getUrl()));
-			}
-			// final TagAttributes newTagAttributes = );
-			this.logger.info("create new tag instance");
-			tag = createTag(tag, newAttributes);
-		}
-		return tag;
+		// final List<JKNamespace> copy = new Vector(config.getNamespaces());
+		// final TagAttributes attributes = wrapper.getAttributes();
+		// final TagAttribute[] all = attributes.getAll();
+		// for (final TagAttribute tagAttribute : all) {
+		// for (int i = 0; i < copy.size(); i++) {
+		// JKNamespace namespace = copy.get(i);
+		// if (namespace.getPrefix().equals(tagAttribute.getLocalName())) {
+		// copy.remove(i--);
+		// continue;
+		// }
+		// }
+		// }
+		// if (copy.size() > 0) {
+		// // name spaces not defined
+		// final List<TagAttribute> newAttributes = new
+		// Vector<>(Arrays.asList(all));
+		// for (JKNamespace namespace : copy) {
+		// this.logger.fine("adding missing namespace : " +
+		// namespace.getPrefix());
+		// newAttributes.add(createAttribute(wrapper, namespace.getPrefix(),
+		// namespace.getUrl()));
+		// }
+		// // final TagAttributes newTagAttributes = );
+		// this.logger.info("create new tag instance");
+		// wrapper = createTag(wrapper, newAttributes);
+		// }
+		// return wrapper;
 	}
 
-	protected Tag createTag(Tag oldTag, final List<TagAttribute> newAttributes) {
-		TagAttributesImpl attributes = new TagAttributesImpl(newAttributes.toArray(new TagAttribute[0]));
-		Tag tag = new Tag(oldTag.getLocation(), oldTag.getNamespace(), oldTag.getLocalName(), oldTag.getQName(), attributes);
-		return tag;
-	}
+	// protected Tag createTag(Tag oldTag, final List<TagAttribute>
+	// newAttributes) {
+	// TagAttributesImpl attributes = new
+	// TagAttributesImpl(newAttributes.toArray(new TagAttribute[0]));
+	// Tag tag = new Tag(oldTag.getLocation(), oldTag.getNamespace(),
+	// oldTag.getLocalName(), oldTag.getQName(), attributes);
+	// return tag;
+	// }
 
-	protected TagAttributeImpl createAttribute(Tag tag, final String nameSpaceKey, String property) {
-		return new TagAttributeImpl(tag.getLocation(), tag.getNamespace(), nameSpaceKey, nameSpaceKey, property);
-	}
+	// protected TagAttributeImpl createAttribute(Tag tag, final String
+	// nameSpaceKey, String property) {
+	// return new TagAttributeImpl(tag.getLocation(), tag.getNamespace(),
+	// nameSpaceKey, nameSpaceKey, property);
+	// }
 
 }
