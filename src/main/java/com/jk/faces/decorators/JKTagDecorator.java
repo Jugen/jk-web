@@ -90,13 +90,8 @@ public final class JKTagDecorator implements TagDecorator {
 	protected void fixLiks(JKTagWrapper wrapper) {
 		List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 		for (JKTagAttributeWrapper link : links) {
-			if (!link.getValue().startsWith("http")) {
-				String prefix = "#{request.contextPath}";
-				if (!link.getValue().startsWith("/")) {
-					prefix = prefix.concat("/");
-				}
-				link.setValue(prefix.concat(link.getValue()));
-
+			if (link.getValue().startsWith("/")||link.getValue().startsWith("#")) {
+				link.setValue("#{request.contextPath}/".concat(link.getValue()));
 			}
 		}
 	}
