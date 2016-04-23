@@ -88,7 +88,10 @@ public final class JKTagDecorator implements TagDecorator {
 		if (tag.getLocalName().equals("html")) {
 			tag = addNamesSpaces(tag);
 		}
-		tag = handleMapping(tag);
+		if (!tag.getQName().contains(":")) {
+			// if not full qualified call, look into mapping
+			tag = handleMapping(tag);
+		}
 		return tag;
 	}
 
@@ -100,8 +103,11 @@ public final class JKTagDecorator implements TagDecorator {
 	private Tag handleMapping(Tag tag) {
 		TagMapping mapping = config.findTagMapping(tag.getLocalName(), tag.getAttributes().getAll());
 		if (mapping != null) {
-			tag = new Tag(tag.getLocation(), mapping.getNameSpace().getUrl(), mapping.getTargetLocalName(), mapping.getTargetTag(),
-					tag.getAttributes());
+			String url = mapping.getNameSpace().getUrl();
+			String targetLocalName = mapping.getTargetLocalName();
+			String targetTag = mapping.getTargetTag();
+			logger.info(String.format("Tag (%s) mapped to (%s) in namespace(%s) ", tag.getQName(), targetTag, url));
+			tag = new Tag(tag.getLocation(), url, targetLocalName, targetTag, tag.getAttributes());
 		}
 		return tag;
 	}
