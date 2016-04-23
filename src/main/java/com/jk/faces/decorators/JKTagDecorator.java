@@ -16,6 +16,7 @@
 package com.jk.faces.decorators;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,9 @@ import javax.faces.view.facelets.TagDecorator;
 
 import com.jk.annotations.Author;
 import com.jk.exceptions.JKException;
+import com.jk.faces.config.JKFacesConfigurations;
+import com.jk.faces.config.Namespace;
+import com.jk.faces.config.TagMapping;
 import com.jk.resources.JKResourceLoaderFactory;
 import com.jk.util.IOUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
@@ -49,18 +53,9 @@ import com.sun.faces.facelets.tag.TagAttributesImpl;
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
 
-	private static final String NAMES_SPACES_PROPERTIES = "/META-INF/names-spaces.properties";
-	private static final String COMPONENTS_MAPPING_PROPERTIES = "/META-INF/components-mapping.properties";
-
-	/** The name spaces map. */
-	static Properties nameSpacesMap;
-	static Properties componentsMap;
-
-	/** The Constant JK_NAMESPACE. */
-	private static final String JK_NAMESPACE = "http://jalalkiswani.com/jsf";
-	/** The Constant Instance. */
 	public final static JKTagDecorator Instance = new JKTagDecorator();
 
+	JKFacesConfigurations config = JKFacesConfigurations.getInstance();
 	/** The logger. */
 	Logger logger = Logger.getLogger(getClass().getName());
 
@@ -68,17 +63,6 @@ public final class JKTagDecorator implements TagDecorator {
 	 * Instantiates a new JK tag decorator.
 	 */
 	public JKTagDecorator() {
-		super();
-		if (nameSpacesMap == null) {
-			nameSpacesMap = new Properties();
-			componentsMap = new Properties();
-			try {
-				nameSpacesMap.load(IOUtil.getInputStream(NAMES_SPACES_PROPERTIES));
-				componentsMap.load(IOUtil.getInputStream(COMPONENTS_MAPPING_PROPERTIES));
-			} catch (IOException e) {
-				throw new JKException(e);
-			}
-		}
 	}
 
 	/**
@@ -103,10 +87,10 @@ public final class JKTagDecorator implements TagDecorator {
 		if (tag.getLocalName().equals("html")) {
 			tag = addNamesSpaces(tag);
 		}
-		String mappedQualifiedName = componentsMap.getProperty(tag.getLocalName());
-		if (mappedQualifiedName != null) {
-			String localName = mappedQualifiedName.substring(mappedQualifiedName.indexOf(":"));
-			tag = new Tag(tag.getLocation(), tag.getNamespace(), localName, mappedQualifiedName, tag.getAttributes());
+		TagMapping mapping = config.findTagMapping(tag.getLocalName());
+		if (mapping != null) {
+			tag = new Tag(tag.getLocation(), mapping.getNameSpace().getUrl(), mapping.getTargetLocalName(), mapping.getTargetTag(),
+					tag.getAttributes());
 		}
 		return tag;
 	}
@@ -120,23 +104,24 @@ public final class JKTagDecorator implements TagDecorator {
 	 */
 	private Tag addNamesSpaces(Tag tag) {
 		logger.info("addNamesSpaces to tag : ".concat(tag.toString()));
-		final Properties copy = new Properties(JKTagDecorator.nameSpacesMap);
+		final List<Namespace> copy = new Vector(config.getNamespaces());
 		final TagAttributes attributes = tag.getAttributes();
 		final TagAttribute[] all = attributes.getAll();
 		for (final TagAttribute tagAttribute : all) {
-			this.logger.fine(String.format("Found location(%s),namespace(%s),qName(%s)", tagAttribute.getLocation(), tagAttribute.getNamespace(),
-					tagAttribute.getQName()));
-			copy.remove(tagAttribute.getLocalName());
+			for (int i = 0; i < copy.size(); i++) {
+				Namespace namespace = copy.get(i);
+				if (namespace.getPrefix().equals(tagAttribute.getLocalName())) {
+					copy.remove(i--);
+					continue;
+				}
+			}
 		}
 		if (copy.size() > 0) {
 			// name spaces not defined
 			final List<TagAttribute> newAttributes = new Vector<>(Arrays.asList(all));
-			final Set<?> keySet = copy.keySet();
-			for (final Object element : keySet) {
-				final String attribueName = (String) element;
-				this.logger.fine("adding missing namespace : " + attribueName);
-				String attributeValue = copy.getProperty(attribueName);
-				newAttributes.add(createAttribute(tag, attribueName, attributeValue));
+			for (Namespace namespace : copy) {
+				this.logger.fine("adding missing namespace : " + namespace.getPrefix());
+				newAttributes.add(createAttribute(tag, namespace.getPrefix(), namespace.getUrl()));
 			}
 			// final TagAttributes newTagAttributes = );
 			this.logger.info("create new tag instance");
@@ -152,7 +137,7 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	protected TagAttributeImpl createAttribute(Tag tag, final String nameSpaceKey, String property) {
-		return new TagAttributeImpl(tag.getLocation(), tag.getNamespace(), nameSpaceKey, tag.getQName(), property);
+		return new TagAttributeImpl(tag.getLocation(), tag.getNamespace(), nameSpaceKey, nameSpaceKey, property);
 	}
 
 }
