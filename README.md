@@ -248,13 +248,18 @@ This will produce the following output :
 	
 	}
 
-
 ##### JK-DB Config  `src/main/webapp/WEB-INF/jk-db.properties`
 	db-driver-name=com.mysql.jdbc.Driver
 	db-url=jdbc:mysql://localhost:3306/app
 	db-user=root
 	db-password=123456
  
+ 
+#UML class diagram
+This section for  (Ed ,Jacob ,cagatay and BalusC) 
+![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
+
+
 **Enjoy!**  
 Jalal  
 http://www.jalalkiswani.com
