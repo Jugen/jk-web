@@ -22,10 +22,11 @@ No suffering from JSF projects any more, create new production-ready web and dat
 	</body>
 	</html>
 
-3- No prefix for any library usage.  
-4- **Change your components and components provider at any time without changing single-line of code.**  
-5- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
-6- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.  
+and ofcourse No prefix for any library usage.
+  
+3- **Change your components and components provider at any time without changing single-line of code.**  
+4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
+5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.  
 
 And many other , check the usage below .
 
