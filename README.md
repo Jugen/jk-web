@@ -3,7 +3,17 @@ No suffering from JSF projects any more, create new production-ready web and dat
 
 #The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.  
-2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets), check the below examples,and of-course No prefix for any library usage.
+2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets), check this exmaple:
+
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>JK-Faces First Test</title>
+	</head>
+	<body>
+		<editor/>
+	</body>
+	</html>
+This will render primefaces editor components, And of-course no prefix for tag any more.
   
 3- **Change your components and components provider at any time without changing single-line of code.**  
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
