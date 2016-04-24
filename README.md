@@ -108,7 +108,7 @@ Try the above using your favorite web/application server (tested on `tomcat7`, `
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml with or without the `faces`
 
-## With JK-Faces , you have the following ready and configured for you :
+##With JK-Faces , you have the following ready and configured:
 1. Configured all the required dependencies
   1. JSF API and Implementation
   2. PrimeFaces  	
