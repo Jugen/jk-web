@@ -222,7 +222,7 @@ can access your page using the following url http://localhost:8080/your-app-name
 This will produce the following output :
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
 
-**Important: don't click add yet , you need to write the below manage bean :)**
+**Important:** don't click add yet , you need to write the below manage bean :)
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
 	package com.jk.example.faces;
