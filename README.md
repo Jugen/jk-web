@@ -129,6 +129,7 @@ Create new ()page named `test.xhtml` inside `src/main/webapp`
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example1.PNG)
 
 Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
+
 ##Note : 
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml with or without the `faces`
@@ -215,6 +216,8 @@ can access your page using the following url http://localhost:8080/your-app-name
 
 This will produce the following output :
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example2.PNG)
+
+**Important: don't click add yet , you need to write the below manage bean :)**
 
 ##### JSF Managed bean `src/main/java/test/MBEmployee`
 	package com.jk.example.faces;
