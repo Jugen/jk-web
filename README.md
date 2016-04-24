@@ -60,39 +60,11 @@ JK-Faces is still under heavy development and testing, including performance tun
 			</plugin>
 		</plugins>
 	</build>
-	
+
+**And thats is it... , proceed to next section to test your installation.	
 ###Important for eclipse users: 
 After you add the above section for Java version , it is important it refresh maven projects by `right click on the project-->Maven-->Update Project`
        
-## And thats is it, now you have the following configured :
-1. Configured all the required dependencies
-  1. JSF API and Implementation
-  2. PrimeFaces  	
-  3. PrimeFaces Extension
-  4. JK-DB database API
-  5. Javax-EL API
-  6. Owasp CSRF 
-  7. Along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
-  8. (Soon) Omnifaces
-  9. (Soon) Weld 
-  10. Jasper Reports
- 	
-2. Configure all the required filters and servlets: 
-  1. Faces-Servlets
-  2. Encoding-sevlets 
- 
-3. Configure the welcome pages to :
-  1. index.xhtml
-  2. index.jsp
-  3. home.xhtml
-  4. home.jsp
-
-4. add the required configurations for JSF including:
-  1. Fix ViewExpiredException issue with enableRestoreView11Compatibility to fix 
-  2. Set  timezone to system timezone
-  3. Map JSF xhtml pages on without faces/prefix to protect againest code direct access.
- 
-5. Configure Primefaces to use awsome-fonts by default
 
 #Test the installation:
 Create new ()page named `test.xhtml` inside `src/main/webapp`
@@ -133,6 +105,37 @@ Try the above using your favorite web/application server (tested on `tomcat7`, `
 ##Note : 
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml with or without the `faces`
+
+## With JK-Faces , you have the following ready and configured for you :
+1. Configured all the required dependencies
+  1. JSF API and Implementation
+  2. PrimeFaces  	
+  3. PrimeFaces Extension
+  4. JK-DB database API
+  5. Javax-EL API
+  6. Owasp CSRF 
+  7. Along with my jk-web dependences which includes many other utilities including export your jsf , jsp and html pages to pdf using flying-saucer-pdf
+  8. (Soon) Omnifaces
+  9. (Soon) Weld 
+  10. Jasper Reports
+ 	
+2. Configure all the required filters and servlets: 
+  1. Faces-Servlets
+  2. Encoding-sevlets 
+ 
+3. Configure the welcome pages to :
+  1. index.xhtml
+  2. index.jsp
+  3. home.xhtml
+  4. home.jsp
+
+4. add the required configurations for JSF including:
+  1. Fix ViewExpiredException issue with enableRestoreView11Compatibility to fix 
+  2. Set  timezone to system timezone
+  3. Map JSF xhtml pages on without faces/prefix to protect againest code direct access.
+ 
+5. Configure Primefaces to use awsome-fonts by default
+
 
 ## Full Database driven example using JK-Faces and JK-DB
 ##### Maven `pom.xml`
