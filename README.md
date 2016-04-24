@@ -265,8 +265,7 @@ This will produce the following output :
 	
 		public void setSalary(Double salary) {
 			this.salary = salary;
-		}
-	
+		}	
 	}
 
 ##### JK-DB Config  `src/main/webapp/WEB-INF/jk-db.properties`
@@ -274,7 +273,8 @@ This will produce the following output :
 	db-url=jdbc:mysql://localhost:3306/app
 	db-user=root
 	db-password=123456
- 
+
+**Important: ** The above examples assumes the existsnce of `employees` with `id,name,salary` as fields , please refer to JK-DB project to get the script for the table.
  
 #UML class diagram
 This section for  (Ed ,Jacob ,Cagatay and BalusC)  
