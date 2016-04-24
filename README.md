@@ -27,7 +27,7 @@ JK-Faces is still under heavy development and testing, including performance tun
  
 #Usage
 1- Create new maven  project with `war` as packaging type.  
-2- Add JK-Faces dependency to your `pom.xml` inside the dependencies sections 
+2- Add JK-Faces dependency to your `pom.xml` inside the `<dependencies>` section
 
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
@@ -60,6 +60,9 @@ JK-Faces is still under heavy development and testing, including performance tun
 			</plugin>
 		</plugins>
 	</build>
+	
+###Important for eclipse users: 
+After you add the above section for Java version , it is important it refresh maven projects by `right click on the project-->Maven-->Update Project`
        
 ## And thats is it, now you have the following configured :
 1. Configured all the required dependencies
