@@ -229,10 +229,10 @@ This will produce the following output :
 	
 	import javax.faces.bean.ManagedBean;
 	
-	import com.jk.faces.mb.JKDbManagedBean;
+	import com.jk.faces.mb.JKPlainDataAccessManagedBean;
 	
 	@ManagedBean(name = "mb")
-	public class MBEmployee extends JKDbManagedBean {
+	public class MBEmployee extends JKPlainDataAccessManagedBean {
 		Integer id;
 		String name;
 		Double salary;
