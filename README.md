@@ -19,6 +19,8 @@ This will render primefaces editor components,and of-course no prefix for tag an
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
 5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.  
 6- Support traditional JSF and modern JK-Faces front-end technology  
+7- Encoding is defaulted to utf-8 on all web/application servers
+9- Access to jsf pages with or without `faces` prefix
 
 And many other , check the usage below .
 
@@ -67,7 +69,7 @@ After you add the above section for Java version , it is important it refresh ma
        
 
 #Test the installation:
-Create new ()page named `test.xhtml` inside `src/main/webapp`
+Create new page named `test.xhtml` inside `src/main/webapp`
 
 ## add the following lines to your page:
 ### (Traditional Way)
