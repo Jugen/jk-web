@@ -23,7 +23,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.jk.annotations.Author;
-import com.jk.faces.util.JSFUtil;
+import com.jk.faces.util.JKJsfUtil;
 
 /**
  * <B>JKComponentWrapper</B> is a component wrapper that wrap JK component.
@@ -83,7 +83,7 @@ public class UIComponentWrapper {
 	 * @return the boolean attribute
 	 */
 	public boolean getBooleanAttribute(final String key, final boolean defaultValue) {
-		return JSFUtil.getBooleanAttribute(getComponent(), key, defaultValue);
+		return JKJsfUtil.getBooleanAttribute(getComponent(), key, defaultValue);
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class UIComponentWrapper {
 			// TODO : document the following
 			FacesContext.getCurrentInstance().getResponseWriter().writeAttribute("id", this.component.getClientId(), null);
 		} else {
-			JSFUtil.writeAttribue(getComponent(), key, defaultValue);
+			JKJsfUtil.writeAttribue(getComponent(), key, defaultValue);
 		}
 	}
 
@@ -161,7 +161,7 @@ public class UIComponentWrapper {
 	 *             if an input/output error occurs during response writing.
 	 */
 	public void writeAttribute(final String sourceKey, final String targetKey, final Object defaultValue) throws IOException {
-		JSFUtil.writeAttribue(this.component, sourceKey, targetKey, defaultValue);
+		JKJsfUtil.writeAttribue(this.component, sourceKey, targetKey, defaultValue);
 	}
 
 	/**

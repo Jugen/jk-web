@@ -26,7 +26,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.jk.annotations.Author;
-import com.jk.faces.util.JSFUtil;
+import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.IOUtil;
 
 /**
@@ -59,7 +59,7 @@ public class UIJSFInfo extends UIOutput {
 	@Override
 	public void encodeEnd(final FacesContext context) throws IOException {
 		this.logger.info("@encodeEnd");
-		final Map<String, Object> info = JSFUtil.getJSFInfo();
+		final Map<String, Object> info = JKJsfUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);
 		w.writeAttribute("class", "ui-datatable", null);

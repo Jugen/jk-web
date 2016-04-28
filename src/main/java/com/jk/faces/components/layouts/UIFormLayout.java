@@ -29,7 +29,7 @@ import org.primefaces.component.outputlabel.OutputLabel;
 
 import com.jk.annotations.Author;
 import com.jk.faces.components.TagAttributeConstants;
-import com.jk.faces.util.JSFUtil;
+import com.jk.faces.util.JKJsfUtil;
 
 /**
  * <B>UIFormLayout</B> is a UILayout that manages the layout of its child
@@ -109,7 +109,7 @@ public class UIFormLayout extends UILayout {
 			return;
 		}
 		int cols = this.cols;
-		if (JSFUtil.getBooleanAttribute(this, TagAttributeConstants.ADD_LABELS, true) == true) {
+		if (JKJsfUtil.getBooleanAttribute(this, TagAttributeConstants.ADD_LABELS, true) == true) {
 			cols *= 2;
 		}
 		fetchRegions(context);
@@ -118,9 +118,9 @@ public class UIFormLayout extends UILayout {
 		// getWrapper().writeAttribute("id", getClientId());
 		// JSFUtil.evaluateExpressionToObject(getValueExpression(null));
 
-		final Object title = JSFUtil.getAttribute(this, getStateHelper(), "title");
+		final Object title = JKJsfUtil.getAttribute(this, getStateHelper(), "title");
 		if (title != null) {
-			JSFUtil.addFullRow(title.toString(), cols, "");
+			JKJsfUtil.addFullRow(title.toString(), cols, "");
 		}
 		int childsComponentIndex = 0;
 		if (this.fieldsRegion == null) {
@@ -137,10 +137,10 @@ public class UIFormLayout extends UILayout {
 			writer.startElement("tr", null);
 			for (int j = 0; j < cols && childsComponentIndex < components.size(); j++) {
 				final UIComponent uiComponent = components.get(childsComponentIndex++);
-				final int colspan = JSFUtil.getIntegerAttribute(uiComponent, TagAttributeConstants.COLSPAN, 1);
+				final int colspan = JKJsfUtil.getIntegerAttribute(uiComponent, TagAttributeConstants.COLSPAN, 1);
 				writer.startElement("td", null);
 				if (colspan > 1) {
-					JSFUtil.writeAttribue(uiComponent, TagAttributeConstants.COLSPAN, null, colspan);
+					JKJsfUtil.writeAttribue(uiComponent, TagAttributeConstants.COLSPAN, null, colspan);
 				}
 				uiComponent.encodeAll(context);
 				writer.endElement("td");
@@ -149,7 +149,7 @@ public class UIFormLayout extends UILayout {
 			}
 			writer.endElement("tr");
 		}
-		JSFUtil.addFullRow(this.actionsRegion, cols, "");
+		JKJsfUtil.addFullRow(this.actionsRegion, cols, "");
 		writer.endElement("table");
 	}
 
@@ -209,7 +209,7 @@ public class UIFormLayout extends UILayout {
 				uiComponent.setRendered(findComponent(((HtmlOutputLabel) uiComponent).getFor()).isRendered());
 			}
 			if (uiComponent.isRendered()) {
-				if (JSFUtil.getBooleanAttribute(uiComponent, TagAttributeConstants.ATTRIBUTE_EXPLODE_CHILDS, false)) {
+				if (JKJsfUtil.getBooleanAttribute(uiComponent, TagAttributeConstants.ATTRIBUTE_EXPLODE_CHILDS, false)) {
 					componentsToRender.addAll(uiComponent.getChildren());
 				} else {
 					componentsToRender.add(uiComponent);

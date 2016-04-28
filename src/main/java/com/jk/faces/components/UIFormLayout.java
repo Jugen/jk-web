@@ -26,7 +26,7 @@ import javax.faces.view.facelets.FaceletContext;
 
 import com.jk.annotations.Author;
 import com.jk.faces.components.layouts.UIFields;
-import com.jk.faces.util.JSFUtil;
+import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.StringUtil;
 
 /**
@@ -88,7 +88,7 @@ public class UIFormLayout extends ComponentHandler {
 				for (int i = 0; i < children.size(); i++) {
 					final UIComponent child = children.get(i);
 					// in the component level
-					if (JSFUtil.getBooleanAttribute(child, TagAttributeConstants.INPUT_SHOW_LABEL, true)) {
+					if (JKJsfUtil.getBooleanAttribute(child, TagAttributeConstants.INPUT_SHOW_LABEL, true)) {
 						String labelKey = (String) child.getAttributes().get(TagAttributeConstants.LABEL);
 						if (labelKey == null) {
 							labelKey = "lbl_".concat(child.getId());

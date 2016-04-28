@@ -41,7 +41,7 @@ import com.jk.annotations.Author;
 import com.jk.faces.components.layouts.UIActions;
 import com.jk.faces.components.layouts.UIFields;
 import com.jk.faces.components.layouts.UIFormLayout;
-import com.jk.faces.util.JSFUtil;
+import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.ObjectUtil;
 import com.sun.faces.RIConstants;
 
@@ -212,7 +212,7 @@ public class JSFComponentFactory {
 	 */
 	public static ValueExpression createLabelValueExpression(String key) {
 		key = "#{msg.get('".concat(key).concat("')}");
-		final ValueExpression exp = JSFUtil.createValueException(key, String.class);
+		final ValueExpression exp = JKJsfUtil.createValueException(key, String.class);
 		return exp;
 	}
 
