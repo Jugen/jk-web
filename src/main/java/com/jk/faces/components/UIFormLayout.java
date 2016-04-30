@@ -28,6 +28,7 @@ import com.jk.annotations.Author;
 import com.jk.faces.components.layouts.UIFields;
 import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.StringUtil;
+import com.jk.util.StringUtil;
 
 /**
  * The Class UIFormLayout.

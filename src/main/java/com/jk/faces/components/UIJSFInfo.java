@@ -59,6 +59,7 @@ public class UIJSFInfo extends UIOutput {
 	@Override
 	public void encodeEnd(final FacesContext context) throws IOException {
 		this.logger.info("@encodeEnd");
+		this.logger.info("@encodeEnd");
 		final Map<String, Object> info = JKJsfUtil.getJSFInfo();
 		final ResponseWriter w = context.getResponseWriter();
 		w.startElement("table", null);
