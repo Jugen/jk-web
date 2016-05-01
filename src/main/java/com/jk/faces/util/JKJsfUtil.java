@@ -54,7 +54,7 @@ import javax.servlet.http.HttpSession;
 import org.junit.Assert;
 
 import com.jk.annotations.Author;
-import com.jk.exceptions.ExceptionUtil;
+import com.jk.exceptions.handler.ExceptionUtil;
 import com.jk.faces.components.TagAttributeConstants;
 import com.jk.util.ConversionUtil;
 
