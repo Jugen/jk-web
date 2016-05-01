@@ -15,21 +15,13 @@
  */
 package com.jk.faces.config;
 
-<<<<<<< HEAD
 import java.util.logging.Logger;
 
-=======
->>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-<<<<<<< HEAD
-=======
-import org.jboss.logging.Logger;
-
->>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKNamespace {
 	private static int counter = 0;

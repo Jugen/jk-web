@@ -134,11 +134,7 @@ public final class JKTagDecorator implements TagDecorator {
 		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 		for (final JKTagAttributeWrapper link : links) {
 			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
-<<<<<<< HEAD
-				link.setValue("#{request.contextPath}".concat(link.getValue()));
-=======
 				link.setValue("#{request.contextPath}/".concat(link.getValue()));
->>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 			}
 		}
 	}
