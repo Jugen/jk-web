@@ -426,7 +426,11 @@ public class JKJsfUtil {
 	 * @return attribute value
 	 */
 	public static boolean getBooleanAttribute(final UIComponent uiComponent, final String key, final boolean defaultValue) {
+<<<<<<< HEAD:src/main/java/com/jk/faces/util/JKJsfUtil.java
 		return new Boolean(JKJsfUtil.getAttribute(uiComponent, key, defaultValue).toString());
+=======
+		return new Boolean(JSFUtil.getAttribute(uiComponent, key, defaultValue).toString());
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee:src/main/java/com/jk/faces/util/JSFUtil.java
 	}
 
 	/**
@@ -662,7 +666,11 @@ public class JKJsfUtil {
 	 *            the atribute value
 	 */
 	public static void setComponentAttribute(final UIComponent comp, final String attributeName, final Object atributeValue) {
+<<<<<<< HEAD:src/main/java/com/jk/faces/util/JKJsfUtil.java
 		final Map componentMap = JKJsfUtil.getComponentMap(comp);
+=======
+		final Map componentMap = JSFUtil.getComponentMap(comp);
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee:src/main/java/com/jk/faces/util/JSFUtil.java
 		componentMap.put(attributeName, atributeValue);
 		System.err.println("Set Compnent Attribute : " + attributeName + " : " + atributeValue);
 	}
@@ -765,7 +773,11 @@ public class JKJsfUtil {
 	 *             if an input/output error occurs during response writing
 	 */
 	public static void writeAttribue(final UIComponent component, final String key, final Object defaultValue) throws IOException {
+<<<<<<< HEAD:src/main/java/com/jk/faces/util/JKJsfUtil.java
 		JKJsfUtil.writeAttribue(component, key, null, defaultValue);
+=======
+		JSFUtil.writeAttribue(component, key, null, defaultValue);
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee:src/main/java/com/jk/faces/util/JSFUtil.java
 	}
 
 	/**
@@ -790,6 +802,7 @@ public class JKJsfUtil {
 	 */
 	public static void writeAttribue(final UIComponent component, final String sourceKey, final String targetKey, final Object defaultValue)
 			throws IOException {
+<<<<<<< HEAD:src/main/java/com/jk/faces/util/JKJsfUtil.java
 		final Object value = JKJsfUtil.getAttribute(component, sourceKey, defaultValue);
 		JKJsfUtil.context().getResponseWriter().writeAttribute(targetKey == null ? sourceKey : targetKey, value, null);
 	}
@@ -958,4 +971,10 @@ public class JKJsfUtil {
 		response.setDateHeader("Expires", 0); // Proxies.
 	}
 
+=======
+		final Object value = JSFUtil.getAttribute(component, sourceKey, defaultValue);
+		JSFUtil.context().getResponseWriter().writeAttribute(targetKey == null ? sourceKey : targetKey, value, null);
+	}
+
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee:src/main/java/com/jk/faces/util/JSFUtil.java
 }

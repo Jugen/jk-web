@@ -18,13 +18,21 @@ package com.jk.faces.tags;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+<<<<<<< HEAD
 import java.util.logging.Logger;
+=======
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 
 import javax.faces.view.Location;
 import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
 
+<<<<<<< HEAD
+=======
+import org.jboss.logging.Logger;
+
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 import com.jk.util.JKKeyValue;
 import com.jk.util.ObjectUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
@@ -59,7 +67,11 @@ public class JKTagWrapper {
 	public void addAttribue(final String name, final String value) {
 		final JKTagAttributeWrapper attr = findAttribute(name);
 		if (attr == null) {
+<<<<<<< HEAD
 			logger.fine(String.format("add attribute %s with value %s ", name, value));
+=======
+			logger.debug(String.format("add attribute %s with value %s ", name, value));
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 			this.attributesList.add(new JKTagAttributeWrapper(this.tag, name, value));
 		}
 	}

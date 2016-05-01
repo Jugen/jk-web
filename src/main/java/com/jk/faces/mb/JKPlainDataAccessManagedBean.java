@@ -13,25 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jk.faces.components.layouts;
+package com.jk.faces.mb;
 
-import javax.faces.component.FacesComponent;
-
-import com.jk.annotations.Author;
+import com.jk.db.dataaccess.plain.JKPlainDataAccess;
+import com.jk.db.datasource.JKDataSourceFactory;
 
 /**
- * <B>UIActions</B> is a UIRegion that manages the layout of its child action
- * components.
- * <P/>
+ * The Class JKDbManagedBean.
  *
- * @author Jalal H. Kiswani
- * @version 1.0
- * @see UIAbstractRegion
+ * @author Jalal Kiswani
  */
-@Author(name = "Jalal Kiswani", date = "28/8/2014", version = "1.0")
-@FacesComponent(value = UIActions.COMPONENT_TYPE)
-public class UIActions extends UIAbstractRegion {
+public class JKPlainDataAccessManagedBean extends JKManagedBean {
 
-	/** The Constant COMPONENT_TYPE. */
-	public static final String COMPONENT_TYPE = "jk.layout.actions";
+	protected JKPlainDataAccess dataAccess = JKDataSourceFactory.getPlainDataAccess();
+
+	/**
+	 * Execute.
+	 *
+	 * @param query
+	 *            the query
+	 * @param params
+	 *            the params
+	 */
+	protected void execute(final String query, final Object... params) {
+		this.dataAccess.execute(query, params);
+	}
+
 }

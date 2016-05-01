@@ -18,8 +18,11 @@ package com.jk.faces.mb;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+<<<<<<< HEAD
 import com.jk.exceptions.JKException;
 
+=======
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 /**
  * The Class JKManagedBean.
  *
@@ -121,6 +124,7 @@ public class JKManagedBean {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
+<<<<<<< HEAD
 
 	protected void handleException(Exception e) {
 		if (e instanceof RuntimeException) {
@@ -128,4 +132,6 @@ public class JKManagedBean {
 		}
 		throw new JKException(e);
 	}
+=======
+>>>>>>> 3f83be2505ca3b211692cd8083183664ffa2d6ee
 }
