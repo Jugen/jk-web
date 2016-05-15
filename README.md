@@ -64,7 +64,7 @@ JK-Faces is still under heavy development and testing, including performance tun
 	</build>
 
 **And thats is it... , proceed to next section to test your installation.	
-###Important for eclipse users: 
+### Important for eclipse users:   
 After you add the above section for Java version , it is important it refresh maven projects by `right click on the project-->Maven-->Update Project`
        
 
@@ -154,7 +154,7 @@ can access your page using the following url http://localhost:8080/your-app-name
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.5</version>
 		</dependency>
 	</dependencies>
 	
