@@ -140,7 +140,7 @@ can access your page using the following url http://localhost:8080/your-app-name
 
 
 ## Full Database driven example using JK-Faces and JK-DB  
-[JK-DB database developmentdevelopment with Java has never been easier]: https://github.com/kiswanij/jk-db  
+[JK-DB : database developmentdevelopment with Java has never been easier](https://github.com/kiswanij/jk-db)  
 ##### Maven `pom.xml`
 	<project xmlns="http://maven.apache.org/POM/4.0.0"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
