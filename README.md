@@ -23,9 +23,6 @@ This will render primefaces editor components,and of-course no prefix for tag an
 8- Access to jsf pages with or without `faces` prefix
 
 And many other , check the usage below .
-
-**Important** : 
-JK-Faces is still under heavy development and testing, including performance tuning , database-driven components , security and many other interesting features. So we highly recommend to use current versions as POC until we announce the production ready version. 
  
 #Usage
 1- Create new maven  project with `war` as packaging type.  
