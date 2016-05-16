@@ -283,6 +283,63 @@ This section for  (Ed ,Jacob ,Cagatay and BalusC)
 
 Note: sorry Jacob!, I have been enforced to use reflection to access some of your private stuff.
 
+# JK-Faces-mapping  
+The mapping between the tags in the pages and the actual tags replaces at runtime is done in tow-ways:  
+1- Automatic : the framework will look for the matching tag automtcaiily.  
+2- By configuration : Look for the mapping defined in `/META-INF/jk-faces-config.xml`   
+
+## Example of jk-faces-config.xml file
+	<jk-faces>
+		<name-spaces>
+			<namespace>
+				<prefix>xmlns:p</prefix>
+				<url>http://primefaces.org/ui</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:h</prefix>
+				<url>http://java.sun.com/jsf/html</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:f</prefix>
+				<url>http://java.sun.com/jsf/core</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:jk</prefix>
+				<url>http://jalalkiswani.com/jsf</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:ui</prefix>
+				<url>http://java.sun.com/jsf/facelets</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:fn</prefix>
+				<url>http://java.sun.com/jsp/jstl/functions</url>
+			</namespace>
+			<namespace>
+				<prefix>xmlns:c</prefix>
+				<url>http://java.sun.com/jsp/jstl/core</url>
+			</namespace>
+		</name-spaces>
+		<tags-mapping>
+			<tag>
+				<source-tag>input</source-tag>
+				<attribute-name>type</attribute-name>
+				<attribute-value>text</attribute-value>
+				<target-tag>p:inputText</target-tag>
+			</tag>
+			<tag>
+				<source-tag>input</source-tag>
+				<attribute-name>type</attribute-name>
+				<attribute-value>submit</attribute-value>
+				<target-tag>p:commandButton</target-tag>
+			</tag>
+			<tag>
+				<source-tag>input</source-tag>
+				<target-tag>p:inputText</target-tag>
+			</tag>
+		</tags-mapping>
+	</jk-faces>
+	
 **Enjoy!**  
 Jalal  
 http://www.jalalkiswani.com
