@@ -15,7 +15,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 	</html>
 This will render primefaces editor components,and of-course no prefix for tag any more.
   
-3- **Change your components and components provider at any time without changing single-line of code.**  
+3- **Change your components and components provider at any time without changing single-line of code**  using JK-Faces auto-mapping or manual mapping using `jk-faces-config.xml`
 4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
 5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.   
 6- Support traditional JSF and modern JK-Faces front-end technology    
