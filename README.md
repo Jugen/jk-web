@@ -61,7 +61,13 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 	</h:body>
 	</html>
 	
-###(JK-Faces way)
+**Output**:  
+![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example1.PNG)
+
+Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
+
+###(JK-Faces way)  
+also , you can use JK-Faces way for the same above example as follows : 
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>JK-Faces First Test</title>
@@ -72,12 +78,8 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 		<editor/>
 	</body>
 	</html>
-	
-**Output**:  
-![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/example1.PNG)
 
-Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
-
+Note that, no namespace deification is required and no prefix is required
 ##Note : 
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml with or without the `faces`
