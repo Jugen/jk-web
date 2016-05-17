@@ -67,7 +67,8 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
 
 ###(JK-Faces way)  
-also , you can use JK-Faces way for the same above example as follows : 
+also , you can use JK-Faces way for the same above example as follows :   
+
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>JK-Faces First Test</title>
