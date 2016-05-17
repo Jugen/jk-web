@@ -1,29 +1,6 @@
 # JK-Faces (The new face of Java web applications)
 No suffering from JSF projects any more, create new production-ready web and database driven application using JSF with zero-configurations , and have the freedom to replace your JSF 3rd-party components at anytime without changing any single line of code.
 
-#The unique features of JK-Faces:
-1- **Zero configurations** for production ready JSF environment.  
-2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets), check this exmaple:
-
-	<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>JK-Faces First Test</title>
-	</head>
-	<body>
-		<editor/>
-	</body>
-	</html>
-This will render primefaces editor components,and of-course no prefix for tag any more.
-  
-3- **Change your components and components provider at any time without changing single-line of code**  using JK-Faces auto-mapping or manual mapping using `jk-faces-config.xml`  
-4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
-5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.   
-6- Support traditional JSF and modern JK-Faces front-end technology    
-7- Encoding is defaulted to utf-8 on all web/application servers  
-8- Access to jsf pages with or without `faces` prefix
-
-And many other , check the usage below .
- 
 #Usage
 1- Create new maven  project with `war` as packaging type.  
 2- Add JK-Faces dependency to your `pom.xml` inside the `<dependencies>` section
@@ -135,6 +112,26 @@ can access your page using the following url http://localhost:8080/your-app-name
  
 5. Configure Primefaces to use awsome-fonts by default
 
+#The unique features of JK-Faces:
+1- **Zero configurations** for production ready JSF environment.  
+2- **No need for any server-side name-space** definition anymore in your pages(NO , it is not Facelets), check this exmaple:
+
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>JK-Faces First Test</title>
+	</head>
+	<body>
+		<editor/>
+	</body>
+	</html>
+This will render primefaces editor components,and of-course no prefix for tag any more.
+  
+3- **Change your components and components provider at any time without changing single-line of code**  using JK-Faces auto-mapping or manual mapping using `jk-faces-config.xml`  
+4- **Web-designer friendly tags**, just add some styles and go (again ,No , it is not Facelets)  
+5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.   
+6- Support traditional JSF and modern JK-Faces front-end technology    
+7- Encoding is defaulted to utf-8 on all web/application servers  
+8- Access to jsf pages with or without `faces` prefix
 
 ## Full Database driven example using JK-Faces and JK-DB  
 [JK-DB : database development with Java has never been easier!](https://github.com/kiswanij/jk-db)  
