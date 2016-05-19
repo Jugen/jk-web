@@ -94,6 +94,14 @@
 			<artifactId>jasperreports</artifactId>
 			<version>6.2.0</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.9</version>
+		</dependency>
+>>>>>>> branch 'master' of https://github.com/kiswanij/jk-faces
 	</dependencies>
 
 	<build>
