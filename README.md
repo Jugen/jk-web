@@ -338,5 +338,5 @@ The mapping between the tags in the pages and the actual tags replaces at runtim
 	</jk-faces>
 	
 **Enjoy!**  
-Jalal Kiswani 
+Jalal Kiswani  
 http://www.jalalkiswani.com
