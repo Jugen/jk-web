@@ -53,49 +53,6 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
-	 * Adds the names spaces.
-	 *
-	 * @param wrapper
-	 *            the tag
-	 * @return the tag
-	 */
-	protected void addMissingNamespaces(final JKTagWrapper wrapper) {
-		final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
-
-		final List<JKNamespace> namespaces = config.getNamespaces();
-		for (final JKNamespace namespace : namespaces) {
-			wrapper.addAttribue(namespace.getPrefix(), namespace.getUrl());
-		}
-		// final List<JKNamespace> copy = new Vector(config.getNamespaces());
-		// final TagAttributes attributes = wrapper.getAttributes();
-		// final TagAttribute[] all = attributes.getAll();
-		// for (final TagAttribute tagAttribute : all) {
-		// for (int i = 0; i < copy.size(); i++) {
-		// JKNamespace namespace = copy.get(i);
-		// if (namespace.getPrefix().equals(tagAttribute.getLocalName())) {
-		// copy.remove(i--);
-		// continue;
-		// }
-		// }
-		// }
-		// if (copy.size() > 0) {
-		// // name spaces not defined
-		// final List<TagAttribute> newAttributes = new
-		// Vector<>(Arrays.asList(all));
-		// for (JKNamespace namespace : copy) {
-		// this.logger.fine("adding missing namespace : " +
-		// namespace.getPrefix());
-		// newAttributes.add(createAttribute(wrapper, namespace.getPrefix(),
-		// namespace.getUrl()));
-		// }
-		// // final TagAttributes newTagAttributes = );
-		// this.logger.info("create new tag instance");
-		// wrapper = createTag(wrapper, newAttributes);
-		// }
-		// return wrapper;
-	}
-
-	/**
 	 * @param tag
 	 *            the tag
 	 * @return the tag
@@ -127,6 +84,23 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
+	 * Adds the names spaces.
+	 *
+	 * @param wrapper
+	 *            the tag
+	 * @return the tag
+	 */
+	protected void addMissingNamespaces(final JKTagWrapper wrapper) {
+		final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+
+		final List<JKNamespace> namespaces = config.getNamespaces();
+		for (final JKNamespace namespace : namespaces) {
+			wrapper.addAttribue(namespace.getPrefix(), namespace.getUrl());
+		}
+	}
+
+
+	/**
 	 *
 	 * @param wrapper
 	 */
@@ -149,7 +123,7 @@ public final class JKTagDecorator implements TagDecorator {
 
 		final JKTagMapping mapping = config.findTagMapping(wrapper);
 		if (mapping != null) {
-			this.logger.info("mapping found : " + ObjectUtil.toString(mapping));
+			this.logger.fine("mapping found : " + ObjectUtil.toString(mapping));
 			final String nameSpaceLetter = mapping.getNameSpaceLetter();
 			if (nameSpaceLetter != null) {
 				final JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
