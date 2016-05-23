@@ -8,7 +8,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.9</version>
 		</dependency>
     
 3- Be sure to set the minimum JDK level in your pom file to 1.7 and tell maven to ignore `web.xml` by adding the following sections inside `build-->plugins` section :

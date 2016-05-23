@@ -99,7 +99,6 @@ public final class JKTagDecorator implements TagDecorator {
 		}
 	}
 
-
 	/**
 	 *
 	 * @param wrapper
@@ -108,7 +107,10 @@ public final class JKTagDecorator implements TagDecorator {
 		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 		for (final JKTagAttributeWrapper link : links) {
 			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
-				link.setValue("#{request.contextPath}/".concat(link.getValue()));
+				String context = "#{request.contextPath}";
+				if (context != null && !context.trim().equals("")) {
+					link.setValue(context + "/".concat(link.getValue()));
+				}
 			}
 		}
 	}
