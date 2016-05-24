@@ -98,8 +98,8 @@ can access your page using the following url http://localhost:8080/your-app-name
   5. Javax-EL API
   6. Owasp CSRF 
   7. Along with my jk-web dependences which includes web development utilities , API's and wrappers.
-  8. (Soon) Omnifaces
-  9. (Soon) Weld 
+  8. (Soon) Omnifaces (Have been delayed to make it compatible with tomcat with Zero-config)
+  9. (Soon) Weld(Have been delayed to make it compatible with tomcat with Zero-config)
  	
 2. Configure all the required filters and servlets: 
   1. Faces-Servlets
@@ -116,7 +116,7 @@ can access your page using the following url http://localhost:8080/your-app-name
   2. Set timezone to system timezone
   3. Map JSF xhtml pages on without faces/prefix to protect against code direct access.
  
-5. Configure Prime-Faces to use awsome-fonts by default
+5. Configure Prime-Faces to use awsome-fonts by default  
 
 #The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.  
@@ -133,8 +133,8 @@ can access your page using the following url http://localhost:8080/your-app-name
 This will render primefaces editor components,and of-course no prefix for tag any more.
   
 3- **Change your components and components provider at any time without changing single-line of code**  using JK-Faces auto-mapping or manual mapping using `jk-faces-config.xml`  
-4- **Web-designer friendly tags**, just add some styles and go. 
-5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.   
+4- **Web-designer friendly tags**, just add some styles and go.   
+5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.     
 6- Support traditional JSF and modern JK-Faces front-end technology    
 7- Encoding is defaulted to UTF8-8 on all web/application servers  
 8- Access to JSF pages with or without `faces` prefix
