@@ -1,6 +1,6 @@
 *If you think that desktop application development is dead, With JK-Smart-Desktop , I am sure you well change your mind! check it out at :*  
-[JK-Smart-Desktop](https://github.com/kiswanij/smart-desktop)
 ![JK-Smart-Desktop](https://raw.githubusercontent.com/kiswanij/smart-desktop/master/doc/screenshots/4.PNG "JK-Smart-Desktop")
+[JK-Smart-Desktop](https://github.com/kiswanij/smart-desktop)
 
 # JK-Faces (The new face of Java web applications)
 No suffering from JSF projects any more, create new production-ready web and database driven application using JSF with zero-configurations , and have the freedom to replace your JSF 3rd-party components at anytime without changing any single line of code.
