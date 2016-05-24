@@ -1,4 +1,4 @@
-_If you think that desktop application development is dead, With JK-Smart-Desktop , I am sure you well change your mind! check it out at : _  
+*If you think that desktop application development is dead, With JK-Smart-Desktop , I am sure you well change your mind! check it out at :*  
 [JK-Smart-Desktop](https://github.com/kiswanij/smart-desktop)
 
 # JK-Faces (The new face of Java web applications)
