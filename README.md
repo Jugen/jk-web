@@ -59,10 +59,10 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 	<h:body>
 		<!-- Check JSF Installation -->
 		<h:outputText value="Hello from JSF Html" />
-		<!--  Check JK Components -->
-		<jk:jsfInfo/>
 		<!-- Check Primefaces components -->
 		<p:editor/>
+		<!--  Check JK Components -->
+		<jk:jsfInfo/>
 	</h:body>
 	</html>
 	
@@ -80,8 +80,8 @@ also , you can use JK-Faces way for the same above example as follows :
 	</head>
 	<body>
 		<outputText value="Hello from JSF2"/>
-		<jsfInfo />
 		<editor/>
+		<jsfInfo />
 	</body>
 	</html>
 
