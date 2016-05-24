@@ -137,7 +137,8 @@ This will render primefaces editor components,and of-course no prefix for tag an
 5- **Transparent** relative path and url management , use `<img src="/images/test.jpg">` and it will be automatically updated to include the  context path for the url.  (this includes , `<link>` , `<script>` , `<a>`) tags.     
 6- Support traditional JSF and modern JK-Faces front-end technology    
 7- Encoding is defaulted to UTF8-8 on all web/application servers  
-8- Access to JSF pages with or without `faces` prefix
+8- Access to JSF pages with or without `faces` prefix  
+9- Transparent localization handling (automatic lookup with localization keys)
  
 #UML class diagram
 This section for  (Ed ,Jacob ,Cagatay and BalusC)  
