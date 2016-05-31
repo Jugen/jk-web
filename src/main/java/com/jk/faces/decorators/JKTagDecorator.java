@@ -27,6 +27,7 @@ import com.jk.faces.config.JKNamespace;
 import com.jk.faces.config.JKTagMapping;
 import com.jk.faces.tags.JKTagAttributeWrapper;
 import com.jk.faces.tags.JKTagWrapper;
+import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.ObjectUtil;
 
 /**
@@ -107,9 +108,13 @@ public final class JKTagDecorator implements TagDecorator {
 		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 		for (final JKTagAttributeWrapper link : links) {
 			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
-				String context = "#{request.contextPath}";
+				String context = JKJsfUtil.evaluateExpressionToObject("#{request.contextPath}").toString();
 				if (context != null && !context.trim().equals("")) {
-					link.setValue(context + "/".concat(link.getValue()));
+					if (link.getValue().startsWith("/")) {
+						link.setValue(context.concat(link.getValue()));
+					}else{
+						link.setValue(context.concat("/").concat(link.getValue()));
+					}
 				}
 			}
 		}

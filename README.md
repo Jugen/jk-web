@@ -13,7 +13,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.9</version>
+			<version>0.0.9-1</version>
 		</dependency>
 	</dependencies>
     
