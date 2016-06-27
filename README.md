@@ -1,6 +1,8 @@
 # JK-Faces (The new face of Java web applications)
 No suffering from JSF projects any more, create new production-ready web and database driven application using JSF with zero-configurations , and have the freedom to replace your JSF 3rd-party components at anytime without changing any single line of code.
 
+For more information , check my article on "Java Server Faces in Real-Life Applications" on DZone at:
+<http://dzone.com/articles/java-server-faces-in-real-life-applications> 
 #Usage
 1- Create new maven  project with `war` as packaging type.  
 2- Add JK-Faces dependency to your `pom.xml` inside the `<dependencies>` section
