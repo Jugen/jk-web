@@ -27,7 +27,7 @@ import javax.faces.context.ResponseWriter;
 
 import com.jk.annotations.Author;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.util.IOUtil;
+import com.jk.util.JKIOUtil;
 
 /**
  * <B>UIJSFInfo</B> is a {@link UIOutput} component that display JSF information
@@ -76,7 +76,7 @@ public class UIJSFInfo extends UIOutput {
 			w.writeText(value.toString(), null);
 			w.endElement("td");
 			if (value instanceof Class) {
-				final String jarFileName = IOUtil.findPathJar((Class) value);
+				final String jarFileName = JKIOUtil.findPathJar((Class) value);
 				w.startElement("td", null);
 				w.writeText(jarFileName, null);
 				w.endElement("td");

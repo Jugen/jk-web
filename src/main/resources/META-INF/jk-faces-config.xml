@@ -31,6 +31,11 @@
 	</name-spaces>
 	<tags-mapping>
 		<tag>
+			<source-tag>link</source-tag>
+			<target-tag>link</target-tag>
+		</tag>
+
+		<tag>
 			<source-tag>input</source-tag>
 			<attribute-name>type</attribute-name>
 			<attribute-value>text</attribute-value>

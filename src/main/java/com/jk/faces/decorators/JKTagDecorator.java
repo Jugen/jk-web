@@ -28,7 +28,9 @@ import com.jk.faces.config.JKTagMapping;
 import com.jk.faces.tags.JKTagAttributeWrapper;
 import com.jk.faces.tags.JKTagWrapper;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.util.ObjectUtil;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
+import com.jk.util.JKObjectUtil;
 
 /**
  * <B>JKTagDecorator</B> this class represents the JK implementation for
@@ -41,11 +43,9 @@ import com.jk.util.ObjectUtil;
  */
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
+	JKLogger logger = JKLoggerFactory.getLogger(getClass());
 
 	public final static JKTagDecorator Instance = new JKTagDecorator();
-
-	/** The logger. */
-	Logger logger = Logger.getLogger(getClass().getName());
 
 	/**
 	 * Instantiates a new JK tag decorator.
@@ -68,20 +68,24 @@ public final class JKTagDecorator implements TagDecorator {
 	 */
 	@Override
 	public Tag decorate(final Tag tag) {
-		final JKTagWrapper wrapper = new JKTagWrapper(tag);
-		this.logger.fine("decorate tag :".concat(tag.getQName()));
-		if (wrapper.isHtmlTag()) {
-			this.logger.fine("add missing namespaces");
-			addMissingNamespaces(wrapper);
-		} else {
-			this.logger.fine("handle mapping for tag: " + tag.getQName());
-			handleMapping(wrapper);
-			if (wrapper.isUrlable()) {
-				this.logger.fine("fixing links:" + tag.getQName());
-				fixLiks(wrapper);
+		if (JKFacesConfigurations.getInstance().isDecorate()) {
+			final JKTagWrapper wrapper = new JKTagWrapper(tag);
+			this.logger.debug("decorate tag :", tag.getQName());
+			if (wrapper.isHtmlTag()) {
+				this.logger.debug("add missing namespaces");
+				addMissingNamespaces(wrapper);
+			} else {
+				this.logger.debug("handle mapping for tag: " + tag.getQName());
+				handleMapping(wrapper);
+				if (wrapper.isUrlable()) {
+					this.logger.debug("fixing links:" + tag.getQName());
+					fixLiks(wrapper);
+				}
 			}
+			return wrapper.buildTag();
+		} else {
+			return tag;
 		}
-		return wrapper.buildTag();
 	}
 
 	/**
@@ -105,18 +109,22 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @param wrapper
 	 */
 	protected void fixLiks(final JKTagWrapper wrapper) {
+		logger.debug("fix links");
 		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 		for (final JKTagAttributeWrapper link : links) {
+			logger.debug("fix link :", link.getValue());
+			//TODO: check if contextPath already set
 			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
 				String context = JKJsfUtil.evaluateExpressionToObject("#{request.contextPath}").toString();
 				if (context != null && !context.trim().equals("")) {
 					if (link.getValue().startsWith("/")) {
 						link.setValue(context.concat(link.getValue()));
-					}else{
+					} else {
 						link.setValue(context.concat("/").concat(link.getValue()));
 					}
 				}
 			}
+			logger.debug("final-link :", link.getValue());
 		}
 	}
 
@@ -130,7 +138,7 @@ public final class JKTagDecorator implements TagDecorator {
 
 		final JKTagMapping mapping = config.findTagMapping(wrapper);
 		if (mapping != null) {
-			this.logger.fine("mapping found : " + ObjectUtil.toString(mapping));
+			this.logger.debug("mapping found : ", JKObjectUtil.toString(mapping));
 			final String nameSpaceLetter = mapping.getNameSpaceLetter();
 			if (nameSpaceLetter != null) {
 				final JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);

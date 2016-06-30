@@ -42,7 +42,7 @@ import com.jk.faces.components.layouts.UIActions;
 import com.jk.faces.components.layouts.UIFields;
 import com.jk.faces.components.layouts.UIFormLayout;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.util.ObjectUtil;
+import com.jk.util.JKObjectUtil;
 import com.sun.faces.RIConstants;
 
 /**
@@ -160,13 +160,13 @@ public class JSFComponentFactory {
 	 */
 	public static UIInput createInput(final String label, final Class type) {
 		UIInput input = null;
-		if (ObjectUtil.isTime(type)) {
+		if (JKObjectUtil.isTime(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(TimePicker.COMPONENT_TYPE);
-		} else if (ObjectUtil.isTimeStamp(type)) {
+		} else if (JKObjectUtil.isTimeStamp(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(Calendar.COMPONENT_TYPE);
-		} else if (ObjectUtil.isDate(type)) {
+		} else if (JKObjectUtil.isDate(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(Calendar.COMPONENT_TYPE);
-		} else if (ObjectUtil.isBoolean(type)) {
+		} else if (JKObjectUtil.isBoolean(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(SelectBooleanCheckbox.COMPONENT_TYPE);
 		} else {
 			input = JSFComponentFactory.createInputText(null);

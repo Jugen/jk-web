@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,9 +29,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.omg.IOP.ServiceContext;
+
 import com.jk.faces.tags.JKTagWrapper;
-import com.jk.util.IOUtil;
-import com.jk.util.ObjectUtil;
+import com.jk.faces.util.JKJsfUtil;
+import com.jk.util.JKConversionUtil;
+import com.jk.util.JKIOUtil;
+import com.jk.util.JKObjectUtil;
+import com.jk.web.util.JKWebUtil;
 import com.jk.xml.JKXmlHandler;
 import com.sun.faces.application.ApplicationAssociate;
 import com.sun.faces.facelets.compiler.Compiler;
@@ -57,7 +63,7 @@ public class JKFacesConfigurations {
 	public static JKFacesConfigurations getInstance() {
 		if (instance == null) {
 			instance = new JKFacesConfigurations();
-			instance = JKXmlHandler.getInstance().parse(IOUtil.getInputStream(META_INF_JK_FACES_CONFIG_XML), JKFacesConfigurations.class,
+			instance = JKXmlHandler.getInstance().parse(JKIOUtil.getInputStream(META_INF_JK_FACES_CONFIG_XML), JKFacesConfigurations.class,
 					JKNamespace.class, JKTagMapping.class);
 
 		}
@@ -82,7 +88,7 @@ public class JKFacesConfigurations {
 		System.out.println("----------------");
 		final List<JKTagMapping> tagMapping2 = test.getTagMapping();
 		for (final JKTagMapping tagMapping : tagMapping2) {
-			System.out.println(ObjectUtil.toString(tagMapping));
+			System.out.println(JKObjectUtil.toString(tagMapping));
 		}
 		System.out.println("Done");
 	}
@@ -95,6 +101,8 @@ public class JKFacesConfigurations {
 	@XmlElement(name = "tag")
 	List<JKTagMapping> tagMapping;
 
+	private Boolean decorate;
+
 	// JAXb callback
 	void afterUnmarshal(final Unmarshaller u, final Object parent) {
 		loadAllNamesSpacesFromJsfContainer();
@@ -103,7 +111,7 @@ public class JKFacesConfigurations {
 		logger.info("All tags mappings:");
 		System.err.println("---------------------------------------------");
 		for (final JKTagMapping mapping : this.tagMapping) {
-			logger.info(ObjectUtil.toString(mapping));
+			logger.info(JKObjectUtil.toString(mapping));
 		}
 	}
 
@@ -208,13 +216,13 @@ public class JKFacesConfigurations {
 		if (currentInstance != null) {
 			final Compiler instance = currentInstance.getCompiler();
 			logger.info("loading libraries from JSF compiler");
-			final List libraries = ObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
+			final List libraries = JKObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
 			for (final Object libObject : libraries) {
 				if (libObject instanceof AbstractTagLibrary) {
 					final AbstractTagLibrary library = (AbstractTagLibrary) libObject;
 					logger.info(String.format("fetching %s library", library.getNamespace()));
 					// load components using reflection
-					final Map map = ObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
+					final Map map = JKObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
 					final JKNamespace namespace = getNameSpaceByUrl(library.getNamespace(), true);
 
 					final Set keySet = map.keySet();
@@ -251,6 +259,14 @@ public class JKFacesConfigurations {
 	 */
 	public void setTagMapping(final List<JKTagMapping> tagMapping) {
 		this.tagMapping = tagMapping;
+	}
+
+	public boolean isDecorate() {
+		if (decorate == null) {
+			ServletContext context = JKJsfUtil.getServletContext();
+			decorate = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate"), true);
+		}
+		return decorate;
 	}
 
 }

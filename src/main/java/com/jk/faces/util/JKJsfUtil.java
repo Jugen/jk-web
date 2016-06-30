@@ -46,6 +46,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.lifecycle.LifecycleFactory;
 import javax.faces.view.ViewDeclarationLanguage;
 import javax.faces.view.facelets.FaceletContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,7 +57,7 @@ import org.junit.Assert;
 import com.jk.annotations.Author;
 import com.jk.exceptions.handler.JKExceptionUtil;
 import com.jk.faces.components.TagAttributeConstants;
-import com.jk.util.ConversionUtil;
+import com.jk.util.JKConversionUtil;
 
 /**
  * <B>JSFUtil</B> is class that contains JSF helpful methods, that helps to
@@ -583,7 +584,7 @@ public class JKJsfUtil {
 	 */
 	public static boolean getRequestAttributeAsBoolean(final String key, final Object defaultValue) {
 		final Object value = JKJsfUtil.getRequestMap().get(key);
-		return ConversionUtil.toBoolean(value == null ? defaultValue : value);
+		return JKConversionUtil.toBoolean(value == null ? defaultValue : value);
 	}
 
 	/**
@@ -955,6 +956,10 @@ public class JKJsfUtil {
 		// 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
+	}
+
+	public static ServletContext getServletContext() {
+		return (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 	}
 
 }

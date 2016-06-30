@@ -26,7 +26,7 @@ import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
 
 import com.jk.util.JKKeyValue;
-import com.jk.util.ObjectUtil;
+import com.jk.util.JKObjectUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 import com.sun.faces.facelets.tag.TagAttributesImpl;
 
@@ -81,9 +81,9 @@ public class JKTagWrapper {
 	}
 
 	public Tag buildTag() {
-		logger.info("old Tag:" + ObjectUtil.toString(this.tag));
+		logger.info("old Tag:" + JKObjectUtil.toString(this.tag));
 		final Tag tag = new Tag(getLocation(), getNamespace(), getLocalName(), getqName(), buildAttribues());
-		logger.info("New Tag:" + ObjectUtil.toString(tag));
+		logger.info("New Tag:" + JKObjectUtil.toString(tag));
 		return tag;
 	}
 
