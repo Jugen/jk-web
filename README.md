@@ -11,7 +11,7 @@ For more information , check my article on "Java Server Faces in Real-Life Appli
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.9-1</version>
+			<version>0.0.9-2</version>
 		</dependency>
 	</dependencies>
     
