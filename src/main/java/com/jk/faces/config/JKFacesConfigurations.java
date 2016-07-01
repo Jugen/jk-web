@@ -118,10 +118,8 @@ public class JKFacesConfigurations {
 	/**
 	 * Find tag mapping.
 	 *
-	 * @param tagName
-	 *            the tag name
-	 * @param tagAttributes
-	 *            the tag attributes
+	 * @param wrapper
+	 *            the wrapper
 	 * @return the tag mapping
 	 */
 	public JKTagMapping findTagMapping(final JKTagWrapper wrapper) {
@@ -142,6 +140,13 @@ public class JKFacesConfigurations {
 		return null;
 	}
 
+	/**
+	 * Find tag mapping.
+	 *
+	 * @param tagName
+	 *            the tag name
+	 * @return the JK tag mapping
+	 */
 	public JKTagMapping findTagMapping(final String tagName) {
 		for (final JKTagMapping mapping : this.tagMapping) {
 			if (mapping.getSourceQName().equals(tagName)) {
@@ -172,6 +177,8 @@ public class JKFacesConfigurations {
 	 *
 	 * @param url
 	 *            the url
+	 * @param create
+	 *            the create
 	 * @return the name space by url
 	 */
 	public JKNamespace getNameSpaceByUrl(final String url, final boolean create) {
@@ -261,6 +268,11 @@ public class JKFacesConfigurations {
 		this.tagMapping = tagMapping;
 	}
 
+	/**
+	 * Checks if is decorate.
+	 *
+	 * @return true, if is decorate
+	 */
 	public boolean isDecorate() {
 		if (decorate == null) {
 			ServletContext context = JKJsfUtil.getServletContext();

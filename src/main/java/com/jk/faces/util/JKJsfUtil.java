@@ -797,8 +797,10 @@ public class JKJsfUtil {
 	}
 
 	/**
-	 * 
+	 * Invalidate session.
+	 *
 	 * @param keepAttributes
+	 *            the keep attributes
 	 */
 	public static void invalidateSession(String... keepAttributes) {
 		if (FacesContext.getCurrentInstance() != null) {
@@ -814,11 +816,25 @@ public class JKJsfUtil {
 		}
 	}
 
+	/**
+	 * Gets the local name from Q name.
+	 *
+	 * @param qName
+	 *            the q name
+	 * @return the local name from Q name
+	 */
 	public static String getLocalNameFromQName(final String qName) {
 		final String[] split = qName.split(":");
 		return split.length == 2 ? split[1] : split[0];
 	}
 
+	/**
+	 * Gets the namespace letter from Q name.
+	 *
+	 * @param qName
+	 *            the q name
+	 * @return the namespace letter from Q name
+	 */
 	public static String getNamespaceLetterFromQName(final String qName) {
 		final String[] split = qName.split(":");
 		if (split.length == 1) {
@@ -828,6 +844,13 @@ public class JKJsfUtil {
 
 	}
 
+	/**
+	 * Find component in root.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the UI component
+	 */
 	public static UIComponent findComponentInRoot(String id) {
 		UIComponent component = null;
 
@@ -840,6 +863,15 @@ public class JKJsfUtil {
 		return component;
 	}
 
+	/**
+	 * Find component.
+	 *
+	 * @param base
+	 *            the base
+	 * @param id
+	 *            the id
+	 * @return the UI component
+	 */
 	public static UIComponent findComponent(UIComponent base, String id) {
 		if (id.equals(base.getId()))
 			return base;
@@ -861,6 +893,15 @@ public class JKJsfUtil {
 		return result;
 	}
 
+	/**
+	 * Find components.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param type
+	 *            the type
+	 * @return the list
+	 */
 	///////////////////////////////////////////////////////////////////////////
 	public static List<UIComponent> findComponents(UIComponent parent, Class type) {
 		List<UIComponent> result = new Vector<>();
@@ -875,8 +916,9 @@ public class JKJsfUtil {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the remote host name.
+	 *
+	 * @return the remote host name
 	 */
 	public static String getRemoteHostName() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -892,9 +934,12 @@ public class JKJsfUtil {
 	}
 
 	/**
-	 * 
+	 * Redirect.
+	 *
 	 * @param path
+	 *            the path
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void redirect(String path) throws IOException {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
@@ -912,13 +957,16 @@ public class JKJsfUtil {
 	}
 
 	/**
-	 * add full
-	 * 
-	 * @param string
+	 * add full.
+	 *
+	 * @param path
+	 *            the path
 	 * @param request
+	 *            the request
 	 * @param response
 	 *            relative to context
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void redirect(String path, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
@@ -950,6 +998,12 @@ public class JKJsfUtil {
 		}
 	}
 
+	/**
+	 * Force clear cache.
+	 *
+	 * @param resp
+	 *            the resp
+	 */
 	public static void forceClearCache(ServletResponse resp) {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP
@@ -958,6 +1012,11 @@ public class JKJsfUtil {
 		response.setDateHeader("Expires", 0); // Proxies.
 	}
 
+	/**
+	 * Gets the servlet context.
+	 *
+	 * @return the servlet context
+	 */
 	public static ServletContext getServletContext() {
 		return (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 	}

@@ -22,6 +22,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * The Class JKNamespace.
+ *
+ * @author Jalal Kiswani
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKNamespace {
 	private static int counter = 0;
@@ -42,23 +47,50 @@ public class JKNamespace {
 
 	private String letter;
 
+	/**
+	 * Instantiates a new JK namespace.
+	 */
 	public JKNamespace() {
 	}
 
+	/**
+	 * Instantiates a new JK namespace.
+	 *
+	 * @param url
+	 *            the url
+	 */
 	public JKNamespace(final String url) {
 		this(url, createPrefix(url));
 	}
 
+	/**
+	 * Instantiates a new JK namespace.
+	 *
+	 * @param url
+	 *            the url
+	 * @param prefix
+	 *            the prefix
+	 */
 	public JKNamespace(final String url, final String prefix) {
 		logger.info(String.format("create Namespace with url(%s) and Prefix(%s) ", url, prefix));
 		this.url = url;
 		this.prefix = prefix;
 	}
 
+	/**
+	 * Gets the index.
+	 *
+	 * @return the index
+	 */
 	public Integer getIndex() {
 		return this.index;
 	}
 
+	/**
+	 * Gets the letter.
+	 *
+	 * @return the letter
+	 */
 	public String getLetter() {
 		if (this.letter == null) {
 			final String[] split = getPrefix().split(":");
@@ -71,18 +103,40 @@ public class JKNamespace {
 		return this.letter;
 	}
 
+	/**
+	 * Gets the prefix.
+	 *
+	 * @return the prefix
+	 */
 	public String getPrefix() {
 		return this.prefix;
 	}
 
+	/**
+	 * Gets the url.
+	 *
+	 * @return the url
+	 */
 	public String getUrl() {
 		return this.url;
 	}
 
+	/**
+	 * Sets the prefix.
+	 *
+	 * @param prefix
+	 *            the new prefix
+	 */
 	public void setPrefix(final String prefix) {
 		this.prefix = prefix;
 	}
 
+	/**
+	 * Sets the url.
+	 *
+	 * @param url
+	 *            the new url
+	 */
 	public void setUrl(final String url) {
 		this.url = url;
 	}

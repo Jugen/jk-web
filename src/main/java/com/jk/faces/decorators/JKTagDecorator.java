@@ -45,6 +45,7 @@ import com.jk.util.JKObjectUtil;
 public final class JKTagDecorator implements TagDecorator {
 	JKLogger logger = JKLoggerFactory.getLogger(getClass());
 
+	/** The Constant Instance. */
 	public final static JKTagDecorator Instance = new JKTagDecorator();
 
 	/**
@@ -54,6 +55,8 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
+	 * Decorate.
+	 *
 	 * @param tag
 	 *            the tag
 	 * @return the tag

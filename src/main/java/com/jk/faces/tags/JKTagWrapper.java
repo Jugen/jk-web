@@ -30,9 +30,18 @@ import com.jk.util.JKObjectUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 import com.sun.faces.facelets.tag.TagAttributesImpl;
 
+/**
+ * The Class JKTagWrapper.
+ *
+ * @author Jalal Kiswani
+ */
 public class JKTagWrapper {
 	static Logger logger = Logger.getLogger(JKTagWrapper.class.getName());
+	
+	/** The urlable tags. */
 	public static String URLABLE_TAGS = "img,script,a,link";
+	
+	/** The links attributes. */
 	public static String LINKS_ATTRIBUTES = "src,href";
 	private Tag tag;
 	private String localName;
@@ -41,6 +50,12 @@ public class JKTagWrapper {
 	private String qName;
 	private final List<JKTagAttributeWrapper> attributesList;
 
+	/**
+	 * Instantiates a new JK tag wrapper.
+	 *
+	 * @param tag
+	 *            the tag
+	 */
 	public JKTagWrapper(final Tag tag) {
 		this.tag = tag;
 		this.localName = tag.getLocalName();
@@ -56,6 +71,14 @@ public class JKTagWrapper {
 		}
 	}
 
+	/**
+	 * Adds the attribue.
+	 *
+	 * @param name
+	 *            the name
+	 * @param value
+	 *            the value
+	 */
 	public void addAttribue(final String name, final String value) {
 		final JKTagAttributeWrapper attr = findAttribute(name);
 		if (attr == null) {
@@ -64,6 +87,12 @@ public class JKTagWrapper {
 		}
 	}
 
+	/**
+	 * Adds the attributes.
+	 *
+	 * @param attributes
+	 *            the attributes
+	 */
 	public void addAttributes(final List<JKKeyValue<String, String>> attributes) {
 		for (final JKKeyValue<String, String> keyValue : attributes) {
 			addAttribue(keyValue.getKey(), keyValue.getValue());
@@ -80,6 +109,11 @@ public class JKTagWrapper {
 		return attrs;
 	}
 
+	/**
+	 * Builds the tag.
+	 *
+	 * @return the tag
+	 */
 	public Tag buildTag() {
 		logger.info("old Tag:" + JKObjectUtil.toString(this.tag));
 		final Tag tag = new Tag(getLocation(), getNamespace(), getLocalName(), getqName(), buildAttribues());
@@ -87,6 +121,13 @@ public class JKTagWrapper {
 		return tag;
 	}
 
+	/**
+	 * Find attribute.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the JK tag attribute wrapper
+	 */
 	public JKTagAttributeWrapper findAttribute(final String key) {
 		for (final JKTagAttributeWrapper attr : this.attributesList) {
 			if (attr.getLocalName().equals(key)) {
@@ -96,6 +137,13 @@ public class JKTagWrapper {
 		return null;
 	}
 
+	/**
+	 * Gets the attribute value.
+	 *
+	 * @param attributeName
+	 *            the attribute name
+	 * @return the attribute value
+	 */
 	public String getAttributeValue(final String attributeName) {
 		final JKTagAttributeWrapper attr = findAttribute(attributeName);
 		if (attr != null) {
@@ -104,6 +152,11 @@ public class JKTagWrapper {
 		return null;
 	}
 
+	/**
+	 * Gets the links attributes.
+	 *
+	 * @return the links attributes
+	 */
 	public List<JKTagAttributeWrapper> getLinksAttributes() {
 		final List<JKTagAttributeWrapper> attrs = new Vector<>();
 		for (final JKTagAttributeWrapper attr : this.attributesList) {
@@ -114,34 +167,77 @@ public class JKTagWrapper {
 		return attrs;
 	}
 
+	/**
+	 * Gets the local name.
+	 *
+	 * @return the local name
+	 */
 	public String getLocalName() {
 		return this.localName;
 	}
 
+	/**
+	 * Gets the location.
+	 *
+	 * @return the location
+	 */
 	public Location getLocation() {
 		return this.location;
 	}
 
+	/**
+	 * Gets the namespace.
+	 *
+	 * @return the namespace
+	 */
 	public String getNamespace() {
 		return this.namespace;
 	}
 
+	/**
+	 * Gets the q name.
+	 *
+	 * @return the q name
+	 */
 	public String getqName() {
 		return this.qName;
 	}
 
+	/**
+	 * Gets the tag.
+	 *
+	 * @return the tag
+	 */
 	public Tag getTag() {
 		return this.tag;
 	}
 
+	/**
+	 * Checks if is html tag.
+	 *
+	 * @return true, if is html tag
+	 */
 	public boolean isHtmlTag() {
 		return getLocalName().equals("html");
 	}
 
+	/**
+	 * Checks if is urlable.
+	 *
+	 * @return true, if is urlable
+	 */
 	public boolean isUrlable() {
 		return URLABLE_TAGS.contains(getLocalName());
 	}
 
+	/**
+	 * Sets the attribute value.
+	 *
+	 * @param name
+	 *            the name
+	 * @param value
+	 *            the value
+	 */
 	public void setAttributeValue(final String name, final String value) {
 		for (final JKTagAttributeWrapper attr : this.attributesList) {
 			if (attr.getLocalName().equals(name)) {
@@ -150,22 +246,52 @@ public class JKTagWrapper {
 		}
 	}
 
+	/**
+	 * Sets the local name.
+	 *
+	 * @param localName
+	 *            the new local name
+	 */
 	public void setLocalName(final String localName) {
 		this.localName = localName;
 	}
 
+	/**
+	 * Sets the location.
+	 *
+	 * @param location
+	 *            the new location
+	 */
 	public void setLocation(final Location location) {
 		this.location = location;
 	}
 
+	/**
+	 * Sets the namespace.
+	 *
+	 * @param namespace
+	 *            the new namespace
+	 */
 	public void setNamespace(final String namespace) {
 		this.namespace = namespace;
 	}
 
+	/**
+	 * Sets the q name.
+	 *
+	 * @param qName
+	 *            the new q name
+	 */
 	public void setqName(final String qName) {
 		this.qName = qName;
 	}
 
+	/**
+	 * Sets the tag.
+	 *
+	 * @param tag
+	 *            the new tag
+	 */
 	public void setTag(final Tag tag) {
 		this.tag = tag;
 	}
