@@ -97,8 +97,8 @@ can access your page using the following url http://localhost:8080/your-app-name
   5. Javax-EL API
   6. Owasp CSRF 
   7. Along with my jk-web dependences which includes web development utilities , API's and wrappers.
-  8. (Soon) Omnifaces (Have been delayed to make it compatible with tomcat with Zero-config)
-  9. (Soon) Weld(Have been delayed to make it compatible with tomcat with Zero-config)
+  8. (Soon) Omnifaces (has been delayed to make it compatible with tomcat with Zero-config)
+  9. (Soon) Weld(has been delayed to make it compatible with tomcat with Zero-config)
  	
 2. Configure all the required filters and servlets: 
   1. Faces-Servlets

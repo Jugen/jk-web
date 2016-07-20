@@ -112,22 +112,27 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @param wrapper
 	 */
 	protected void fixLiks(final JKTagWrapper wrapper) {
-		logger.debug("fix links");
-		final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
-		for (final JKTagAttributeWrapper link : links) {
-			logger.debug("fix link :", link.getValue());
-			//TODO: check if contextPath already set
-			if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
-				String context = JKJsfUtil.evaluateExpressionToObject("#{request.contextPath}").toString();
-				if (context != null && !context.trim().equals("")) {
-					if (link.getValue().startsWith("/")) {
-						link.setValue(context.concat(link.getValue()));
-					} else {
-						link.setValue(context.concat("/").concat(link.getValue()));
+		if (JKFacesConfigurations.getInstance().isDecorateFixLinks()) {
+			logger.debug("fix links");
+			final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
+			for (final JKTagAttributeWrapper link : links) {
+				logger.debug("fix link :", link.getValue());
+				// TODO: check if contextPath already set
+				if (link.getValue().contains("#{request.contextPath}")) {
+					continue;
+				}
+				if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
+					String context = JKJsfUtil.evaluateExpressionToObject("#{request.contextPath}").toString();
+					if (context != null && !context.trim().equals("")) {
+						if (link.getValue().startsWith("/")) {
+							link.setValue(context.concat(link.getValue()));
+						} else {
+							link.setValue(context.concat("/").concat(link.getValue()));
+						}
 					}
 				}
+				logger.debug("final-link :", link.getValue());
 			}
-			logger.debug("final-link :", link.getValue());
 		}
 	}
 
@@ -137,18 +142,20 @@ public final class JKTagDecorator implements TagDecorator {
 	 * @return
 	 */
 	protected void handleMapping(final JKTagWrapper wrapper) {
-		final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
+		if (JKFacesConfigurations.getInstance().isDecorateMapping()) {
+			final JKFacesConfigurations config = JKFacesConfigurations.getInstance();
 
-		final JKTagMapping mapping = config.findTagMapping(wrapper);
-		if (mapping != null) {
-			this.logger.debug("mapping found : ", JKObjectUtil.toString(mapping));
-			final String nameSpaceLetter = mapping.getNameSpaceLetter();
-			if (nameSpaceLetter != null) {
-				final JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
-				wrapper.setNamespace(namespace.getUrl());
+			final JKTagMapping mapping = config.findTagMapping(wrapper);
+			if (mapping != null) {
+				this.logger.debug("mapping found : ", JKObjectUtil.toString(mapping));
+				final String nameSpaceLetter = mapping.getNameSpaceLetter();
+				if (nameSpaceLetter != null) {
+					final JKNamespace namespace = config.getNamespaceByLetter(nameSpaceLetter);
+					wrapper.setNamespace(namespace.getUrl());
+				}
+				wrapper.setqName(mapping.getTargetQName());
+				wrapper.setLocalName(mapping.getTargetLocalName());
 			}
-			wrapper.setqName(mapping.getTargetQName());
-			wrapper.setLocalName(mapping.getTargetLocalName());
 		}
 	}
 

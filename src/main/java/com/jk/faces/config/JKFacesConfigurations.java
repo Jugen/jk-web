@@ -103,6 +103,10 @@ public class JKFacesConfigurations {
 
 	private Boolean decorate;
 
+	private Boolean decorateMapping;
+
+	private Boolean decorateFixLinks;
+
 	// JAXb callback
 	void afterUnmarshal(final Unmarshaller u, final Object parent) {
 		loadAllNamesSpacesFromJsfContainer();
@@ -279,6 +283,22 @@ public class JKFacesConfigurations {
 			decorate = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate"), true);
 		}
 		return decorate;
+	}
+
+	public boolean isDecorateMapping() {
+		if (decorateMapping == null) {
+			ServletContext context = JKJsfUtil.getServletContext();
+			decorateMapping = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate.mapping"), false);
+		}
+		return decorateMapping;
+	}
+
+	public boolean isDecorateFixLinks() {
+		if (decorateFixLinks == null) {
+			ServletContext context = JKJsfUtil.getServletContext();
+			decorateFixLinks = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate.fixlinks"), true);
+		}
+		return decorateFixLinks;
 	}
 
 }
