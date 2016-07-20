@@ -11,7 +11,7 @@ For more information , check my article on "Java Server Faces in Real-Life Appli
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.9-2</version>
+			<version>0.0.9-3</version>
 		</dependency>
 	</dependencies>
     
@@ -71,6 +71,8 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
 
 ###(JK-Faces way)  
+Enable tag mapping in `web.xml` by setting `jk.decorate.mapping` context paramter to `true`.(defauled to false)    
+Also, you can disable fix-link  by `jk.decorate.fixlinks` to `false`.(defaulted to true)  
 also , you can use JK-Faces way for the same above example as follows :   
 
 	<html xmlns="http://www.w3.org/1999/xhtml">
