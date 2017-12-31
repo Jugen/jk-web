@@ -94,6 +94,8 @@ public class JKManagedBean {
 		if (outcome == null) {
 			outcome = "";
 		}
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getFlash().setKeepMessages(true);
 		return outcome.concat("?faces-redirect=true");
 	}
 
