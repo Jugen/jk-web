@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.jk.faces.util.JKJsfUtil;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 
 /**
  * The Class JKTagMapping.
@@ -31,7 +33,7 @@ import com.jk.faces.util.JKJsfUtil;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKTagMapping implements Comparable<JKTagMapping> {
-	static Logger logger = Logger.getLogger(JKTagMapping.class.getName());
+	static JKLogger logger = JKLoggerFactory.getLogger(JKTagMapping.class);
 
 	@XmlElement(name = "source-tag")
 	String sourceQName;
@@ -72,7 +74,7 @@ public class JKTagMapping implements Comparable<JKTagMapping> {
 	 *            the namespace
 	 */
 	public JKTagMapping(final String sourceQName, final String targetQName, final JKNamespace namespace) {
-		logger.info(String.format("creating TagMapping with sourceTag(%s) and (%s)", sourceQName, targetQName));
+		logger.debug(String.format("creating TagMapping with sourceTag(%s) and (%s)", sourceQName, targetQName));
 		this.sourceQName = sourceQName;
 		this.targetQName = targetQName;
 		this.namespace = namespace;

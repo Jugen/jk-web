@@ -82,7 +82,7 @@ public final class JKTagDecorator implements TagDecorator {
 				handleMapping(wrapper);
 				if (wrapper.isUrlable()) {
 					this.logger.debug("fixing links:" + tag.getQName());
-					fixLiks(wrapper);
+					fixLinks(wrapper);
 				}
 			}
 			return wrapper.buildTag();
@@ -111,27 +111,23 @@ public final class JKTagDecorator implements TagDecorator {
 	 *
 	 * @param wrapper
 	 */
-	protected void fixLiks(final JKTagWrapper wrapper) {
+	protected void fixLinks(final JKTagWrapper wrapper) {
 		if (JKFacesConfigurations.getInstance().isDecorateFixLinks()) {
-			logger.debug("fix links");
+			 logger.debug("fix links");
 			final List<JKTagAttributeWrapper> links = wrapper.getLinksAttributes();
 			for (final JKTagAttributeWrapper link : links) {
-				logger.debug("fix link :", link.getValue());
+				 logger.debug("fix link :", link.getValue());
 				// TODO: check if contextPath already set
 				if (link.getValue().contains("#{request.contextPath}")) {
 					continue;
 				}
-				if (link.getValue().startsWith("/") || link.getValue().startsWith("#")) {
+				if (link.getValue().startsWith("/")) {
 					String context = JKJsfUtil.evaluateExpressionToObject("#{request.contextPath}").toString();
 					if (context != null && !context.trim().equals("")) {
-						if (link.getValue().startsWith("/")) {
-							link.setValue(context.concat(link.getValue()));
-						} else {
-							link.setValue(context.concat("/").concat(link.getValue()));
-						}
+						link.setValue(context.concat(link.getValue()));
 					}
 				}
-				logger.debug("final-link :", link.getValue());
+				 logger.debug("final-link :", link.getValue());
 			}
 		}
 	}

@@ -57,6 +57,8 @@ import org.junit.Assert;
 import com.jk.annotations.Author;
 import com.jk.exceptions.handler.JKExceptionUtil;
 import com.jk.faces.components.TagAttributeConstants;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKConversionUtil;
 
 /**
@@ -72,7 +74,7 @@ public class JKJsfUtil {
 	/** The Constant CHECKSUM_POSTFIX. */
 	private static final String CHECKSUM_POSTFIX = "-checksum";
 	/** The logger. */
-	private static Logger logger = Logger.getLogger(JKJsfUtil.class.getName());
+	private static JKLogger logger = JKLoggerFactory.getLogger(JKJsfUtil.class);
 
 	/**
 	 * add String <code>contents</code> in HTML row.
@@ -263,7 +265,7 @@ public class JKJsfUtil {
 	public static MethodExpression createMethodExpression(final String expression, final Class<?> returnType) {
 		Assert.assertNotNull(expression);
 		// TODO : check the below line????
-		JKJsfUtil.logger.fine("createMethodEpression:".concat(expression));
+		JKJsfUtil.logger.debug("createMethodEpression:".concat(expression));
 		final FacesContext context = FacesContext.getCurrentInstance();
 		return context.getApplication().getExpressionFactory().createMethodExpression(context.getELContext(), expression, returnType, new Class[0]);
 	}

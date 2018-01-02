@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 import javax.xml.bind.Unmarshaller;
@@ -33,6 +32,8 @@ import org.omg.IOP.ServiceContext;
 
 import com.jk.faces.tags.JKTagWrapper;
 import com.jk.faces.util.JKJsfUtil;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKConversionUtil;
 import com.jk.util.JKIOUtil;
 import com.jk.util.JKObjectUtil;
@@ -52,7 +53,7 @@ import com.sun.faces.facelets.tag.AbstractTagLibrary;
 public class JKFacesConfigurations {
 	private static final String META_INF_JK_FACES_CONFIG_XML = "/META-INF/jk-faces-config.xml";
 
-	static Logger logger = Logger.getLogger(JKFacesConfigurations.class.getName());
+	static JKLogger logger = JKLoggerFactory.getLogger(JKFacesConfigurations.class);
 	private static JKFacesConfigurations instance;
 
 	/**
@@ -112,10 +113,10 @@ public class JKFacesConfigurations {
 		loadAllNamesSpacesFromJsfContainer();
 		Collections.sort(this.tagMapping);
 		System.err.println("---------------------------------------------");
-		logger.info("All tags mappings:");
+		logger.debug("All tags mappings:");
 		System.err.println("---------------------------------------------");
 		for (final JKTagMapping mapping : this.tagMapping) {
-			logger.info(JKObjectUtil.toString(mapping));
+			logger.debug(JKObjectUtil.toString(mapping));
 		}
 	}
 
@@ -128,7 +129,7 @@ public class JKFacesConfigurations {
 	 */
 	public JKTagMapping findTagMapping(final JKTagWrapper wrapper) {
 		// Add caching
-		logger.info("Find mapping to tag ".concat(wrapper.getqName()));
+		logger.debug("Find mapping to tag ".concat(wrapper.getqName()));
 		for (final JKTagMapping mapping : this.tagMapping) {
 			if (mapping.getSourceQName().equals(wrapper.getqName())) {
 				if (mapping.getAttributeName() == null) {
@@ -186,7 +187,7 @@ public class JKFacesConfigurations {
 	 * @return the name space by url
 	 */
 	public JKNamespace getNameSpaceByUrl(final String url, final boolean create) {
-		logger.info("getNameSpaceByUrl :".concat(url));
+		logger.debug("getNameSpaceByUrl :".concat(url));
 		for (final JKNamespace namespace : this.namespaces) {
 			if (namespace.getUrl().equals(url)) {
 				return namespace;
@@ -194,7 +195,7 @@ public class JKFacesConfigurations {
 		}
 		// if not found , add?
 		if (create) {
-			logger.info("not found , create namespace ");
+			logger.debug("not found , create namespace ");
 			final JKNamespace namespace = new JKNamespace(url);
 			this.namespaces.add(namespace);
 			return namespace;
@@ -221,17 +222,17 @@ public class JKFacesConfigurations {
 	}
 
 	protected void loadAllNamesSpacesFromJsfContainer() {
-		logger.info("loadAllNamesSpacesFromJsfContainer....");
+		logger.debug("loadAllNamesSpacesFromJsfContainer....");
 		// HashMap<String, Object> publicNameSpaces = new HashMap<>();
 		final ApplicationAssociate currentInstance = ApplicationAssociate.getCurrentInstance();
 		if (currentInstance != null) {
 			final Compiler instance = currentInstance.getCompiler();
-			logger.info("loading libraries from JSF compiler");
+			logger.debug("loading libraries from JSF compiler");
 			final List libraries = JKObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
 			for (final Object libObject : libraries) {
 				if (libObject instanceof AbstractTagLibrary) {
 					final AbstractTagLibrary library = (AbstractTagLibrary) libObject;
-					logger.info(String.format("fetching %s library", library.getNamespace()));
+					logger.debug(String.format("fetching %s library", library.getNamespace()));
 					// load components using reflection
 					final Map map = JKObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
 					final JKNamespace namespace = getNameSpaceByUrl(library.getNamespace(), true);
@@ -288,7 +289,7 @@ public class JKFacesConfigurations {
 	public boolean isDecorateMapping() {
 		if (decorateMapping == null) {
 			ServletContext context = JKJsfUtil.getServletContext();
-			decorateMapping = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate.mapping"), false);
+			decorateMapping = JKConversionUtil.toBoolean(context.getInitParameter("jk.decorate.mapping"), true);
 		}
 		return decorateMapping;
 	}

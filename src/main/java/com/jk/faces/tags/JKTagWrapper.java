@@ -25,6 +25,8 @@ import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
 
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKKeyValue;
 import com.jk.util.JKObjectUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
@@ -36,7 +38,7 @@ import com.sun.faces.facelets.tag.TagAttributesImpl;
  * @author Jalal Kiswani
  */
 public class JKTagWrapper {
-	static Logger logger = Logger.getLogger(JKTagWrapper.class.getName());
+	static JKLogger logger = JKLoggerFactory.getLogger(JKTagWrapper.class);
 	
 	/** The urlable tags. */
 	public static String URLABLE_TAGS = "img,script,a,link";
@@ -82,7 +84,7 @@ public class JKTagWrapper {
 	public void addAttribue(final String name, final String value) {
 		final JKTagAttributeWrapper attr = findAttribute(name);
 		if (attr == null) {
-			logger.fine(String.format("add attribute %s with value %s ", name, value));
+			logger.debug(String.format("add attribute %s with value %s ", name, value));
 			this.attributesList.add(new JKTagAttributeWrapper(this.tag, name, value));
 		}
 	}
@@ -115,9 +117,9 @@ public class JKTagWrapper {
 	 * @return the tag
 	 */
 	public Tag buildTag() {
-		logger.info("old Tag:" + JKObjectUtil.toString(this.tag));
+		logger.debug("old Tag:" + JKObjectUtil.toString(this.tag));
 		final Tag tag = new Tag(getLocation(), getNamespace(), getLocalName(), getqName(), buildAttribues());
-		logger.info("New Tag:" + JKObjectUtil.toString(tag));
+		logger.debug("New Tag:" + JKObjectUtil.toString(tag));
 		return tag;
 	}
 

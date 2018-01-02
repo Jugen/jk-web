@@ -22,6 +22,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
+
 /**
  * The Class JKNamespace.
  *
@@ -30,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKNamespace {
 	private static int counter = 0;
-	static Logger logger = Logger.getLogger(JKNamespace.class.getName());
+	static JKLogger logger = JKLoggerFactory.getLogger(JKNamespace.class);
 
 	protected static String createPrefix(final String url) {
 		return "xmlns:".concat(url.substring(url.length() - 3));
@@ -72,7 +75,7 @@ public class JKNamespace {
 	 *            the prefix
 	 */
 	public JKNamespace(final String url, final String prefix) {
-		logger.info(String.format("create Namespace with url(%s) and Prefix(%s) ", url, prefix));
+		logger.debug(String.format("create Namespace with url(%s) and Prefix(%s) ", url, prefix));
 		this.url = url;
 		this.prefix = prefix;
 	}

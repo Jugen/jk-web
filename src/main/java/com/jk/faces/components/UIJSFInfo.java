@@ -18,7 +18,6 @@ package com.jk.faces.components;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIOutput;
@@ -27,6 +26,8 @@ import javax.faces.context.ResponseWriter;
 
 import com.jk.annotations.Author;
 import com.jk.faces.util.JKJsfUtil;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKIOUtil;
 
 /**
@@ -45,7 +46,7 @@ import com.jk.util.JKIOUtil;
 public class UIJSFInfo extends UIOutput {
 
 	/** The logger. */
-	Logger logger = Logger.getLogger(getClass().getName());
+	JKLogger logger = JKLoggerFactory.getLogger(getClass());
 
 	/**
 	 * this method is responsible for rendering {@link UIJSFInfo} component It

@@ -24,6 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.jk.annotations.Author;
+import com.jk.logging.JKLogger;
+import com.jk.logging.JKLoggerFactory;
 
 /**
  * <B>JKHello</B> is a UI component that display Hello statement from JK
@@ -44,7 +46,7 @@ public class UIHello extends UIPanel {
 	public static final String COMPONENT_TYPE = "jk.hello";
 
 	/** The logger. */
-	Logger logger = Logger.getLogger(getClass().getName());
+	JKLogger logger = JKLoggerFactory.getLogger(getClass());
 
 	/**
 	 * the default constructure.
@@ -62,7 +64,7 @@ public class UIHello extends UIPanel {
 	 */
 	@Override
 	public void encodeAll(final FacesContext context) throws IOException {
-		this.logger.fine("encodingAll");
+		this.logger.debug("encodingAll");
 		final ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", null);
 		writer.writeText("Hello From JK", null);

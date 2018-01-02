@@ -26,12 +26,14 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import com.jk.util.JKIOUtil;
+
 /**
  * The Class MBMessages.
  *
  * @author Jalal Kiswani
  */
-@ManagedBean(name="msg")
+@ManagedBean(name = "msg")
 @ApplicationScoped
 public class MBMessages {
 
@@ -45,13 +47,15 @@ public class MBMessages {
 	// ////////////////////////////////////////////////////
 	public void init() {
 		try {
-			InputStream instream = this.getClass().getResourceAsStream("/system_ar.properties");
-			BufferedReader in = new BufferedReader(new InputStreamReader(instream, "utf8"));
-			String line;
-			while ((line = in.readLine()) != null) {
-				String label[] = line.split("=");
-				if (label.length >= 2) {
-					prop.setProperty(label[0], line.substring(line.indexOf("=") + 1));
+			InputStream instream = JKIOUtil.getInputStream("/system.properties");
+			if (instream != null) {
+				BufferedReader in = new BufferedReader(new InputStreamReader(instream, "utf8"));
+				String line;
+				while ((line = in.readLine()) != null) {
+					String label[] = line.split("=");
+					if (label.length >= 2) {
+						prop.setProperty(label[0], line.substring(line.indexOf("=") + 1));
+					}
 				}
 			}
 		} catch (IOException e) {
