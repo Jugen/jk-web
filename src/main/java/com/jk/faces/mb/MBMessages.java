@@ -33,7 +33,7 @@ import com.jk.util.JKIOUtil;
  *
  * @author Jalal Kiswani
  */
-@ManagedBean(name = "msg")
+@ManagedBean(name = "msg",eager=true)
 @ApplicationScoped
 public class MBMessages {
 
