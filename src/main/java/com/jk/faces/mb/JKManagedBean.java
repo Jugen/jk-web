@@ -106,9 +106,9 @@ public class JKManagedBean {
 	 *            the message
 	 */
 	public void success(final String message) {
-		final FacesMessage msg = new FacesMessage(message);
+		final FacesMessage msg = new FacesMessage(MBMessages.getLabel(message));
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().addMessage(null,  msg);
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class JKManagedBean {
 	 *            the message
 	 */
 	public void warning(final String message) {
-		final FacesMessage msg = new FacesMessage(message);
+		final FacesMessage msg = new FacesMessage(MBMessages.getLabel(message));
 		msg.setSeverity(FacesMessage.SEVERITY_WARN);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
