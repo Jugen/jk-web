@@ -6,7 +6,7 @@ No suffering from JSF projects any more, create new production-ready web and dat
 For more information , check my article on "Java Server Faces in Real-Life Applications" on DZone at:
 <http://dzone.com/articles/java-server-faces-in-real-life-applications> 
 
-#Usage
+# Usage 
 1- Create new maven  project with `war` as packaging type.  
 2- Add JK-Faces dependency to your `pom.xml` inside the `<dependencies>` section
 
@@ -49,7 +49,7 @@ For more information , check my article on "Java Server Faces in Real-Life Appli
 After you add the above section for Java version , it is important it refresh maven projects by `right click on the project-->Maven-->Update Project`
        
 
-#Test the installation:
+# Test the installation:
 Create new page named `test.xhtml` inside `src/main/webapp`
 
 ## add the following lines to your page:
@@ -73,7 +73,7 @@ Create new page named `test.xhtml` inside `src/main/webapp`
 
 Try the above using your favorite web/application server (tested on `tomcat7`, `tomcat8` and `wildfly 9`)   
 
-###(JK-Faces way)  
+### JK-Faces way:  
 Enable tag mapping in `web.xml` by setting `jk.decorate.mapping` context paramter to `true`.(defauled to false)    
 Also, you can disable fix-link  by `jk.decorate.fixlinks` to `false`.(defaulted to true)  
 also , you can use JK-Faces way for the same above example as follows :   
@@ -90,11 +90,11 @@ also , you can use JK-Faces way for the same above example as follows :
 	</html>
 
 Note that, no namespace deification is required and no prefix is required
-##Note : 
+## Note : 
 you should be able to access your pages directly without faces/ path , for example , in the above test example, you
 can access your page using the following url http://localhost:8080/your-app-name/<del>faces</del>/test.xhtml with or without the `faces`
 
-##With JK-Faces , you have the following ready and configured:
+## With JK-Faces , you have the following ready and configured:
 1. Configured all the required dependencies
   1. JSF API and Implementation
   2. PrimeFaces  	
@@ -122,7 +122,7 @@ can access your page using the following url http://localhost:8080/your-app-name
  
 5. Configure Prime-Faces to use awsome-fonts by default  
 
-#The unique features of JK-Faces:
+# The unique features of JK-Faces:
 1- **Zero configurations** for production ready JSF environment.  
 2- **No need for any server-side name-space** definition anymore in your pages, check this exmaple:
 
@@ -144,7 +144,7 @@ This will render primefaces editor components,and of-course no prefix for tag an
 8- Access to JSF pages with or without `faces` prefix  
 9- Transparent localization handling (automatic lookup with localization keys)
  
-#UML class diagram
+# UML class diagram 
 This section for  (Ed ,Jacob ,Cagatay and BalusC)  
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
 
@@ -155,7 +155,7 @@ The mapping between the tags in the pages and the actual tags replaces at runtim
 1- Automatic : the framework will look for the matching tag automatically.  
 2- By configuration : Look for the mapping defined in `/META-INF/jk-faces-config.xml`   
 
-## Example of jk-faces-config.xml file
+## Example of jk-faces-config.xml file 
 	<jk-faces>
 		<name-spaces>
 			<namespace>
