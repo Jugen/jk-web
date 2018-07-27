@@ -3,6 +3,10 @@ No suffering from JSF projects any more, create new production-ready web and dat
 
 For more information , check my article on "Java Server Faces in Real-Life Applications" on DZone at:
 <http://dzone.com/articles/java-server-faces-in-real-life-applications> 
+
+
+![alt text](design.png)
+
 #Usage
 1- Create new maven  project with `war` as packaging type.  
 2- Add JK-Faces dependency to your `pom.xml` inside the `<dependencies>` section
@@ -205,6 +209,3 @@ The mapping between the tags in the pages and the actual tags replaces at runtim
 		</tags-mapping>
 	</jk-faces>
 	
-**Enjoy!**  
-Jalal Kiswani  
-http://www.jalalkiswani.com
