@@ -27,6 +27,7 @@ Or the following snapshot for latest version:
 	</dependency>
 	
 [Check jk-smart-eis to know how to use snapshots](https://github.com/kiswanij/jk-smart-eis "jk-smart-eis ") 
+
 3- Be sure to set the minimum JDK level in your pom file to 1.7 and tell maven to ignore `web.xml` by adding the following sections inside `build-->plugins` section :
 
 	<build>
