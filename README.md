@@ -149,7 +149,6 @@ This section for  (Ed ,Jacob ,Cagatay and BalusC)
 ![alt tag](https://github.com/kiswanij/jk-faces/blob/master/design/uml.PNG)
 
 Note: sorry Jacob!, I have been enforced to use reflection to access some of your private stuff.
-![JK-Faces marked in yellow](https://raw.githubusercontent.com/kiswanij/jk-faces/master/design/jk-faces-smart-enterprise.PNG)
 
 # JK-Faces-mapping  
 The mapping between the tags in the pages and the actual tags replaces at runtime is done in tow-ways:  
