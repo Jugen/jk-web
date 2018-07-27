@@ -27,6 +27,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import com.jk.util.JKIOUtil;
+import com.jk.web.util.JKWebUtil;
 
 /**
  * The Class MBMessages.
@@ -47,6 +48,7 @@ public class MBMessages {
 	// ////////////////////////////////////////////////////
 	public void init() {
 		try {
+			
 			InputStream instream = JKIOUtil.getInputStream("/system.properties");
 			if (instream != null) {
 				BufferedReader in = new BufferedReader(new InputStreamReader(instream, "utf8"));
