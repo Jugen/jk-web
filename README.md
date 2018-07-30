@@ -14,7 +14,7 @@ For more information , check my article on "Java Server Faces in Real-Life Appli
 		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-faces</artifactId>
-			<version>0.0.9-4</version>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
     
@@ -23,7 +23,7 @@ Or the following snapshot for latest version:
 	<dependency>
 	  <groupId>com.jalalkiswani</groupId>
 	  <artifactId>jk-faces</artifactId>
-	  <version>1.0.0-SNAPSHOT</version>
+	  <version>1.0.1-SNAPSHOT</version>
 	</dependency>
 	
 [Check jk-smart-eis to know how to use snapshots](https://github.com/kiswanij/jk-smart-eis "jk-smart-eis ") 
