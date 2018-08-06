@@ -25,10 +25,10 @@ import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
 
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKKeyValue;
 import com.jk.util.JKObjectUtil;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 import com.sun.faces.facelets.tag.TagAttributesImpl;
 

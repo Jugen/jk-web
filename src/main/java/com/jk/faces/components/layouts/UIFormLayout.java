@@ -27,9 +27,9 @@ import javax.faces.context.ResponseWriter;
 
 import org.primefaces.component.outputlabel.OutputLabel;
 
-import com.jk.annotations.Author;
 import com.jk.faces.components.TagAttributeConstants;
 import com.jk.faces.util.JKJsfUtil;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>UIFormLayout</B> is a UILayout that manages the layout of its child

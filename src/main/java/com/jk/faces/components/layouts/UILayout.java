@@ -24,8 +24,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIPanel;
 import javax.faces.context.FacesContext;
 
-import com.jk.annotations.Author;
 import com.jk.faces.components.UIComponentWrapper;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>UILayout</B> is <B>UIPanel</B> that is wrapped by

@@ -21,16 +21,16 @@ import java.util.logging.Logger;
 import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagDecorator;
 
-import com.jk.annotations.Author;
 import com.jk.faces.config.JKFacesConfigurations;
 import com.jk.faces.config.JKNamespace;
 import com.jk.faces.config.JKTagMapping;
 import com.jk.faces.tags.JKTagAttributeWrapper;
 import com.jk.faces.tags.JKTagWrapper;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKObjectUtil;
+import com.jk.util.annotations.Author;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 /**
  * <B>JKTagDecorator</B> this class represents the JK implementation for

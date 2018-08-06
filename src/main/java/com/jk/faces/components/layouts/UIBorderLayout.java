@@ -23,7 +23,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.jk.annotations.Author;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>UIBorderLayout</B> is a UILayout that manages the layout of its child

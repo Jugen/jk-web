@@ -21,9 +21,9 @@ import javax.faces.component.UIPanel;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.jk.annotations.Author;
 import com.jk.faces.components.TagAttributeConstants;
 import com.jk.faces.components.UIComponentWrapper;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>UIAbstractRegion</B> is a panel that manages the layout of its child
