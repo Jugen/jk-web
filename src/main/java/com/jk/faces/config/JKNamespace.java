@@ -1,5 +1,6 @@
 /*
- * Copyright 2002-2016 Jalal Kiswani.
+ * Copyright 2002-2018 Jalal Kiswani. 
+ * E-mail: Kiswani.Jalal@Gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKNamespace.
  *
@@ -32,22 +34,36 @@ import com.jk.util.logging.JKLoggerFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKNamespace {
+	
+	/** The counter. */
 	private static int counter = 0;
+	
+	/** The logger. */
 	static JKLogger logger = JKLoggerFactory.getLogger(JKNamespace.class);
 
+	/**
+	 * Creates the prefix.
+	 *
+	 * @param url the url
+	 * @return the string
+	 */
 	protected static String createPrefix(final String url) {
 		return "xmlns:".concat(url.substring(url.length() - 3));
 	}
 
+	/** The index. */
 	@XmlTransient
 	Integer index = counter++;
 
+	/** The prefix. */
 	@XmlElement
 	String prefix;
 
+	/** The url. */
 	@XmlElement
 	String url;
 
+	/** The letter. */
 	private String letter;
 
 	/**

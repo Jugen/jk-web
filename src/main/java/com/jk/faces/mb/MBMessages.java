@@ -1,5 +1,6 @@
 /*
- * Copyright 2002-2016 Jalal Kiswani.
+ * Copyright 2002-2018 Jalal Kiswani. 
+ * E-mail: Kiswani.Jalal@Gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +30,7 @@ import javax.faces.context.FacesContext;
 import com.jk.util.JKIOUtil;
 import com.jk.web.util.JKWebUtil;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class MBMessages.
  *
@@ -38,7 +40,10 @@ import com.jk.web.util.JKWebUtil;
 @ApplicationScoped
 public class MBMessages {
 
+	/** The default instance. */
 	private static MBMessages defaultInstance;
+	
+	/** The prop. */
 	private Properties prop = new Properties();
 
 	/**

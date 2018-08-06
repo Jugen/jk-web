@@ -1,5 +1,6 @@
 /*
- * Copyright 2002-2016 Jalal Kiswani.
+ * Copyright 2002-2018 Jalal Kiswani. 
+ * E-mail: Kiswani.Jalal@Gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +27,7 @@ import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKTagMapping.
  *
@@ -33,22 +35,31 @@ import com.jk.util.logging.JKLoggerFactory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKTagMapping implements Comparable<JKTagMapping> {
+	
+	/** The logger. */
 	static JKLogger logger = JKLoggerFactory.getLogger(JKTagMapping.class);
 
+	/** The source Q name. */
 	@XmlElement(name = "source-tag")
 	String sourceQName;
 
+	/** The target Q name. */
 	@XmlElement(name = "target-tag")
 	String targetQName;
 
+	/** The attribute name. */
 	@XmlElement(name = "attribute-name")
 	String attributeName;
 
+	/** The attribute value. */
 	@XmlElement(name = "attribute-value")
 	String attributeValue;
 
+	/** The namespace. */
 	@XmlTransient
 	private JKNamespace namespace;
+	
+	/** The auto. */
 	// loaded from JSF container at runtime
 	@XmlTransient
 	Boolean auto = false;

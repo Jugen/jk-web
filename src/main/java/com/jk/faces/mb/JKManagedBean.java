@@ -1,5 +1,6 @@
 /*
- * Copyright 2002-2016 Jalal Kiswani.
+ * Copyright 2002-2018 Jalal Kiswani. 
+ * E-mail: Kiswani.Jalal@Gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +21,7 @@ import javax.faces.context.FacesContext;
 
 import com.jk.util.exceptions.JKException;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKManagedBean.
  *
@@ -124,6 +126,11 @@ public class JKManagedBean {
 	}
 
 
+	/**
+	 * Handle exception.
+	 *
+	 * @param e the e
+	 */
 	protected void handleException(Exception e) {
 		if (e instanceof RuntimeException) {
 			throw (RuntimeException) e;

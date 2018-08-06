@@ -1,5 +1,6 @@
 /*
- * Copyright 2002-2016 Jalal Kiswani.
+ * Copyright 2002-2018 Jalal Kiswani. 
+ * E-mail: Kiswani.Jalal@Gmail.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +23,7 @@ import javax.faces.view.facelets.TagAttribute;
 import com.jk.faces.util.JKJsfUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKTagAttributeWrapper.
  *
@@ -29,11 +31,22 @@ import com.sun.faces.facelets.tag.TagAttributeImpl;
  */
 public class JKTagAttributeWrapper {
 
+	/** The q name. */
 	private String qName;
+	
+	/** The value. */
 	private String value;
+	
+	/** The local name. */
 	private String localName;
+	
+	/** The namespace. */
 	private String namespace;
+	
+	/** The location. */
 	private Location location;
+	
+	/** The tag attribute. */
 	private TagAttribute tagAttribute;
 
 	/**
