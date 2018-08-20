@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 /**
  * The Class JKNamespace.

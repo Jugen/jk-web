@@ -22,8 +22,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.jk.annotations.Author;
 import com.jk.faces.util.JKJsfUtil;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>JKComponentWrapper</B> is a component wrapper that wrap JK component.

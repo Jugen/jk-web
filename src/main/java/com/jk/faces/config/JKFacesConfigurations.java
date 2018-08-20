@@ -32,13 +32,13 @@ import org.omg.IOP.ServiceContext;
 
 import com.jk.faces.tags.JKTagWrapper;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKConversionUtil;
 import com.jk.util.JKIOUtil;
 import com.jk.util.JKObjectUtil;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
+import com.jk.util.xml.JKXmlHandler;
 import com.jk.web.util.JKWebUtil;
-import com.jk.xml.JKXmlHandler;
 import com.sun.faces.application.ApplicationAssociate;
 import com.sun.faces.facelets.compiler.Compiler;
 import com.sun.faces.facelets.tag.AbstractTagLibrary;

@@ -23,9 +23,9 @@ import javax.faces.component.UIPanel;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.jk.annotations.Author;
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
+import com.jk.util.annotations.Author;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 /**
  * <B>JKHello</B> is a UI component that display Hello statement from JK

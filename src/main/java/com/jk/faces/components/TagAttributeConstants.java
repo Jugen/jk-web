@@ -15,7 +15,7 @@
  */
 package com.jk.faces.components;
 
-import com.jk.annotations.Author;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>TagAttributeConstants</B> list of HTML attributes like align, colspan and

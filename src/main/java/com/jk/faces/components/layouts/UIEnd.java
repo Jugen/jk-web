@@ -17,7 +17,7 @@ package com.jk.faces.components.layouts;
 
 import javax.faces.component.FacesComponent;
 
-import com.jk.annotations.Author;
+import com.jk.util.annotations.Author;
 
 /**
  * <B>UIEnd</B> is a UIRegion that manages the layout of its child components

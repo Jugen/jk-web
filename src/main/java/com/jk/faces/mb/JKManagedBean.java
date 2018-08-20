@@ -18,7 +18,7 @@ package com.jk.faces.mb;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import com.jk.exceptions.JKException;
+import com.jk.util.exceptions.JKException;
 
 /**
  * The Class JKManagedBean.

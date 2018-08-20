@@ -33,7 +33,7 @@ import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.panelgrid.PanelGrid;
 import org.primefaces.component.submenu.UISubmenu;
 
-import com.jk.annotations.Author;
+import com.jk.util.annotations.Author;
 
 /**
  * The Class UIViewVisitor.

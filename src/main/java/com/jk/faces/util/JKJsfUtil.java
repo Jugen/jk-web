@@ -54,12 +54,12 @@ import javax.servlet.http.HttpSession;
 
 import org.junit.Assert;
 
-import com.jk.annotations.Author;
-import com.jk.exceptions.handler.JKExceptionUtil;
 import com.jk.faces.components.TagAttributeConstants;
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKConversionUtil;
+import com.jk.util.annotations.Author;
+import com.jk.util.exceptions.handler.JKExceptionUtil;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 /**
  * <B>JSFUtil</B> is class that contains JSF helpful methods, that helps to

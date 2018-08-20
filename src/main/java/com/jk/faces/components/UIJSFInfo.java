@@ -24,11 +24,11 @@ import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.jk.annotations.Author;
 import com.jk.faces.util.JKJsfUtil;
-import com.jk.logging.JKLogger;
-import com.jk.logging.JKLoggerFactory;
 import com.jk.util.JKIOUtil;
+import com.jk.util.annotations.Author;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 /**
  * <B>UIJSFInfo</B> is a {@link UIOutput} component that display JSF information
