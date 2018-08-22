@@ -26,7 +26,9 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import com.jk.util.JK;
 import com.jk.util.JKIOUtil;
+import com.jk.util.locale.JKMessage;
 import com.jk.web.util.JKWebUtil;
 
 /**
@@ -34,89 +36,14 @@ import com.jk.web.util.JKWebUtil;
  *
  * @author Jalal Kiswani
  */
-@ManagedBean(name = "msg",eager=true)
+@ManagedBean(name = "msg", eager = true)
 @ApplicationScoped
 public class MBMessages {
 
-	private static MBMessages defaultInstance;
-	private Properties prop = new Properties();
-
-	/**
-	 * Inits the.
-	 */
-	@PostConstruct
 	// ////////////////////////////////////////////////////
-	public void init() {
-		try {
-			
-			InputStream instream = JKIOUtil.getInputStream("/system.properties");
-			if (instream != null) {
-				BufferedReader in = new BufferedReader(new InputStreamReader(instream, "utf8"));
-				String line;
-				while ((line = in.readLine()) != null) {
-					String label[] = line.split("=");
-					if (label.length >= 2) {
-						prop.setProperty(label[0], line.substring(line.indexOf("=") + 1));
-					}
-				}
-			}
-		} catch (IOException e) {
-			System.err.println("Error while loading Lables : " + e);
-			e.printStackTrace();
-		}
+	public String get(String key) {
+		JK.fixMe("Solve the varargs issue with EL");
+		return JKMessage.get(key);
 	}
 
-	/**
-	 * Gets the.
-	 *
-	 * @param key
-	 *            the key
-	 * @return the string
-	 */
-	// ////////////////////////////////////////////////////
-	public String get(Object key) {
-		if (key == null) {
-			return "-";
-		}
-		String label = prop.getProperty(key.toString());
-		if (label == null) {
-			label = key.toString();
-			System.err.println("Missing label : " + key);
-			prop.put(key, key);
-		}
-		return label;
-	}
-
-	/**
-	 * Gets the single instance of MBMessages.
-	 *
-	 * @return single instance of MBMessages
-	 */
-	// ////////////////////////////////////////////////////
-	public static MBMessages getInstance() {
-		FacesContext currentInstance = FacesContext.getCurrentInstance();
-		MBMessages message;
-		if (currentInstance != null) {
-			message = (MBMessages) currentInstance.getExternalContext().getApplicationMap().get("msg");
-		} else {
-			System.err.println("Calling Messages.getInstance() outside Web scopes,return default instance");
-			if (defaultInstance == null) {
-				defaultInstance = new MBMessages();
-			}
-			message = defaultInstance;
-		}
-		return message;
-	}
-
-	/**
-	 * Gets the label.
-	 *
-	 * @param key
-	 *            the key
-	 * @return the label
-	 */
-	// ////////////////////////////////////////////////////
-	public static String getLabel(Object key) {
-		return getInstance().get(key);
-	}
 }

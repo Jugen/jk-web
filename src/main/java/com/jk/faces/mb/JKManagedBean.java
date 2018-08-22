@@ -19,6 +19,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import com.jk.util.exceptions.JKException;
+import com.jk.util.locale.JKMessage;
 
 /**
  * The Class JKManagedBean.
@@ -106,7 +107,7 @@ public class JKManagedBean {
 	 *            the message
 	 */
 	public void success(final String message) {
-		final FacesMessage msg = new FacesMessage(MBMessages.getLabel(message));
+		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage(null,  msg);
 	}
@@ -118,7 +119,7 @@ public class JKManagedBean {
 	 *            the message
 	 */
 	public void warning(final String message) {
-		final FacesMessage msg = new FacesMessage(MBMessages.getLabel(message));
+		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
 		msg.setSeverity(FacesMessage.SEVERITY_WARN);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
