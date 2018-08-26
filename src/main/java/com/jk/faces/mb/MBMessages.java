@@ -31,6 +31,7 @@ import com.jk.util.JKIOUtil;
 import com.jk.util.locale.JKMessage;
 import com.jk.web.util.JKWebUtil;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class MBMessages.
  *
@@ -40,6 +41,12 @@ import com.jk.web.util.JKWebUtil;
 @ApplicationScoped
 public class MBMessages {
 
+	/**
+	 * Gets the.
+	 *
+	 * @param key the key
+	 * @return the string
+	 */
 	// ////////////////////////////////////////////////////
 	public String get(String key) {
 		JK.fixMe("Solve the varargs issue with EL");

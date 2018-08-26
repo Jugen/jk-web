@@ -22,6 +22,7 @@ import javax.faces.view.facelets.TagAttribute;
 import com.jk.faces.util.JKJsfUtil;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKTagAttributeWrapper.
  *
@@ -29,11 +30,22 @@ import com.sun.faces.facelets.tag.TagAttributeImpl;
  */
 public class JKTagAttributeWrapper {
 
+	/** The q name. */
 	private String qName;
+	
+	/** The value. */
 	private String value;
+	
+	/** The local name. */
 	private String localName;
+	
+	/** The namespace. */
 	private String namespace;
+	
+	/** The location. */
 	private Location location;
+	
+	/** The tag attribute. */
 	private TagAttribute tagAttribute;
 
 	/**

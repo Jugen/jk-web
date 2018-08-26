@@ -32,6 +32,7 @@ import com.jk.util.annotations.Author;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * <B>JKTagDecorator</B> this class represents the JK implementation for
  * <code>JKTagDecorator</code>.
@@ -43,6 +44,8 @@ import com.jk.util.logging.JKLoggerFactory;
  */
 @Author(name = "Jalal Kiswani", date = "3/9/2014", version = "1.0")
 public final class JKTagDecorator implements TagDecorator {
+	
+	/** The logger. */
 	JKLogger logger = JKLoggerFactory.getLogger(getClass());
 
 	/** The Constant Instance. */
@@ -108,8 +111,9 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
+	 * Fix links.
 	 *
-	 * @param wrapper
+	 * @param wrapper the wrapper
 	 */
 	protected void fixLinks(final JKTagWrapper wrapper) {
 		if (JKFacesConfigurations.getInstance().isDecorateFixLinks()) {
@@ -133,9 +137,9 @@ public final class JKTagDecorator implements TagDecorator {
 	}
 
 	/**
+	 * Handle mapping.
 	 *
-	 * @param wrapper
-	 * @return
+	 * @param wrapper the wrapper
 	 */
 	protected void handleMapping(final JKTagWrapper wrapper) {
 		if (JKFacesConfigurations.getInstance().isDecorateMapping()) {

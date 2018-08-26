@@ -32,12 +32,15 @@ import com.jk.util.logging.JKLoggerFactory;
 import com.sun.faces.facelets.tag.TagAttributeImpl;
 import com.sun.faces.facelets.tag.TagAttributesImpl;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKTagWrapper.
  *
  * @author Jalal Kiswani
  */
 public class JKTagWrapper {
+	
+	/** The logger. */
 	static JKLogger logger = JKLoggerFactory.getLogger(JKTagWrapper.class);
 	
 	/** The urlable tags. */
@@ -45,11 +48,23 @@ public class JKTagWrapper {
 	
 	/** The links attributes. */
 	public static String LINKS_ATTRIBUTES = "src,href";
+	
+	/** The tag. */
 	private Tag tag;
+	
+	/** The local name. */
 	private String localName;
+	
+	/** The location. */
 	private Location location;
+	
+	/** The namespace. */
 	private String namespace;
+	
+	/** The q name. */
 	private String qName;
+	
+	/** The attributes list. */
 	private final List<JKTagAttributeWrapper> attributesList;
 
 	/**
@@ -101,6 +116,11 @@ public class JKTagWrapper {
 		}
 	}
 
+	/**
+	 * Builds the attribues.
+	 *
+	 * @return the tag attributes
+	 */
 	protected TagAttributes buildAttribues() {
 		final TagAttribute[] attributes = new TagAttributeImpl[this.attributesList.size()];
 		for (int i = 0; i < this.attributesList.size(); i++) {

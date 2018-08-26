@@ -43,6 +43,7 @@ import com.sun.faces.application.ApplicationAssociate;
 import com.sun.faces.facelets.compiler.Compiler;
 import com.sun.faces.facelets.tag.AbstractTagLibrary;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKFacesConfigurations.
  *
@@ -51,9 +52,14 @@ import com.sun.faces.facelets.tag.AbstractTagLibrary;
 @XmlRootElement(name = "jk-faces")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JKFacesConfigurations {
+	
+	/** The Constant META_INF_JK_FACES_CONFIG_XML. */
 	private static final String META_INF_JK_FACES_CONFIG_XML = "/META-INF/jk-faces-config.xml";
 
+	/** The logger. */
 	static JKLogger logger = JKLoggerFactory.getLogger(JKFacesConfigurations.class);
+	
+	/** The instance. */
 	private static JKFacesConfigurations instance;
 
 	/**
@@ -94,20 +100,31 @@ public class JKFacesConfigurations {
 		System.out.println("Done");
 	}
 
+	/** The namespaces. */
 	@XmlElementWrapper(name = "name-spaces")
 	@XmlElement(name = "namespace")
 	List<JKNamespace> namespaces;
 
+	/** The tag mapping. */
 	@XmlElementWrapper(name = "tags-mapping")
 	@XmlElement(name = "tag")
 	List<JKTagMapping> tagMapping;
 
+	/** The decorate. */
 	private Boolean decorate;
 
+	/** The decorate mapping. */
 	private Boolean decorateMapping;
 
+	/** The decorate fix links. */
 	private Boolean decorateFixLinks;
 
+	/**
+	 * After unmarshal.
+	 *
+	 * @param u the u
+	 * @param parent the parent
+	 */
 	// JAXb callback
 	void afterUnmarshal(final Unmarshaller u, final Object parent) {
 		loadAllNamesSpacesFromJsfContainer();
@@ -221,6 +238,9 @@ public class JKFacesConfigurations {
 		return this.tagMapping;
 	}
 
+	/**
+	 * Load all names spaces from jsf container.
+	 */
 	protected void loadAllNamesSpacesFromJsfContainer() {
 		logger.debug("loadAllNamesSpacesFromJsfContainer....");
 		// HashMap<String, Object> publicNameSpaces = new HashMap<>();
@@ -286,6 +306,11 @@ public class JKFacesConfigurations {
 		return decorate;
 	}
 
+	/**
+	 * Checks if is decorate mapping.
+	 *
+	 * @return true, if is decorate mapping
+	 */
 	public boolean isDecorateMapping() {
 		if (decorateMapping == null) {
 			ServletContext context = JKJsfUtil.getServletContext();
@@ -294,6 +319,11 @@ public class JKFacesConfigurations {
 		return decorateMapping;
 	}
 
+	/**
+	 * Checks if is decorate fix links.
+	 *
+	 * @return true, if is decorate fix links
+	 */
 	public boolean isDecorateFixLinks() {
 		if (decorateFixLinks == null) {
 			ServletContext context = JKJsfUtil.getServletContext();

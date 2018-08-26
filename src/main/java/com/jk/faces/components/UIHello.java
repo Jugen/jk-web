@@ -27,6 +27,7 @@ import com.jk.util.annotations.Author;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * <B>JKHello</B> is a UI component that display Hello statement from JK
  * <P/>

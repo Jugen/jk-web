@@ -21,6 +21,7 @@ import javax.faces.context.FacesContext;
 import com.jk.util.exceptions.JKException;
 import com.jk.util.locale.JKMessage;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JKManagedBean.
  *
@@ -125,6 +126,11 @@ public class JKManagedBean {
 	}
 
 
+	/**
+	 * Handle exception.
+	 *
+	 * @param e the e
+	 */
 	protected void handleException(Exception e) {
 		if (e instanceof RuntimeException) {
 			throw (RuntimeException) e;
