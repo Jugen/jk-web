@@ -34,11 +34,6 @@
 			<version>2.2.13</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>3.0.1-b04</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.primefaces</groupId>
@@ -61,11 +56,6 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.sun.el/el-ri -->
-		<dependency>
-			<groupId>com.sun.el</groupId>
-			<artifactId>el-ri</artifactId>
-			<version>1.0</version>
-		</dependency>
 
 
 
