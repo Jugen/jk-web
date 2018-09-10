@@ -248,13 +248,13 @@ public class JKFacesConfigurations {
 		if (currentInstance != null) {
 			final Compiler instance = currentInstance.getCompiler();
 			logger.debug("loading libraries from JSF compiler");
-			final List libraries = JKObjectUtil.getFieldValue(Compiler.class, instance, "libraries");
+			final List libraries = (List) JKObjectUtil.getFieldValue(instance, "libraries");
 			for (final Object libObject : libraries) {
 				if (libObject instanceof AbstractTagLibrary) {
 					final AbstractTagLibrary library = (AbstractTagLibrary) libObject;
 					logger.debug(String.format("fetching %s library", library.getNamespace()));
 					// load components using reflection
-					final Map map = JKObjectUtil.getFieldValue(AbstractTagLibrary.class, library, "factories");
+					final Map map = (Map) JKObjectUtil.getFieldValue(library, "factories");
 					final JKNamespace namespace = getNameSpaceByUrl(library.getNamespace(), true);
 
 					final Set keySet = map.keySet();
