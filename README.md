@@ -1,6 +1,6 @@
-**For more information about this project, check out my article "Java Server Faces in Real-Life Applications" on DZone at:
+**For more information about this project, check out my article "Java Server Faces in Real-Life Applications" on DZone at:**
 <http://dzone.com/articles/java-server-faces-in-real-life-applications> 
-**
+
 
 **Important:** All my repositories are currently under extensive development and refactoring due to working on my Ph.D diseertation. Please come back later for more enhanced documentation and tutorials.  
 Thanks!   
