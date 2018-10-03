@@ -35,7 +35,6 @@ import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.outputlabel.OutputLabel;
 import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.component.tree.Tree;
-import org.primefaces.extensions.component.timepicker.TimePicker;
 
 import com.jk.faces.components.layouts.UIActions;
 import com.jk.faces.components.layouts.UIFields;
@@ -162,7 +161,7 @@ public class JSFComponentFactory {
 	public static UIInput createInput(final String label, final Class type) {
 		UIInput input = null;
 		if (JKObjectUtil.isTime(type)) {
-			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(TimePicker.COMPONENT_TYPE);
+			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(Calendar.COMPONENT_TYPE);
 		} else if (JKObjectUtil.isTimeStamp(type)) {
 			input = (javax.faces.component.UIInput) JSFComponentFactory.createComponent(Calendar.COMPONENT_TYPE);
 		} else if (JKObjectUtil.isDate(type)) {
