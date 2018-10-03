@@ -15,6 +15,8 @@
  */
 package com.jk.faces.mb;
 
+import java.util.Map;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -136,5 +138,16 @@ public class JKManagedBean {
 			throw (RuntimeException) e;
 		}
 		throw new JKException(e);
+	}
+	
+	/**
+	 * Gets the param.
+	 *
+	 * @param paramName the param name
+	 * @return the param
+	 */
+	protected String getParam(String paramName) {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		return params.get(paramName);
 	}
 }
