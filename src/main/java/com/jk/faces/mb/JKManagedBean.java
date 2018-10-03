@@ -19,6 +19,7 @@ import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import com.jk.util.exceptions.JKException;
 import com.jk.util.locale.JKMessage;
@@ -149,5 +150,9 @@ public class JKManagedBean {
 	protected String getParam(String paramName) {
 		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(paramName);
+	}
+	
+	protected String getContextPath() {
+		return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getContextPath();
 	}
 }

@@ -55,6 +55,7 @@ import javax.servlet.http.HttpSession;
 import org.junit.Assert;
 
 import com.jk.faces.components.TagAttributeConstants;
+import com.jk.util.JK;
 import com.jk.util.JKConversionUtil;
 import com.jk.util.annotations.Author;
 import com.jk.util.exceptions.handler.JKExceptionUtil;
@@ -80,14 +81,10 @@ public class JKJsfUtil {
 	/**
 	 * add String <code>contents</code> in HTML row.
 	 *
-	 * @param contents
-	 *            the contents
-	 * @param colSpan
-	 *            the col span
-	 * @param style
-	 *            the style
-	 * @throws IOException
-	 *             if an input/output error occurs during response writing
+	 * @param contents the contents
+	 * @param colSpan  the col span
+	 * @param style    the style
+	 * @throws IOException if an input/output error occurs during response writing
 	 */
 	public static void addFullRow(final String contents, final int colSpan, final String style) throws IOException {
 		if (contents != null) {
@@ -106,14 +103,10 @@ public class JKJsfUtil {
 	/**
 	 * add component <code>comp</code> in HTML row.
 	 *
-	 * @param comp
-	 *            the comp
-	 * @param colSpan
-	 *            the col span
-	 * @param style
-	 *            the style
-	 * @throws IOException
-	 *             if an input/output error occurs during response writing
+	 * @param comp    the comp
+	 * @param colSpan the col span
+	 * @param style   the style
+	 * @throws IOException if an input/output error occurs during response writing
 	 */
 	public static void addFullRow(final UIComponent comp, final int colSpan, final String style) throws IOException {
 		if (comp != null) {
@@ -131,19 +124,13 @@ public class JKJsfUtil {
 	}
 
 	/**
-	 * Appends value to an existing attribute in component
-	 * <code>component</code>.
+	 * Appends value to an existing attribute in component <code>component</code>.
 	 *
-	 * @param component
-	 *            the component
-	 * @param sourceKey
-	 *            the source key
-	 * @param targetKey
-	 *            the target key
-	 * @param valueToAppend
-	 *            the value to append
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @param component     the component
+	 * @param sourceKey     the source key
+	 * @param targetKey     the target key
+	 * @param valueToAppend the value to append
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void appendAttribute(final UIComponent component, final String sourceKey, final String targetKey, final String valueToAppend)
 			throws IOException {
@@ -159,13 +146,10 @@ public class JKJsfUtil {
 	/**
 	 * Builds the view.
 	 *
-	 * @param context
-	 *            the context
-	 * @param viewId
-	 *            the view id
+	 * @param context the context
+	 * @param viewId  the view id
 	 * @return the string
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static String buildView(final FacesContext context, final String viewId) throws IOException {
 		final UIViewRoot view = JKJsfUtil.createView(viewId);
@@ -188,11 +172,9 @@ public class JKJsfUtil {
 	/**
 	 * Builds the view.
 	 *
-	 * @param viewId
-	 *            the view id
+	 * @param viewId the view id
 	 * @return the string
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static String buildView(final String viewId) throws IOException {
 		return JKJsfUtil.buildView(FacesContext.getCurrentInstance(), viewId);
@@ -201,8 +183,7 @@ public class JKJsfUtil {
 	/**
 	 * Calculate checksum.
 	 *
-	 * @param component
-	 *            the component
+	 * @param component the component
 	 * @return the long
 	 */
 	public static long calculateChecksum(final UIComponent component) {
@@ -257,10 +238,8 @@ public class JKJsfUtil {
 	/**
 	 * Creates the method expression.
 	 *
-	 * @param expression
-	 *            the expression
-	 * @param returnType
-	 *            the return type
+	 * @param expression the expression
+	 * @param returnType the return type
 	 * @return the method expression
 	 */
 	public static MethodExpression createMethodExpression(final String expression, final Class<?> returnType) {
@@ -274,8 +253,7 @@ public class JKJsfUtil {
 	/**
 	 * Creates the value exception.
 	 *
-	 * @param value
-	 *            the value
+	 * @param value the value
 	 * @return the value expression
 	 */
 	public static ValueExpression createValueException(final String value) {
@@ -285,10 +263,8 @@ public class JKJsfUtil {
 	/**
 	 * Creates the value exception.
 	 *
-	 * @param value
-	 *            the value
-	 * @param clas
-	 *            the clas
+	 * @param value the value
+	 * @param clas  the clas
 	 * @return the value expression
 	 */
 	public static ValueExpression createValueException(final String value, final Class<?> clas) {
@@ -308,8 +284,7 @@ public class JKJsfUtil {
 	/**
 	 * Creates the value exception with value.
 	 *
-	 * @param originalValue
-	 *            the original value
+	 * @param originalValue the original value
 	 * @return the value expression
 	 */
 	public static ValueExpression createValueExceptionWithValue(final Object originalValue) {
@@ -320,8 +295,7 @@ public class JKJsfUtil {
 	/**
 	 * Creates the view.
 	 *
-	 * @param viewId
-	 *            the view id
+	 * @param viewId the view id
 	 * @return the UI view root
 	 */
 	public static UIViewRoot createView(final String viewId) {
@@ -340,8 +314,7 @@ public class JKJsfUtil {
 	/**
 	 * Error.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public static void error(final String message) {
 		final FacesMessage msg = new FacesMessage(message);
@@ -352,8 +325,7 @@ public class JKJsfUtil {
 	/**
 	 * Evaluate expression to object.
 	 *
-	 * @param el
-	 *            the el
+	 * @param el the el
 	 * @return the object
 	 */
 	public static Object evaluateExpressionToObject(final String el) {
@@ -367,8 +339,7 @@ public class JKJsfUtil {
 	/**
 	 * Evaluate expression to object.
 	 *
-	 * @param valueExpression
-	 *            the value expression
+	 * @param valueExpression the value expression
 	 * @return the object
 	 */
 	public static Object evaluateExpressionToObject(final ValueExpression valueExpression) {
@@ -380,17 +351,14 @@ public class JKJsfUtil {
 
 	/**
 	 * Attempts to find a value associated with the specified <code>key</code> ,
-	 * using the <code> stateHelper </code> if no such value is found it gets
-	 * the attribute value, in component <code>component</code> with Key
+	 * using the <code> stateHelper </code> if no such value is found it gets the
+	 * attribute value, in component <code>component</code> with Key
 	 * <code>key</code> if the attribute's value is <code>null</code> it return
 	 * <code>null</code>.
 	 *
-	 * @param component
-	 *            the component
-	 * @param stateHelper
-	 *            the state helper
-	 * @param key
-	 *            the key
+	 * @param component   the component
+	 * @param stateHelper the state helper
+	 * @param key         the key
 	 * @return {@link Object}
 	 */
 	public static Object getAttribute(final UIComponent component, final StateHelper stateHelper, final String key) {
@@ -400,15 +368,12 @@ public class JKJsfUtil {
 
 	/**
 	 * gets the attribute value, in component <code>uiComponent</code> with Key
-	 * <code>key</code> if the attribute's value is <code>null</code> it return
-	 * the value of <code>defaultValue</code>.
+	 * <code>key</code> if the attribute's value is <code>null</code> it return the
+	 * value of <code>defaultValue</code>.
 	 *
-	 * @param component
-	 *            the component
-	 * @param key
-	 *            the key
-	 * @param defaultValue
-	 *            the default value
+	 * @param component    the component
+	 * @param key          the key
+	 * @param defaultValue the default value
 	 * @return the attribute
 	 */
 	public static Object getAttribute(final UIComponent component, final String key, final Object defaultValue) {
@@ -422,12 +387,9 @@ public class JKJsfUtil {
 	 * if the attribute's value is <code>null</code> it return the value of
 	 * <code>defaultValue</code>.
 	 *
-	 * @param uiComponent
-	 *            the ui component
-	 * @param key
-	 *            the key
-	 * @param defaultValue
-	 *            the default value
+	 * @param uiComponent  the ui component
+	 * @param key          the key
+	 * @param defaultValue the default value
 	 * @return attribute value
 	 */
 	public static boolean getBooleanAttribute(final UIComponent uiComponent, final String key, final boolean defaultValue) {
@@ -437,8 +399,7 @@ public class JKJsfUtil {
 	/**
 	 * Gets the checksum key.
 	 *
-	 * @param currentView
-	 *            the current view
+	 * @param currentView the current view
 	 * @return the checksum key
 	 */
 	private static String getChecksumKey(final String currentView) {
@@ -448,10 +409,8 @@ public class JKJsfUtil {
 	/**
 	 * Gets the component attribute.
 	 *
-	 * @param comp
-	 *            the comp
-	 * @param attributeName
-	 *            the attribute name
+	 * @param comp          the comp
+	 * @param attributeName the attribute name
 	 * @return the component attribute
 	 */
 	public static Object getComponentAttribute(final UIComponent comp, final String attributeName) {
@@ -462,8 +421,7 @@ public class JKJsfUtil {
 	/**
 	 * Gets the component map.
 	 *
-	 * @param comp
-	 *            the comp
+	 * @param comp the comp
 	 * @return the component map
 	 */
 	private static Map getComponentMap(final UIComponent comp) {
@@ -540,12 +498,9 @@ public class JKJsfUtil {
 	 * if the attribute's value is <code>null</code> it return the value of
 	 * <code>defaultValue</code>.
 	 *
-	 * @param component
-	 *            the component
-	 * @param key
-	 *            the key
-	 * @param defaultValue
-	 *            the default value
+	 * @param component    the component
+	 * @param key          the key
+	 * @param defaultValue the default value
 	 * @return attribute value
 	 */
 	public static int getIntegerAttribute(final UIComponent component, final String key, final Object defaultValue) {
@@ -579,10 +534,8 @@ public class JKJsfUtil {
 	/**
 	 * Gets the request attribute as boolean.
 	 *
-	 * @param key
-	 *            the key
-	 * @param defaultValue
-	 *            the default value
+	 * @param key          the key
+	 * @param defaultValue the default value
 	 * @return the request attribute as boolean
 	 */
 	public static boolean getRequestAttributeAsBoolean(final String key, final Object defaultValue) {
@@ -659,12 +612,9 @@ public class JKJsfUtil {
 	/**
 	 * Sets the component attribute.
 	 *
-	 * @param comp
-	 *            the comp
-	 * @param attributeName
-	 *            the attribute name
-	 * @param atributeValue
-	 *            the atribute value
+	 * @param comp          the comp
+	 * @param attributeName the attribute name
+	 * @param atributeValue the atribute value
 	 */
 	public static void setComponentAttribute(final UIComponent comp, final String attributeName, final Object atributeValue) {
 		final Map componentMap = JKJsfUtil.getComponentMap(comp);
@@ -675,10 +625,8 @@ public class JKJsfUtil {
 	/**
 	 * Sets the request attribute.
 	 *
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
+	 * @param key   the key
+	 * @param value the value
 	 */
 	public static void setRequestAttribute(final String key, final Object value) {
 		JKJsfUtil.getRequestMap().put(key, value);
@@ -687,10 +635,8 @@ public class JKJsfUtil {
 	/**
 	 * Sets the session attribute.
 	 *
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
+	 * @param key   the key
+	 * @param value the value
 	 */
 	public static void setSessionAttribute(final String key, final Object value) {
 		JKJsfUtil.getSessionMap().put(key, value);
@@ -699,8 +645,7 @@ public class JKJsfUtil {
 	/**
 	 * Success.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public static void success(final String message) {
 
@@ -712,8 +657,7 @@ public class JKJsfUtil {
 	/**
 	 * Visit view.
 	 *
-	 * @param component
-	 *            the component
+	 * @param component the component
 	 * @return the UI view visitor
 	 */
 	public static UIFacesVisitor visitComponent(final UIComponent component) {
@@ -734,8 +678,7 @@ public class JKJsfUtil {
 	/**
 	 * Visit view.
 	 *
-	 * @param viewId
-	 *            the view id
+	 * @param viewId the view id
 	 * @return the UI view visitor
 	 */
 	public static UIFacesVisitor visitView(final String viewId) {
@@ -748,8 +691,7 @@ public class JKJsfUtil {
 	/**
 	 * Warning.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public static void warning(final String message) {
 		final FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning", message);
@@ -760,14 +702,10 @@ public class JKJsfUtil {
 	 * writes an attribute to component <code>component</code> with key
 	 * <code>key</code> and default value <code>defaultValue</code>.
 	 *
-	 * @param component
-	 *            the component
-	 * @param key
-	 *            the key
-	 * @param defaultValue
-	 *            the default value
-	 * @throws IOException
-	 *             if an input/output error occurs during response writing
+	 * @param component    the component
+	 * @param key          the key
+	 * @param defaultValue the default value
+	 * @throws IOException if an input/output error occurs during response writing
 	 */
 	public static void writeAttribue(final UIComponent component, final String key, final Object defaultValue) throws IOException {
 		JKJsfUtil.writeAttribue(component, key, null, defaultValue);
@@ -775,23 +713,19 @@ public class JKJsfUtil {
 
 	/**
 	 * reads the value of with Key <code>sourceKey</code> in component
-	 * <code>component</code>, then gets the response writer and add attribute
-	 * with with Key <code>targetKey</code> and value equal to the retrieved
-	 * previous value in case the retrieved value equal null then the value of
+	 * <code>component</code>, then gets the response writer and add attribute with
+	 * with Key <code>targetKey</code> and value equal to the retrieved previous
+	 * value in case the retrieved value equal null then the value of
 	 * <code>defaultValue</code> will be used instead Also in case
-	 * <code>targetKey</code> equal null then <code>sourceKey</code> will be
-	 * used instead.
+	 * <code>targetKey</code> equal null then <code>sourceKey</code> will be used
+	 * instead.
 	 *
-	 * @param component
-	 *            the component
-	 * @param sourceKey
-	 *            the attribute's key in the UI component
-	 * @param targetKey
-	 *            the attribute's key that will be used to add the attribute
-	 * @param defaultValue
-	 *            the default value
-	 * @throws IOException
-	 *             if an input/output error occurs during response writing
+	 * @param component    the component
+	 * @param sourceKey    the attribute's key in the UI component
+	 * @param targetKey    the attribute's key that will be used to add the
+	 *                     attribute
+	 * @param defaultValue the default value
+	 * @throws IOException if an input/output error occurs during response writing
 	 */
 	public static void writeAttribue(final UIComponent component, final String sourceKey, final String targetKey, final Object defaultValue)
 			throws IOException {
@@ -802,8 +736,7 @@ public class JKJsfUtil {
 	/**
 	 * Invalidate session.
 	 *
-	 * @param keepAttributes
-	 *            the keep attributes
+	 * @param keepAttributes the keep attributes
 	 */
 	public static void invalidateSession(String... keepAttributes) {
 		if (FacesContext.getCurrentInstance() != null) {
@@ -822,8 +755,7 @@ public class JKJsfUtil {
 	/**
 	 * Gets the local name from Q name.
 	 *
-	 * @param qName
-	 *            the q name
+	 * @param qName the q name
 	 * @return the local name from Q name
 	 */
 	public static String getLocalNameFromQName(final String qName) {
@@ -834,8 +766,7 @@ public class JKJsfUtil {
 	/**
 	 * Gets the namespace letter from Q name.
 	 *
-	 * @param qName
-	 *            the q name
+	 * @param qName the q name
 	 * @return the namespace letter from Q name
 	 */
 	public static String getNamespaceLetterFromQName(final String qName) {
@@ -850,8 +781,7 @@ public class JKJsfUtil {
 	/**
 	 * Find component in root.
 	 *
-	 * @param id
-	 *            the id
+	 * @param id the id
 	 * @return the UI component
 	 */
 	public static UIComponent findComponentInRoot(String id) {
@@ -869,10 +799,8 @@ public class JKJsfUtil {
 	/**
 	 * Find component.
 	 *
-	 * @param base
-	 *            the base
-	 * @param id
-	 *            the id
+	 * @param base the base
+	 * @param id   the id
 	 * @return the UI component
 	 */
 	public static UIComponent findComponent(UIComponent base, String id) {
@@ -899,10 +827,8 @@ public class JKJsfUtil {
 	/**
 	 * Find components.
 	 *
-	 * @param parent
-	 *            the parent
-	 * @param type
-	 *            the type
+	 * @param parent the parent
+	 * @param type   the type
 	 * @return the list
 	 */
 	///////////////////////////////////////////////////////////////////////////
@@ -939,12 +865,10 @@ public class JKJsfUtil {
 	/**
 	 * Redirect.
 	 *
-	 * @param path
-	 *            the path
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @param path the path
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void redirect(String path) throws IOException {
+	public static void redirect(String path) {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
 		if (currentInstance != null) {
 			// ExternalContext externalContext =
@@ -962,16 +886,12 @@ public class JKJsfUtil {
 	/**
 	 * add full.
 	 *
-	 * @param path
-	 *            the path
-	 * @param request
-	 *            the request
-	 * @param response
-	 *            relative to context
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @param path     the path
+	 * @param request  the request
+	 * @param response relative to context
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void redirect(String path, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static void redirect(String path, HttpServletRequest request, HttpServletResponse response) {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
 		if (currentInstance != null) {
 			request = (HttpServletRequest) currentInstance.getExternalContext().getRequest();
@@ -981,31 +901,34 @@ public class JKJsfUtil {
 		// if (currentInstance != null) {
 		// }
 		String facesRequest = request.getHeader("Faces-Request");
-		if (facesRequest != null && "partial/ajax".equals(facesRequest)) {
-			if (currentInstance != null) {
-				currentInstance.getExternalContext().redirect(fullPath);
-				currentInstance.responseComplete();
-			} else {
-				// // It's a JSF ajax request.
-				// // the below will useful in case of ajax requests which
-				// doesn't
-				// // Recognize redirect
+		try {
+			if (facesRequest != null && "partial/ajax".equals(facesRequest)) {
+				if (currentInstance != null) {
+					currentInstance.getExternalContext().redirect(fullPath);
+					currentInstance.responseComplete();
+				} else {
+					// // It's a JSF ajax request.
+					// // the below will useful in case of ajax requests which
+					// doesn't
+					// // Recognize redirect
 
-				response.setContentType("text/xml");
-				response.getWriter().append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
-						.printf("<partial-response><redirect url=\"%s\"></redirect></partial-response>", fullPath);
+					response.setContentType("text/xml");
+					response.getWriter().append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
+							.printf("<partial-response><redirect url=\"%s\"></redirect></partial-response>", fullPath);
+				}
+			} else {
+				// normal full request
+				response.sendRedirect(fullPath);
 			}
-		} else {
-			// normal full request
-			response.sendRedirect(fullPath);
+		} catch (Exception e) {
+			JK.throww(e);
 		}
 	}
 
 	/**
 	 * Force clear cache.
 	 *
-	 * @param resp
-	 *            the resp
+	 * @param resp the resp
 	 */
 	public static void forceClearCache(ServletResponse resp) {
 		HttpServletResponse response = (HttpServletResponse) resp;
