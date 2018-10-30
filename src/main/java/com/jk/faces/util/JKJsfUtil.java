@@ -947,4 +947,8 @@ public class JKJsfUtil {
 		return (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 	}
 
+	public static String getServletContextParamter(String param) {
+		return getServletContext().getInitParameter(param);
+	}
+
 }
