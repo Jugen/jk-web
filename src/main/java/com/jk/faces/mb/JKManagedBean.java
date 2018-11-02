@@ -152,6 +152,11 @@ public class JKManagedBean {
 		return params.get(paramName);
 	}
 	
+	/**
+	 * Gets the context path.
+	 *
+	 * @return the context path
+	 */
 	protected String getContextPath() {
 		return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getContextPath();
 	}

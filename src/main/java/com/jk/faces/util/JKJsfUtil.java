@@ -866,7 +866,6 @@ public class JKJsfUtil {
 	 * Redirect.
 	 *
 	 * @param path the path
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void redirect(String path) {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
@@ -889,7 +888,6 @@ public class JKJsfUtil {
 	 * @param path     the path
 	 * @param request  the request
 	 * @param response relative to context
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void redirect(String path, HttpServletRequest request, HttpServletResponse response) {
 		FacesContext currentInstance = FacesContext.getCurrentInstance();
@@ -947,6 +945,12 @@ public class JKJsfUtil {
 		return (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 	}
 
+	/**
+	 * Gets the servlet context paramter.
+	 *
+	 * @param param the param
+	 * @return the servlet context paramter
+	 */
 	public static String getServletContextParamter(String param) {
 		return getServletContext().getInitParameter(param);
 	}
