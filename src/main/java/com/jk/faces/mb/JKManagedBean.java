@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
 
 import com.jk.util.exceptions.JKException;
 import com.jk.util.locale.JKMessage;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -33,6 +35,7 @@ import com.jk.util.locale.JKMessage;
  * @author Jalal Kiswani
  */
 public class JKManagedBean {
+	protected JKLogger logger=JKLoggerFactory.getLogger(getClass());
 
 	/**
 	 * Error.
@@ -41,7 +44,7 @@ public class JKManagedBean {
 	 *            the message
 	 */
 	public void error(final String message) {
-		final FacesMessage msg = new FacesMessage(message);
+		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
 		msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
