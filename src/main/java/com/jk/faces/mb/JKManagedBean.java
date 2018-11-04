@@ -18,6 +18,7 @@ package com.jk.faces.mb;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -52,7 +53,7 @@ public class JKManagedBean {
 	 * @return the from appliaction
 	 */
 	public Object getFromAppliaction(final String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().get(name);
+		return context().getApplicationMap().get(name);
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class JKManagedBean {
 	 * @return the from request
 	 */
 	public Object getFromRequest(final String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get(name);
+		return context().getRequestMap().get(name);
 	}
 
 	/**
@@ -74,7 +75,7 @@ public class JKManagedBean {
 	 * @return the from session
 	 */
 	public Object getFromSession(final String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(name);
+		return context().getSessionMap().get(name);
 	}
 
 	/**
@@ -85,7 +86,15 @@ public class JKManagedBean {
 	 * @return the paramter from request
 	 */
 	public String getParamterFromRequest(final String name) {
-		return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(name);
+		return context().getRequestParameterMap().get(name);
+	}
+
+	protected ExternalContext context() {
+		return FacesContext.getCurrentInstance().getExternalContext();
+	}
+	
+	public HttpServletRequest request() {
+		return (HttpServletRequest) context().getRequest();
 	}
 
 	/**
@@ -148,7 +157,7 @@ public class JKManagedBean {
 	 * @return the param
 	 */
 	protected String getParam(String paramName) {
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		Map<String, String> params = context().getRequestParameterMap();
 		return params.get(paramName);
 	}
 	
@@ -158,6 +167,6 @@ public class JKManagedBean {
 	 * @return the context path
 	 */
 	protected String getContextPath() {
-		return ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getContextPath();
+		return ((HttpServletRequest)context().getRequest()).getContextPath();
 	}
 }

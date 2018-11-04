@@ -26,9 +26,9 @@ import com.jk.util.JKDateTimeUtil;
 /**
  * The Class MB_Util.
  */
-@ManagedBean(name="util")
+@ManagedBean(name = "util")
 @ApplicationScoped
-public class MB_Util {
+public class MB_Util extends JKManagedBean {
 
 	/**
 	 * Reload random.
@@ -36,10 +36,10 @@ public class MB_Util {
 	 * @return the int
 	 */
 	public int reloadRandom() {
-		//TODO: make this return same value in production envi.
+		JK.fixMe("Disable this in production env");
 		return JK.randomNumber();
 	}
-	
+
 	/**
 	 * Current year.
 	 *
@@ -47,5 +47,14 @@ public class MB_Util {
 	 */
 	public int currentYear() {
 		return JKDateTimeUtil.getCurrentYear();
+	}
+
+	public String removePageName() {
+		String requestURI = request().getRequestURI();
+		int lastIndexOfSlash = requestURI.lastIndexOf("/");
+		if (lastIndexOfSlash == -1) {
+			return "";
+		}
+		return requestURI.substring(0, lastIndexOfSlash);
 	}
 }
