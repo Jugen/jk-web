@@ -35,13 +35,11 @@ import com.jk.util.logging.JKLoggerFactory;
  * @author Jalal Kiswani
  */
 public class JKManagedBean {
-	protected JKLogger logger=JKLoggerFactory.getLogger(getClass());
-
+	protected JKLogger logger = JKLoggerFactory.getLogger(getClass());
 	/**
 	 * Error.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public void error(final String message) {
 		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
@@ -52,8 +50,7 @@ public class JKManagedBean {
 	/**
 	 * Gets the from appliaction.
 	 *
-	 * @param name
-	 *            the name
+	 * @param name the name
 	 * @return the from appliaction
 	 */
 	public Object getFromAppliaction(final String name) {
@@ -63,8 +60,7 @@ public class JKManagedBean {
 	/**
 	 * Gets the from request.
 	 *
-	 * @param name
-	 *            the name
+	 * @param name the name
 	 * @return the from request
 	 */
 	public Object getFromRequest(final String name) {
@@ -74,8 +70,7 @@ public class JKManagedBean {
 	/**
 	 * Gets the from session.
 	 *
-	 * @param name
-	 *            the name
+	 * @param name the name
 	 * @return the from session
 	 */
 	public Object getFromSession(final String name) {
@@ -85,8 +80,7 @@ public class JKManagedBean {
 	/**
 	 * Gets the paramter from request.
 	 *
-	 * @param name
-	 *            the name
+	 * @param name the name
 	 * @return the paramter from request
 	 */
 	public String getParamterFromRequest(final String name) {
@@ -96,11 +90,11 @@ public class JKManagedBean {
 	protected ExternalContext context() {
 		return FacesContext.getCurrentInstance().getExternalContext();
 	}
-	
+
 	public HttpServletRequest request() {
 		return (HttpServletRequest) context().getRequest();
 	}
-	
+
 	public HttpSession session() {
 		return (HttpSession) context().getSession(true);
 	}
@@ -108,8 +102,7 @@ public class JKManagedBean {
 	/**
 	 * Redirect.
 	 *
-	 * @param outcome
-	 *            the outcome
+	 * @param outcome the outcome
 	 * @return the string
 	 */
 	public String redirect(String outcome) {
@@ -124,27 +117,24 @@ public class JKManagedBean {
 	/**
 	 * Success.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public void success(final String message) {
 		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage(null,  msg);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
 	/**
 	 * Warning.
 	 *
-	 * @param message
-	 *            the message
+	 * @param message the message
 	 */
 	public void warning(final String message) {
 		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
 		msg.setSeverity(FacesMessage.SEVERITY_WARN);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-
 
 	/**
 	 * Handle exception.
@@ -157,7 +147,7 @@ public class JKManagedBean {
 		}
 		throw new JKException(e);
 	}
-	
+
 	/**
 	 * Gets the param.
 	 *
@@ -168,13 +158,13 @@ public class JKManagedBean {
 		Map<String, String> params = context().getRequestParameterMap();
 		return params.get(paramName);
 	}
-	
+
 	/**
 	 * Gets the context path.
 	 *
 	 * @return the context path
 	 */
 	protected String getContextPath() {
-		return ((HttpServletRequest)context().getRequest()).getContextPath();
+		return ((HttpServletRequest) context().getRequest()).getContextPath();
 	}
 }
