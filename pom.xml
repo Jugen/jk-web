@@ -60,11 +60,6 @@
 		<!-- http://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.9</version>
-		</dependency>
-		<dependency>
 			<groupId>com.jalalkiswani</groupId>
 			<artifactId>jk-web</artifactId>
 			<version>${project.version}</version>

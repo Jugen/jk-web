@@ -22,9 +22,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpSession;
 
-import org.owasp.csrfguard.CsrfGuard;
-import org.owasp.csrfguard.util.RandomGenerator;
-
+import com.jk.util.JK;
 import com.sun.faces.renderkit.html_basic.FormRenderer;
 
 // TODO: Auto-generated Javadoc
@@ -46,51 +44,52 @@ public class JKFormRenderer extends FormRenderer {
 	 */
 	@Override
 	public void encodeEnd(final FacesContext context, final UIComponent component) throws IOException {
-		final HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		final CsrfGuard csrfGuard = CsrfGuard.getInstance();
-		final ResponseWriter writer = context.getResponseWriter();
-		String token = (String) session.getAttribute(csrfGuard.getSessionKey());
-		if (FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
-			token = updateToken(session, csrfGuard);
-			writer.startElement("script", component);
-			writer.append("tokenValue='".concat(token).concat("';"));
-			// TODO : check me
-			writer.append("if(typeof(injectTokens) == \"function\") injectTokens();");
-			writer.endElement("script");
-		}
-		writer.startElement("input", component);
-		writer.writeAttribute("type", "hidden", "type");
-		writer.writeAttribute("name", csrfGuard.getTokenName(), "name");
-		writer.writeAttribute("value", "Token_Value", "value");
-		writer.endElement("input");
-
-		super.encodeEnd(context, component);
+		JK.implementMe();
+//		final HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+//		final CsrfGuard csrfGuard = CsrfGuard.getInstance();
+//		final ResponseWriter writer = context.getResponseWriter();
+//		String token = (String) session.getAttribute(csrfGuard.getSessionKey());
+//		if (FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
+//			token = updateToken(session, csrfGuard);
+//			writer.startElement("script", component);
+//			writer.append("tokenValue='".concat(token).concat("';"));
+//			// TODO : check me
+//			writer.append("if(typeof(injectTokens) == \"function\") injectTokens();");
+//			writer.endElement("script");
+//		}
+//		writer.startElement("input", component);
+//		writer.writeAttribute("type", "hidden", "type");
+//		writer.writeAttribute("name", csrfGuard.getTokenName(), "name");
+//		writer.writeAttribute("value", "Token_Value", "value");
+//		writer.endElement("input");
+//
+//		super.encodeEnd(context, component);
 	}
 
-	/**
-	 * Update token.
-	 *
-	 * @param session
-	 *            the session
-	 * @param csrfGuard
-	 *            the csrf guard
-	 * @return the string
-	 */
-	private String updateToken(final HttpSession session, final CsrfGuard csrfGuard) {
-		Object tokenFromSession;
-		try {
-			tokenFromSession = RandomGenerator.generateRandomId(csrfGuard.getPrng(), csrfGuard.getTokenLength());
-		} catch (final Exception e) {
-			throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
-		}
-
-		session.setAttribute(csrfGuard.getSessionKey(), tokenFromSession);
-
-		final String token = (String) session.getAttribute(csrfGuard.getSessionKey());
-		System.err.println("@Token : " + token);
-		if (token == null) {
-			throw new IllegalStateException("OWASP_CSRF is not configured correctly");
-		}
-		return token;
-	}
+//	/**
+//	 * Update token.
+//	 *
+//	 * @param session
+//	 *            the session
+//	 * @param csrfGuard
+//	 *            the csrf guard
+//	 * @return the string
+//	 */
+//	private String updateToken(final HttpSession session, final CsrfGuard csrfGuard) {
+//		Object tokenFromSession;
+//		try {
+//			tokenFromSession = RandomGenerator.generateRandomId(csrfGuard.getPrng(), csrfGuard.getTokenLength());
+//		} catch (final Exception e) {
+//			throw new RuntimeException(String.format("unable to generate the random token - %s", e.getLocalizedMessage()), e);
+//		}
+//
+//		session.setAttribute(csrfGuard.getSessionKey(), tokenFromSession);
+//
+//		final String token = (String) session.getAttribute(csrfGuard.getSessionKey());
+//		System.err.println("@Token : " + token);
+//		if (token == null) {
+//			throw new IllegalStateException("OWASP_CSRF is not configured correctly");
+//		}
+//		return token;
+//	}
 }
