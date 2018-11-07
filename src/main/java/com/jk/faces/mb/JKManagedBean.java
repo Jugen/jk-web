@@ -23,6 +23,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.exceptions.JKException;
 import com.jk.util.locale.JKMessage;
 import com.jk.util.logging.JKLogger;
@@ -167,4 +168,28 @@ public class JKManagedBean {
 	protected String getContextPath() {
 		return ((HttpServletRequest) context().getRequest()).getContextPath();
 	}
+	
+	/**
+	 * Gets the context param.
+	 *
+	 * @param param         the param
+	 * @param defaultcValue the defaultc value
+	 * @return the context param
+	 */
+	public String getContextParam(String param, String defaultcValue) {
+		String value = JKJsfUtil.getServletContextParamter(param);
+		if (value == null) {
+			return defaultcValue;
+		}
+		return value;
+	}
+	
+	/**
+	 * Checks if is development mode.
+	 *
+	 * @return true, if is development mode
+	 */
+	public boolean isDevelopmentMode() {
+		return getContextParam("facelets.DEVELOPMENT", "true").equals("true");
+	}	
 }

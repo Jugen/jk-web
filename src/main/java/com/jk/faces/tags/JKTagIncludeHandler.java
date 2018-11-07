@@ -1,0 +1,68 @@
+package com.jk.faces.tags;
+
+import com.jk.faces.util.JKJsfUtil;
+import com.jk.util.JKIOUtil;
+import com.sun.faces.facelets.el.VariableMapperWrapper;
+import com.sun.faces.util.FacesLogger;
+
+import javax.el.VariableMapper;
+import javax.faces.component.UIComponent;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.TagAttribute;
+import javax.faces.view.facelets.TagAttributeException;
+import javax.faces.view.facelets.TagConfig;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.view.facelets.TagException;
+import javax.faces.view.facelets.TagHandler;
+
+public final class JKTagIncludeHandler extends TagHandler {
+
+	private static final Logger log = FacesLogger.FACELETS_INCLUDE.getLogger();
+
+	private final TagAttribute value;
+
+	/**
+	 * @param config
+	 */
+	public JKTagIncludeHandler(TagConfig config) {
+		super(config);
+		TagAttribute attr = null;
+		attr = this.getAttribute("value");
+		if (null == attr) {
+			throw new TagException(this.tag, "Attribute 'src', 'file' or 'page' is required");
+		}
+		this.value = attr;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.sun.facelets.FaceletHandler#apply(com.sun.facelets.FaceletContext,
+	 * javax.faces.component.UIComponent)
+	 */
+	public void apply(FaceletContext ctx, UIComponent parent) throws IOException {
+		String value =  this.value.getValue(ctx);//(String) JKJsfUtil.evaluateExpressionToObject(this.value.getValue(ctx));
+		if (!value.equals("")) {
+			File file = JKIOUtil.writeDataToTempFile(value, ".xhtml");
+
+			VariableMapper orig = ctx.getVariableMapper();
+			ctx.setVariableMapper(new VariableMapperWrapper(orig));
+			try {
+				this.nextHandler.apply(ctx, null);
+				ctx.includeFacelet(parent, file.toURL());
+			} catch (IOException e) {
+				if (log.isLoggable(Level.FINE)) {
+					log.log(Level.FINE, e.toString(), e);
+				}
+				throw new TagAttributeException(this.tag, this.value);
+			} finally {
+				ctx.setVariableMapper(orig);
+				file.delete();
+			}
+		}
+	}
+}
