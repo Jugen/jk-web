@@ -21,6 +21,7 @@ import javax.faces.bean.ManagedBean;
 
 import com.jk.util.JK;
 import com.jk.util.JKDateTimeUtil;
+import com.jk.web.util.JKWebUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,8 +37,10 @@ public class MB_Util extends JKManagedBean {
 	 * @return the int
 	 */
 	public int reloadRandom() {
-		JK.fixMe("Disable this in production env");
-		return JK.randomNumber();
+		if (isDebug()) {
+			return JK.randomNumber();
+		}
+		return 1;
 	}
 
 	/**

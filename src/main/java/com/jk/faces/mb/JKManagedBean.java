@@ -47,7 +47,7 @@ public class JKManagedBean {
 	 *
 	 * @param message the message
 	 */
-	public void error( String message, boolean useLabel) {
+	public void error(String message, boolean useLabel) {
 		if (useLabel) {
 			message = JKMessage.get(message);
 		}
@@ -200,4 +200,9 @@ public class JKManagedBean {
 	public boolean isDevelopmentMode() {
 		return getContextParam("facelets.DEVELOPMENT", "true").equals("true");
 	}
+
+	protected boolean isDebug() {
+		return request().getServerName().equals("localhost");
+	}
+
 }
