@@ -37,13 +37,21 @@ import com.jk.util.logging.JKLoggerFactory;
  */
 public class JKManagedBean {
 	protected JKLogger logger = JKLoggerFactory.getLogger(getClass());
+
+	public void error(final String message) {
+		error(message, true);
+	}
+
 	/**
 	 * Error.
 	 *
 	 * @param message the message
 	 */
-	public void error(final String message) {
-		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
+	public void error( String message, boolean useLabel) {
+		if (useLabel) {
+			message = JKMessage.get(message);
+		}
+		final FacesMessage msg = new FacesMessage(message);
 		msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
@@ -168,7 +176,7 @@ public class JKManagedBean {
 	protected String getContextPath() {
 		return ((HttpServletRequest) context().getRequest()).getContextPath();
 	}
-	
+
 	/**
 	 * Gets the context param.
 	 *
@@ -183,7 +191,7 @@ public class JKManagedBean {
 		}
 		return value;
 	}
-	
+
 	/**
 	 * Checks if is development mode.
 	 *
@@ -191,5 +199,5 @@ public class JKManagedBean {
 	 */
 	public boolean isDevelopmentMode() {
 		return getContextParam("facelets.DEVELOPMENT", "true").equals("true");
-	}	
+	}
 }
