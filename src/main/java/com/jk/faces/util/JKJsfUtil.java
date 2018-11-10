@@ -17,6 +17,8 @@ package com.jk.faces.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -35,6 +37,8 @@ import javax.faces.FactoryFinder;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewHandler;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.component.StateHelper;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
@@ -61,6 +65,7 @@ import com.jk.util.annotations.Author;
 import com.jk.util.exceptions.handler.JKExceptionUtil;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
+import com.sun.faces.mgbean.ManagedBeanInfo;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -954,5 +959,6 @@ public class JKJsfUtil {
 	public static String getServletContextParamter(String param) {
 		return getServletContext().getInitParameter(param);
 	}
+
 
 }
