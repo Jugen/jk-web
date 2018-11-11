@@ -202,7 +202,7 @@ public class JKManagedBean {
 	}
 
 	protected boolean isDebug() {
-		return request().getServerName().equals("localhost");
+		return true;//request().getServerName().equals("localhost");
 	}
 
 }
