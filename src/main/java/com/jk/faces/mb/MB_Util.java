@@ -60,4 +60,8 @@ public class MB_Util extends JKManagedBean {
 		}
 		return requestURI.substring(0, lastIndexOfSlash);
 	}
+
+	public boolean isMobile() {
+		return request().getHeader("User-Agent").indexOf("Mobile") != -1 ;
+	}
 }
