@@ -58,7 +58,7 @@ public final class JKTagIncludeHandler extends TagHandler {
 		String value = this.value.getValue(ctx);// (String) JKJsfUtil.evaluateExpressionToObject(this.value.getValue(ctx));
 		if (!value.equals("")) {
 			File file = JKIOUtil.writeDataToTempFile(value, "xhtml");
-			logger.debug("Including value file ({}))", file.getAbsolutePath());
+			logger.trace("Including value file ({}))", file.getAbsolutePath());
 			ctx.setVariableMapper(new VariableMapperWrapper(orig));
 			try {
 				this.nextHandler.apply(ctx, null);

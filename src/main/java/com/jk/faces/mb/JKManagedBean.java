@@ -201,7 +201,7 @@ public class JKManagedBean {
 		return getContextParam("facelets.DEVELOPMENT", "true").equals("true");
 	}
 
-	protected boolean isDebug() {
+	public boolean isDebug() {
 		return request().getServerName().equals("localhost");
 	}
 
