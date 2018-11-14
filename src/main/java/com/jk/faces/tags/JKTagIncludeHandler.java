@@ -33,7 +33,7 @@ public final class JKTagIncludeHandler extends TagHandler {
 		TagAttribute attr = null;
 		attr = this.getAttribute("value");
 		if (null == attr) {
-			throw new TagException(this.tag, "Attribute 'src', 'file' or 'page' is required");
+			throw new TagException(this.tag, "Attribute 'value'");
 		}
 		this.value = attr;
 	}
