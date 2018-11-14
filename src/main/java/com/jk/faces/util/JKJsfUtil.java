@@ -15,7 +15,10 @@
  */
 package com.jk.faces.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -57,10 +60,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Assert;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import com.jk.faces.components.TagAttributeConstants;
 import com.jk.util.JK;
 import com.jk.util.JKConversionUtil;
+import com.jk.util.JKIOUtil;
 import com.jk.util.annotations.Author;
 import com.jk.util.exceptions.handler.JKExceptionUtil;
 import com.jk.util.logging.JKLogger;
@@ -960,5 +966,16 @@ public class JKJsfUtil {
 		return getServletContext().getInitParameter(param);
 	}
 
+	public static StreamedContent toStreamedContents(File file, String fileName, String contentTypes) {
+		try {
+			InputStream stream = new FileInputStream(file);
+			DefaultStreamedContent streamedFile = new DefaultStreamedContent(stream, contentTypes, fileName);
+			return streamedFile;
+		} catch (IOException e) {
+			e.printStackTrace();
+			JK.throww(e);
+			return null;
+		}
+	}
 
 }
