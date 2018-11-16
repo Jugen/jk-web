@@ -205,4 +205,14 @@ public class JKManagedBean {
 		return request().getServerName().equals("localhost");
 	}
 
+	public String getUserName() {
+		if (request().getUserPrincipal() == null) {
+			return null;
+		}
+		return request().getUserPrincipal().getName();
+	}
+
+	public boolean isUserLoggedIn() {
+		return getUserName() != null;
+	}
 }

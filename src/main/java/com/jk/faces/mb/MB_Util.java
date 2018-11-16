@@ -52,13 +52,13 @@ public class MB_Util extends JKManagedBean {
 		return JKDateTimeUtil.getCurrentYear();
 	}
 
-	public String removePageName() {
+	public String getPath() {
 		String requestURI = request().getRequestURI();
 		int lastIndexOfSlash = requestURI.lastIndexOf("/");
 		if (lastIndexOfSlash == -1) {
-			return "";
+			return "/";
 		}
-		return requestURI.substring(0, lastIndexOfSlash);
+		return requestURI.substring(0, lastIndexOfSlash).concat("/");
 	}
 
 	public boolean isMobile() {
