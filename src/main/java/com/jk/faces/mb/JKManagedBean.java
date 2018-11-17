@@ -23,6 +23,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.jk.faces.util.JKJsfUtil;
 import com.jk.util.exceptions.JKException;
 import com.jk.util.locale.JKMessage;
@@ -221,5 +223,10 @@ public class JKManagedBean {
 
 	public boolean isUserLoggedIn() {
 		return getUserName() != null;
+	}
+	
+	
+	public String getUserFirstName() {
+		return SecurityContextHolder.getContext().getAuthentication().getDetails().toString();
 	}
 }
