@@ -129,7 +129,14 @@ public class JKManagedBean {
 	 * @param message the message
 	 */
 	public void success(final String message) {
-		final FacesMessage msg = new FacesMessage(JKMessage.get(message));
+		success(message, true);
+	}
+
+	public void success(String message, boolean localize) {
+		if (localize) {
+			message = JKMessage.get(message);
+		}
+		final FacesMessage msg = new FacesMessage(message);
 		msg.setSeverity(FacesMessage.SEVERITY_INFO);
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
