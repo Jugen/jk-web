@@ -15,6 +15,7 @@
  */
 package com.jk.faces.mb;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
@@ -116,13 +117,17 @@ public class JKManagedBean {
 	 * @param outcome the outcome
 	 * @return the string
 	 */
-	public String redirect(String outcome) {
-		if (outcome == null) {
-			outcome = "";
+	public void redirect(String outcome) {
+//		if (outcome == null) {
+//			outcome = "";
+//		}
+		try {
+			context().redirect(outcome);
+			FacesContext.getCurrentInstance().responseComplete();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getFlash().setKeepMessages(true);
-		return outcome.concat("?faces-redirect=true");
+//		return outcome.concat("?faces-redirect=true");
 	}
 
 	/**
@@ -224,8 +229,7 @@ public class JKManagedBean {
 	public boolean isUserLoggedIn() {
 		return getUserName() != null;
 	}
-	
-	
+
 	public String getUserFirstName() {
 		return SecurityContextHolder.getContext().getAuthentication().getDetails().toString();
 	}
