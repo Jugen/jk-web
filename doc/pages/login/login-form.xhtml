@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:jk="http://jalalkiswani.com/jsf"
+	xmlns:p="http://primefaces.org/ui" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core" >
+<ui:composition>
+	<div class="panel  login-form">
+		<c:if test="#{security.message != null}">
+			<div class="alert alert-danger">Invalid User name or password</div>
+		</c:if>
+
+		<form name='f' method='POST' form="index.xhtml">
+			<label>User name / E-Mail address</label> <input type='text' name='username' value='' placeholder="Enter your e-mail address" /> <label>Password</label>
+			<input type='password' name='password' placeholder="Enter your password" />
+			<!-- Change this to a button or input when using this as a form -->
+			<div align="center">
+				<input name="submit" type="submit" value="Login" class="btn btn-success  btn-login" />
+			</div>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
+		<div class="actions">
+				<a href="#" onclick="PF('dlgReset').show()" class="forget">Forget password</a> <a href="#" onclick="PF('dlgCreate').show()" class="create">Create
+					an account</a>
+			</div>
+	</div>
+</ui:composition>
+</html>
