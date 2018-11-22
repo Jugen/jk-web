@@ -41,9 +41,9 @@ public class UserService implements UserDetailsService {
 	//////////////////////////////////////////////////////////////////////////////
 	private User createAdminAccount() {
 		String password = new BCryptPasswordEncoder().encode("admin");
-		Role adminRole = new Role(null, ROLE_ADMIN);
-		dataAccess.insert(adminRole);
-		User user = new User(null, "admin", password, "", "", "", false, false, false, false, adminRole);
+		dataAccess.insert(new Role(ROLE_ADMIN));
+		dataAccess.insert(new Role(ROLE_USER));
+		User user = new User("admin", password, getAllRoles());
 		dataAccess.insert(user);
 		return user;
 	}
