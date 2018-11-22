@@ -9,8 +9,8 @@
 
 	<artifactId>jk-web</artifactId>
 	<packaging>jar</packaging>
-	<url>https://github.com/kiswanij/jk-faces</url>
-	<name>JK-Faces</name>
+	<url>https://github.com/kiswanij/jk-web</url>
+	<name>jk-web</name>
 	<description>No suffering from JSF new projects any more , create new JSF project with zero-configurations..</description>
 	<scm>
 		<url>scm:git:git@github.com:kiswanij//jk-web</url>
