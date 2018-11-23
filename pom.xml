@@ -119,11 +119,6 @@
 			<version>${tomcat.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jalalkiswani</groupId>
-			<artifactId>jk-util</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
 	</dependencies>
 
