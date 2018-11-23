@@ -18,6 +18,7 @@ package com.jk.web.util;
 import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,6 +27,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 import com.jk.util.JK;
+import com.jk.util.JKConversionUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -38,25 +40,21 @@ public class JKWebUtil {
 	/**
 	 * Fix html.
 	 *
-	 * @param request
-	 *            the request
-	 * @param xhtml
-	 *            the xhtml
+	 * @param request the request
+	 * @param xhtml   the xhtml
 	 * @return the string
 	 */
 	protected static String fixHtml(final HttpServletRequest request, String xhtml) {
 		xhtml = xhtml.replaceAll("&nbsp", " ");
 		// xhtml=xhtml.replaceAll("</input", "</div");
-		xhtml = xhtml.replaceAll("rel=\"stylesheet\" href=\"/",
-				"rel=\"stylesheet\" href=\"" + JKWebUtil.getContextPath(request));
+		xhtml = xhtml.replaceAll("rel=\"stylesheet\" href=\"/", "rel=\"stylesheet\" href=\"" + JKWebUtil.getContextPath(request));
 		return xhtml;
 	}
 
 	/**
 	 * Gets the context path.
 	 *
-	 * @param req
-	 *            the req
+	 * @param req the req
 	 * @return the context path
 	 */
 	public static String getContextPath(final HttpServletRequest req) {
@@ -70,8 +68,7 @@ public class JKWebUtil {
 	/**
 	 * The main method.
 	 *
-	 * @param args
-	 *            the arguments
+	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
 		System.out.println("12<abc>34</abc>56".replaceAll("<abc>|</abc>", ""));
@@ -80,17 +77,12 @@ public class JKWebUtil {
 	/**
 	 * To pdf.
 	 *
-	 * @param request
-	 *            the request
-	 * @param response
-	 *            the response
-	 * @param xhtml
-	 *            the xhtml
-	 * @throws Exception
-	 *             the exception
+	 * @param request  the request
+	 * @param response the response
+	 * @param xhtml    the xhtml
+	 * @throws Exception the exception
 	 */
-	public static void toPDF(final HttpServletRequest request, final HttpServletResponse response, String xhtml)
-			throws Exception {
+	public static void toPDF(final HttpServletRequest request, final HttpServletResponse response, String xhtml) throws Exception {
 		JK.implementMe();
 //		response.setContentType("application/pdf");
 //
@@ -109,7 +101,7 @@ public class JKWebUtil {
 //		os.close();
 	}
 
-	public static boolean isDebug() {		
+	public static boolean isDebug() {
 		return false;
 	}
 

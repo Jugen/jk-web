@@ -35,7 +35,7 @@
 	
 	<tag>
 		<tag-name>include</tag-name>
-		<handler-class>com.jk.faces.tags.JKTagIncludeHandler</handler-class>
+		<handler-class>com.jk.web.faces.tags.JKTagIncludeHandler</handler-class>
 	</tag>
 	<!-- Form layout that will insure add the lables automatically , and will distribute the columns based on the cols attribute -->
 	<!-- 

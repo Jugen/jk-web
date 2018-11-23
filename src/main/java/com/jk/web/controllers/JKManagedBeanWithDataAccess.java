@@ -25,8 +25,8 @@
 //import com.jk.db.dynamic.dataaccess.JKObjectDataAccess;
 //import com.jk.db.dynamic.dataaccess.JKObjectDataAccessImpl;
 //import com.jk.db.dynamic.dataaccess.JKObjectDataAccessInMemory;
-//import com.jk.faces.mb.JKManagedBean;
-//import com.jk.faces.util.JKJsfUtil;
+//import com.jk.web.faces.mb.JKManagedBean;
+//import com.jk.web.faces.util.JKJsfUtil;
 //import com.jk.util.JK;
 //import com.jk.util.JKObjectUtil;
 //import com.jk.util.factory.JKFactory;

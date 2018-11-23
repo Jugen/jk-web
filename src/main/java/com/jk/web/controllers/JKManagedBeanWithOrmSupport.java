@@ -20,10 +20,10 @@ import java.util.List;
 import com.jk.db.dataaccess.core.JKDbConstants;
 import com.jk.db.dataaccess.orm.JKObjectDataAccess;
 import com.jk.db.datasource.JKDataSourceFactory;
-import com.jk.faces.mb.JKManagedBean;
 import com.jk.util.JKObjectUtil;
 import com.jk.util.factory.JKFactory;
 import com.jk.util.test.JKMockUtil;
+import com.jk.web.faces.mb.JKManagedBean;
 
 /**
  * The Class JKOrmManagedBean.
