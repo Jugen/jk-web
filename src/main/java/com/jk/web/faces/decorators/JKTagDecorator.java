@@ -16,7 +16,6 @@
 package com.jk.web.faces.decorators;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagDecorator;

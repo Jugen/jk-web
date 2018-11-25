@@ -15,21 +15,11 @@
  */
 package com.jk.web.faces.mb;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Properties;
-
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 import com.jk.util.JK;
-import com.jk.util.JKIOUtil;
 import com.jk.util.locale.JKMessage;
-import com.jk.web.util.JKWebUtil;
 
 // TODO: Auto-generated Javadoc
 /**

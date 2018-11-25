@@ -21,7 +21,6 @@ import javax.faces.bean.ManagedBean;
 
 import com.jk.util.JK;
 import com.jk.util.JKDateTimeUtil;
-import com.jk.web.util.JKWebUtil;
 
 // TODO: Auto-generated Javadoc
 /**

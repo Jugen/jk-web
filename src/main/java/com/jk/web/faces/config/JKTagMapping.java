@@ -15,8 +15,6 @@
  */
 package com.jk.web.faces.config;
 
-import java.util.logging.Logger;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

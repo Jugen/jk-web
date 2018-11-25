@@ -21,12 +21,9 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.slf4j.bridge.SLF4JBridgeHandler;
-import org.springframework.context.ApplicationContext;
 
 import com.jk.util.JK;
 import com.jk.util.JKConversionUtil;
-import com.jk.util.context.JKContextConstants;
-import com.jk.util.factory.JKFactory;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 

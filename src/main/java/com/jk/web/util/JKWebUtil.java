@@ -15,19 +15,12 @@
  */
 package com.jk.web.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.OutputStream;
-
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.Document;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.jk.util.JK;
-import com.jk.util.JKConversionUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -103,6 +96,14 @@ public class JKWebUtil {
 
 	public static boolean isDebug() {
 		return false;
+	}
+
+	public static String encodePassword(String password) {
+		return new BCryptPasswordEncoder().encode(password);
+	}
+	
+	public static boolean matchPasswords(String rawPassword,String encodedPassword) {
+		return new BCryptPasswordEncoder().matches(rawPassword, encodedPassword);
 	}
 
 }

@@ -1,29 +1,21 @@
 package com.jk.web.faces.tags;
 
-import com.jk.util.JKIOUtil;
-import com.jk.util.logging.JKLogger;
-import com.jk.util.logging.JKLoggerFactory;
-import com.jk.web.faces.util.JKJsfUtil;
-import com.sun.faces.facelets.el.VariableMapperWrapper;
-import com.sun.faces.taglib.html_basic.PanelGroupTag;
-import com.sun.faces.util.FacesLogger;
+import java.io.File;
+import java.io.IOException;
 
 import javax.el.VariableMapper;
 import javax.faces.component.UIComponent;
-import javax.faces.view.facelets.ComponentHandler;
 import javax.faces.view.facelets.FaceletContext;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributeException;
 import javax.faces.view.facelets.TagConfig;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.view.facelets.TagException;
 import javax.faces.view.facelets.TagHandler;
 
-import org.primefaces.component.panel.Panel;
+import com.jk.util.JKIOUtil;
+import com.jk.util.logging.JKLogger;
+import com.jk.util.logging.JKLoggerFactory;
+import com.sun.faces.facelets.el.VariableMapperWrapper;
 
 public final class JKTagIncludeHandler extends TagHandler {
 

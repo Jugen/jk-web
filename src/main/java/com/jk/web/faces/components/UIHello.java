@@ -16,7 +16,6 @@
 package com.jk.web.faces.components;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIPanel;

@@ -35,7 +35,6 @@ import com.jk.util.annotations.AnnotationDetector;
 import com.jk.util.annotations.AnnotationHandler;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
-import com.jk.util.thread.JKThreadLocal;
 
 // TODO: Auto-generated Javadoc
 /**

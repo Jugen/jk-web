@@ -19,7 +19,6 @@ package com.jk.web.mvc.api;
 import java.lang.reflect.Field;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jk.util.factory.JKFactory;
 
 // TODO: Auto-generated Javadoc
 /**

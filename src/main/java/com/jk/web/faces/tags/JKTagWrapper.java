@@ -18,7 +18,6 @@ package com.jk.web.faces.tags;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Logger;
 
 import javax.faces.view.Location;
 import javax.faces.view.facelets.Tag;

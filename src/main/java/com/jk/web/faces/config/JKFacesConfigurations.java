@@ -28,8 +28,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.omg.IOP.ServiceContext;
-
 import com.jk.util.JKConversionUtil;
 import com.jk.util.JKIOUtil;
 import com.jk.util.JKObjectUtil;
@@ -38,7 +36,6 @@ import com.jk.util.logging.JKLoggerFactory;
 import com.jk.util.xml.JKXmlHandler;
 import com.jk.web.faces.tags.JKTagWrapper;
 import com.jk.web.faces.util.JKJsfUtil;
-import com.jk.web.util.JKWebUtil;
 import com.sun.faces.application.ApplicationAssociate;
 import com.sun.faces.facelets.compiler.Compiler;
 import com.sun.faces.facelets.tag.AbstractTagLibrary;

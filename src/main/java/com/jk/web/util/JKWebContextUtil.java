@@ -21,10 +21,8 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.jk.util.context.JKContextConstants;
 import com.jk.util.context.JKContextFactory;
 import com.jk.util.context.impl.JKWebContext;
-import com.jk.util.thread.JKThreadLocal;
 
 // TODO: Auto-generated Javadoc
 /**

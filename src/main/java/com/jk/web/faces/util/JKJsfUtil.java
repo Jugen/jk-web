@@ -20,15 +20,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import java.util.logging.Logger;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
@@ -40,8 +37,6 @@ import javax.faces.FactoryFinder;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewHandler;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.component.StateHelper;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
@@ -65,13 +60,11 @@ import org.primefaces.model.StreamedContent;
 
 import com.jk.util.JK;
 import com.jk.util.JKConversionUtil;
-import com.jk.util.JKIOUtil;
 import com.jk.util.annotations.Author;
 import com.jk.util.exceptions.handler.JKExceptionUtil;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;
 import com.jk.web.faces.components.TagAttributeConstants;
-import com.sun.faces.mgbean.ManagedBeanInfo;
 
 // TODO: Auto-generated Javadoc
 /**

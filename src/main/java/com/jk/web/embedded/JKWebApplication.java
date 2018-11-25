@@ -17,36 +17,25 @@
 package com.jk.web.embedded;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
-import org.apache.jasper.servlet.TldScanner;
-import org.apache.tomcat.JarScanFilter;
-import org.apache.tomcat.JarScanType;
 import org.apache.tomcat.util.scan.StandardJarScanFilter;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.util.StringUtils;
 
 import com.jk.util.JK;
 import com.jk.util.JKConversionUtil;
-import com.jk.util.JKDebugUtil;
 import com.jk.util.JKIOUtil;
 import com.jk.util.logging.JKLogger;
 import com.jk.util.logging.JKLoggerFactory;

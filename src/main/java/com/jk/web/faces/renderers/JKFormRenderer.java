@@ -19,8 +19,6 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.servlet.http.HttpSession;
 
 import com.jk.util.JK;
 import com.sun.faces.renderkit.html_basic.FormRenderer;
