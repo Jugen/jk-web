@@ -19,7 +19,7 @@
 	</scm>
 
 	<properties>
-		<tomcat.version>8.5.35</tomcat.version>
+		<tomcat.version>8.5.61</tomcat.version>
 		<spring.security.version>5.1.1.RELEASE</spring.security.version>
 		<spring.data.version>2.1.2.RELEASE</spring.data.version>
 	</properties>
